@@ -6,6 +6,7 @@
 <title>SHIBUYA CODE 109 ★ 서연의 개발 일기</title>
 <meta name="description" content="독학 개발자의 시부야 스타일 성장기. Git, 배포, React 공부 일기.">
 <meta name="theme-color" content="#FF2E88">
+<meta name="color-scheme" content="light only">
 
 <!-- 공유(카톡·트위터)용 미리보기 -->
 <meta property="og:type" content="website">
@@ -23,12 +24,12 @@
    ══════════════════════════════════════════════════════════ */
 :root {
   /* leopard — 살짝 불투명하게 (연한 호피) */
-  --lp-base:  #F7E6CA;
-  --lp-mid:   rgba(198, 130, 55, .30);
-  --lp-dark:  rgba(70, 38, 14, .46);
+  --lp-base:  #FFFBF4;
+  --lp-mid:   rgba(208, 152, 84, .13);
+  --lp-dark:  rgba(102, 66, 32, .19);
 
-  --sand:     #F7E4C6;
-  --cream:    #FFF8EC;
+  --sand:     #FFF4E2;
+  --cream:    #FFFCF5;
   --paper:    #FFFFFF;
 
   --espresso: #2B180A;
@@ -57,62 +58,6 @@
   --f-body:   "Gothic A1", "Apple SD Gothic Neo", system-ui, sans-serif;
   --f-hand:   "Gaegu", "Gothic A1", cursive;
   --f-mono:   "Share Tech Mono", ui-monospace, monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --lp-base:  #33230F;
-    --lp-mid:   rgba(196, 133, 55, .28);
-    --lp-dark:  rgba(5, 3, 1, .58);
-
-    --sand:     #2A1B0D;
-    --cream:    #1F1409;
-    --paper:    #2A1B0F;
-
-    --espresso: #0E0803;
-    --ink:      #FFEFD9;
-    --ink-2:    #E0C4A0;
-    --muted:    #A98660;
-
-    --hotpink:  #FF4D9B;
-    --magenta:  #FF7FBB;
-    --pinklite: #58203C;
-
-    --gold:     #FFC53D;
-    --goldlite: #FFE49B;
-
-    --lime:     #C7F04E;
-    --aqua:     #55E9F0;
-
-    --line:     #4A3418;
-  }
-}
-
-:root[data-theme="dark"] {
-  --lp-base:  #33230F;
-  --lp-mid:   rgba(196, 133, 55, .28);
-  --lp-dark:  rgba(5, 3, 1, .58);
-
-  --sand:     #2A1B0D;
-  --cream:    #1F1409;
-  --paper:    #2A1B0F;
-
-  --espresso: #0E0803;
-  --ink:      #FFEFD9;
-  --ink-2:    #E0C4A0;
-  --muted:    #A98660;
-
-  --hotpink:  #FF4D9B;
-  --magenta:  #FF7FBB;
-  --pinklite: #58203C;
-
-  --gold:     #FFC53D;
-  --goldlite: #FFE49B;
-
-  --lime:     #C7F04E;
-  --aqua:     #55E9F0;
-
-  --line:     #4A3418;
 }
 
 /* ══════════════ base ══════════════ */
@@ -360,7 +305,7 @@ p { margin: 0; }
 .hero::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--espresso) 30%, transparent));
+  background: linear-gradient(180deg, transparent 72%, color-mix(in srgb, var(--espresso) 6%, transparent));
   pointer-events: none;
 }
 .hero > * { position: relative; z-index: 1; }
@@ -414,9 +359,6 @@ h1.big .l2 { display: block; color: var(--hotpink); }
   margin-top: 1.5rem;
   letter-spacing: -.01em;
 }
-:root[data-theme="dark"] .kr,
-:root:not([data-theme="light"]) .kr { color: var(--ink); }
-
 .hand {
   font-family: var(--f-hand);
   font-weight: 700;
