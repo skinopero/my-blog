@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="640" height="420" fill="#fbfbfb"/>
+
+  <text x="320" y="36" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">같은 블록 더미, 깃발만 두 개</text>
+
+  <g transform="translate(230,80)">
+    <rect x="0" y="0" width="180" height="60" rx="8" fill="#fffaf0" stroke="#dd6b20" stroke-width="2"/>
+    <text x="90" y="36" text-anchor="middle" font-size="14" fill="#dd6b20">블록 3</text>
+
+    <rect x="0" y="70" width="180" height="60" rx="8" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+    <text x="90" y="106" text-anchor="middle" font-size="14" fill="#2b6cb0">블록 2</text>
+
+    <rect x="0" y="140" width="180" height="60" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+    <text x="90" y="176" text-anchor="middle" font-size="14" fill="#2d3748">블록 1</text>
+
+    <!-- test flag -> block3 -->
+    <line x1="150" y1="0" x2="150" y2="-55" stroke="#dd6b20" stroke-width="3"/>
+    <polygon points="150,-55 150,-30 220,-42" fill="#dd6b20"/>
+    <text x="222" y="-38" font-size="14" font-weight="bold" fill="#dd6b20">test</text>
+
+    <!-- main flag -> block2 -->
+    <line x1="30" y1="70" x2="30" y2="30" stroke="#2b6cb0" stroke-width="3"/>
+    <polygon points="30,30 30,55 -40,42" fill="#2b6cb0"/>
+    <text x="-42" y="46" text-anchor="end" font-size="14" font-weight="bold" fill="#2b6cb0">main</text>
+  </g>
+
+  <text x="320" y="360" text-anchor="middle" font-size="13" fill="#4a5568">블록은 딱 한 벌뿐이고,</text>
+  <text x="320" y="382" text-anchor="middle" font-size="13" fill="#4a5568">main과 test는 그 위에 붙은 "이름표"일 뿐이다</text>
+</svg>

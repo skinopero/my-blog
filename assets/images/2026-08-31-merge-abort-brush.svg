@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 320" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="700" height="320" fill="#fbfbfb"/>
+
+  <text x="350" y="34" text-anchor="middle" font-size="15" font-weight="bold" fill="#2d3748">자신 없으면 붓을 내려놔도 된다</text>
+
+  <!-- conflict block mid state -->
+  <g transform="translate(260,60)">
+    <rect x="0" y="0" width="180" height="90" rx="10" fill="#fff5f5" stroke="#e53e3e" stroke-width="3"/>
+    <text x="90" y="35" text-anchor="middle" font-size="13" font-weight="bold" fill="#c53030">충돌 중</text>
+    <text x="90" y="58" text-anchor="middle" font-size="11" fill="#742a2a">빨강? 파랑?</text>
+    <text x="90" y="76" text-anchor="middle" font-size="11" fill="#742a2a">아직 못 정함</text>
+  </g>
+
+  <!-- arrow down to abort -->
+  <path d="M350 160 L350 210" stroke="#805ad5" stroke-width="4" fill="none"/>
+  <polygon points="338,210 350,232 362,210" fill="#805ad5"/>
+  <text x="440" y="200" font-size="13" font-family="monospace" fill="#805ad5">git merge --abort</text>
+
+  <!-- two separate towers restored -->
+  <g transform="translate(140,240)">
+    <rect x="0" y="0" width="140" height="50" rx="8" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+    <text x="70" y="30" text-anchor="middle" font-size="12" fill="#2a4365">main 탑 (충돌 전)</text>
+  </g>
+  <g transform="translate(420,240)">
+    <rect x="0" y="0" width="140" height="50" rx="8" fill="#fffaf0" stroke="#dd6b20" stroke-width="2"/>
+    <text x="70" y="30" text-anchor="middle" font-size="12" fill="#7b341e">test 탑 (충돌 전)</text>
+  </g>
+
+  <text x="350" y="310" text-anchor="middle" font-size="12" fill="#a0aec0">merge를 하기 전, 갈라졌던 그 상태로 되돌아간다</text>
+</svg>

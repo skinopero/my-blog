@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="800" height="420" fill="#fbfbfb"/>
+
+  <!-- main colored block -->
+  <g transform="translate(60,50)">
+    <text x="110" y="-15" text-anchor="middle" font-size="15" font-weight="bold" fill="#c53030">main 팀</text>
+    <rect x="0" y="0" width="220" height="90" rx="10" fill="#fed7d7" stroke="#c53030" stroke-width="3"/>
+    <text x="110" y="40" text-anchor="middle" font-size="14" fill="#742a2a">3층 블록</text>
+    <text x="110" y="62" text-anchor="middle" font-size="12" fill="#742a2a">빨간색으로 칠함</text>
+  </g>
+
+  <!-- test colored block -->
+  <g transform="translate(520,50)">
+    <text x="110" y="-15" text-anchor="middle" font-size="15" font-weight="bold" fill="#2b6cb0">test 팀</text>
+    <rect x="0" y="0" width="220" height="90" rx="10" fill="#bee3f8" stroke="#2b6cb0" stroke-width="3"/>
+    <text x="110" y="40" text-anchor="middle" font-size="14" fill="#2a4365">3층 블록</text>
+    <text x="110" y="62" text-anchor="middle" font-size="12" fill="#2a4365">파란색으로 칠함</text>
+  </g>
+
+  <text x="400" y="90" text-anchor="middle" font-size="14" fill="#a0aec0">같은 층, 같은 블록</text>
+
+  <!-- converging arrows -->
+  <path d="M170 160 L360 260" stroke="#a0aec0" stroke-width="5" fill="none"/>
+  <path d="M630 160 L440 260" stroke="#a0aec0" stroke-width="5" fill="none"/>
+  <text x="400" y="200" text-anchor="middle" font-size="13" fill="#718096">git merge</text>
+
+  <!-- conflict box -->
+  <g transform="translate(290,260)">
+    <rect x="0" y="0" width="220" height="110" rx="14" fill="#fff5f5" stroke="#e53e3e" stroke-width="3"/>
+    <text x="110" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#c53030">CONFLICT!</text>
+    <text x="110" y="62" text-anchor="middle" font-size="12" fill="#742a2a">빨강? 파랑?</text>
+    <text x="110" y="82" text-anchor="middle" font-size="12" fill="#742a2a">Git이 못 정해서</text>
+    <text x="110" y="98" text-anchor="middle" font-size="12" fill="#742a2a">사람에게 물어봄</text>
+  </g>
+</svg>

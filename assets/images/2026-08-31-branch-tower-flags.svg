@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 380" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="820" height="380" fill="#fbfbfb"/>
+
+  <!-- LEFT: before -->
+  <text x="170" y="40" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">지금 (main만 있음)</text>
+
+  <g transform="translate(80,140)">
+    <rect x="0" y="0" width="180" height="60" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+    <text x="90" y="36" text-anchor="middle" font-size="14" fill="#2d3748">블록 2</text>
+    <rect x="0" y="70" width="180" height="60" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+    <text x="90" y="106" text-anchor="middle" font-size="14" fill="#2d3748">블록 1</text>
+
+    <!-- main flag -->
+    <line x1="90" y1="0" x2="90" y2="-50" stroke="#2b6cb0" stroke-width="3"/>
+    <polygon points="90,-50 90,-20 140,-35" fill="#2b6cb0"/>
+    <text x="150" y="-30" font-size="14" font-weight="bold" fill="#2b6cb0">main</text>
+  </g>
+
+  <!-- middle arrow -->
+  <g transform="translate(300,150)">
+    <path d="M0 40 L130 40" stroke="#718096" stroke-width="5" fill="none"/>
+    <polygon points="130,26 168,40 130,54" fill="#718096"/>
+    <text x="84" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#4a5568">test 깃발을</text>
+    <text x="84" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#4a5568">옆에 꽂는다</text>
+  </g>
+
+  <!-- RIGHT: after -->
+  <text x="650" y="40" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">이제 (main + test)</text>
+
+  <g transform="translate(560,140)">
+    <!-- new test block on top -->
+    <rect x="0" y="-70" width="180" height="60" rx="8" fill="#fffaf0" stroke="#dd6b20" stroke-width="3" stroke-dasharray="7 4"/>
+    <text x="90" y="-34" text-anchor="middle" font-size="14" fill="#dd6b20">블록 3 (test)</text>
+
+    <rect x="0" y="0" width="180" height="60" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+    <text x="90" y="36" text-anchor="middle" font-size="14" fill="#2d3748">블록 2</text>
+    <rect x="0" y="70" width="180" height="60" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+    <text x="90" y="106" text-anchor="middle" font-size="14" fill="#2d3748">블록 1</text>
+
+    <!-- main flag stays at block 2 -->
+    <line x1="40" y1="0" x2="40" y2="-30" stroke="#2b6cb0" stroke-width="3"/>
+    <polygon points="40,-30 40,-8 -20,-19" fill="#2b6cb0"/>
+    <text x="-20" y="-30" text-anchor="middle" font-size="13" font-weight="bold" fill="#2b6cb0">main</text>
+
+    <!-- test flag moves to block 3 -->
+    <line x1="140" y1="-70" x2="140" y2="-115" stroke="#dd6b20" stroke-width="3"/>
+    <polygon points="140,-115 140,-93 200,-104" fill="#dd6b20"/>
+    <text x="200" y="-118" text-anchor="middle" font-size="13" font-weight="bold" fill="#dd6b20">test</text>
+  </g>
+
+  <text x="650" y="290" text-anchor="middle" font-size="12" fill="#a0aec0">main 깃발은 그대로, test 깃발만 새 블록을 가리킨다</text>
+</svg>

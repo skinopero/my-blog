@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="700" height="300" fill="#fbfbfb"/>
+
+  <g transform="translate(60,30)">
+    <rect x="0" y="0" width="580" height="240" rx="10" fill="#1a202c"/>
+    <rect x="0" y="0" width="580" height="34" rx="10" fill="#2d3748"/>
+    <circle cx="22" cy="17" r="7" fill="#e53e3e"/>
+    <circle cx="46" cy="17" r="7" fill="#ecc94b"/>
+    <circle cx="70" cy="17" r="7" fill="#48bb78"/>
+    <text x="580" y="21" text-anchor="end" font-size="12" fill="#a0aec0" transform="translate(-16,0)">terminal</text>
+
+    <text x="20" y="70" font-family="monospace" font-size="15" fill="#68d391">$ git merge test</text>
+    <text x="20" y="105" font-family="monospace" font-size="14" fill="#e2e8f0">Auto-merging index.md</text>
+    <text x="20" y="135" font-family="monospace" font-size="14" fill="#fc8181">CONFLICT (content): Merge conflict in index.md</text>
+    <text x="20" y="165" font-family="monospace" font-size="14" fill="#e2e8f0">Automatic merge failed; fix conflicts and then commit the result.</text>
+
+    <rect x="20" y="195" width="540" height="30" rx="6" fill="#2d3748"/>
+    <text x="300" y="215" text-anchor="middle" font-family="monospace" font-size="13" fill="#a0aec0">→ git status 로 어떤 파일이 충돌인지 확인</text>
+  </g>
+</svg>
