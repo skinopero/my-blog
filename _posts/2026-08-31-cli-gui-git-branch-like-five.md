@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 공쥬의 원티드 활동일지 첫 주편 
-date: 2026-08-31 20:00:00 +0900
+date: 2026-08-31
 categories: [Bootcamp]
 tags: [git, cli, gui, beginner]
 mermaid: true
