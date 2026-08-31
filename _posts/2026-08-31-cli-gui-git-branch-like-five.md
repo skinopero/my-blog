@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "다섯 살 나에게 설명하듯 이해한 CLI, GUI, 그리고 git branch"
+title: 공쥬의 원티드 활동일지 첫 주편 
 date: 2026-08-31 20:00:00 +0900
 categories: [Bootcamp]
 tags: [git, cli, gui, beginner]
