@@ -1,880 +1,1068 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Code Princess Diary ♡ 서연의 개발 일기</title>
-<meta name="description" content="독학 개발자의 반짝이는 성장 기록. Git, 배포, React 공부 일기.">
-<meta name="theme-color" content="#FFF6FA">
+<title>{{ site.title | default: "SHIBUYA CODE 109" }} ★ 개발 일기</title>
+<meta name="description" content="독학 개발자의 시부야 스타일 성장기. Git, 배포, React 공부 일기.">
+<meta name="theme-color" content="#FF2E88">
+<meta name="color-scheme" content="light only">
 
-<!-- 공유(카톡·트위터)용 미리보기 -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Code Princess Diary ♡ 서연의 개발 일기">
-<meta property="og:description" content="독학 개발자의 반짝이는 성장 기록.">
+<meta property="og:title" content="SHIBUYA CODE 109 ★ 개발 일기">
+<meta property="og:description" content="독학 개발자의 시부야 스타일 성장기.">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎀</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐆</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Parisienne&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Gothic+A1:wght@400;500;700;800&family=Gaegu:wght@400;700&family=Share+Tech+Mono&display=swap">
 
 <style>
-/* ══════════════════════════════════════════════════════
-   ♡  Hime Gyaru Blog  ·  tokens
-   ══════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════
+   🐆  SHIBUYA CODE 109  ·  Y2K leopard gyaru
+   ══════════════════════════════════════════════════════════ */
 :root {
-  --milk:      #FFF6FA;
-  --veil:      #FFECF4;
-  --surface:   #FFFFFF;
-  --surface-2: #FFF3F8;
+  /* leopard — 살짝 불투명하게 (연한 호피) */
+  --lp-base:  #FFFBF4;
+  --lp-mid:   rgba(208, 152, 84, .13);
+  --lp-dark:  rgba(102, 66, 32, .19);
 
-  --blush:     #FBD3E4;
-  --rose:      #F3A3C6;
-  --fuchsia:   #CE2F79;
-  --fuchsia-2: #A81F5D;
+  --sand:     #FFF4E2;
+  --cream:    #FFFCF5;
+  --paper:    #FFFFFF;
 
-  --plum:      #4B233A;
-  --plum-2:    #74476010;
-  --ink:       #4B233A;
-  --ink-2:     #7A5468;
-  --muted:     #A5849A;
+  --espresso: #2B180A;
+  --ink:      #2B180A;
+  --ink-2:    #5C4025;
+  --muted:    #937352;
 
-  --gold:      #BE9438;
-  --gold-lite: #E8CE84;
-  --gold-deep: #8E6B1E;
+  --hotpink:  #FF2E88;
+  --magenta:  #C1005E;
+  --pinklite: #FFD3E6;
 
-  --lilac:     #DCC9F2;
-  --mint:      #BFE6D6;
+  --gold:     #E8AE2C;
+  --goldlite: #FFDD7A;
 
-  --lace:      #FFFFFF;
-  --frame:     #F6C9DD;
-  --ribbon-ink: #FFFFFF;
+  --lime:     #B6E63E;
+  --aqua:     #3FD8E0;
 
-  --shadow-s: 0 2px 6px rgba(150, 60, 105, .08);
-  --shadow-m: 0 10px 30px -14px rgba(150, 60, 105, .35), 0 2px 6px rgba(150, 60, 105, .07);
-  --shadow-l: 0 24px 60px -28px rgba(150, 60, 105, .48), 0 3px 10px rgba(150, 60, 105, .09);
+  --line:     #E2C89F;
 
-  --f-display: "Italiana", "Gowun Batang", serif;
-  --f-script:  "Parisienne", "Gowun Batang", cursive;
-  --f-serif:   "Gowun Batang", "Nanum Myeongjo", Georgia, serif;
-  --f-body:    "Gowun Dodum", "Apple SD Gothic Neo", system-ui, sans-serif;
-  --f-mono:    "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --sh-s: 0 2px 0 var(--espresso);
+  --sh-m: 4px 4px 0 var(--espresso);
+  --sh-l: 7px 7px 0 var(--espresso);
+
+  --f-disp:   "Black Han Sans", "Anton", "Apple SD Gothic Neo", sans-serif;
+  --f-latin:  "Anton", "Black Han Sans", sans-serif;
+  --f-body:   "Gothic A1", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --f-hand:   "Gaegu", "Gothic A1", cursive;
+  --f-mono:   "Share Tech Mono", ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --milk:      #1E1122;
-    --veil:      #27162C;
-    --surface:   #2C1930;
-    --surface-2: #341D39;
-
-    --blush:     #4A2A4B;
-    --rose:      #F0A0C6;
-    --fuchsia:   #FF8FC2;
-    --fuchsia-2: #FFB2D5;
-
-    --plum:      #FBE9F3;
-    --ink:       #FBE9F3;
-    --ink-2:     #DFBDD3;
-    --muted:     #B08FA6;
-
-    --gold:      #E8CE84;
-    --gold-lite: #F5E6B8;
-    --gold-deep: #C6A75A;
-
-    --lilac:     #6A4E8C;
-    --mint:      #4C7A69;
-
-    --lace:      #3A2140;
-    --frame:     #6B3D62;
-    --ribbon-ink: #35132A;
-
-    --shadow-s: 0 2px 6px rgba(0,0,0,.4);
-    --shadow-m: 0 10px 30px -14px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.3);
-    --shadow-l: 0 24px 60px -28px rgba(0,0,0,.85), 0 3px 10px rgba(0,0,0,.4);
-  }
-}
-
-:root[data-theme="dark"] {
-  --milk:      #1E1122;
-  --veil:      #27162C;
-  --surface:   #2C1930;
-  --surface-2: #341D39;
-
-  --blush:     #4A2A4B;
-  --rose:      #F0A0C6;
-  --fuchsia:   #FF8FC2;
-  --fuchsia-2: #FFB2D5;
-
-  --plum:      #FBE9F3;
-  --ink:       #FBE9F3;
-  --ink-2:     #DFBDD3;
-  --muted:     #B08FA6;
-
-  --gold:      #E8CE84;
-  --gold-lite: #F5E6B8;
-  --gold-deep: #C6A75A;
-
-  --lilac:     #6A4E8C;
-  --mint:      #4C7A69;
-
-  --lace:      #3A2140;
-  --frame:     #6B3D62;
-  --ribbon-ink: #35132A;
-
-  --shadow-s: 0 2px 6px rgba(0,0,0,.4);
-  --shadow-m: 0 10px 30px -14px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.3);
-  --shadow-l: 0 24px 60px -28px rgba(0,0,0,.85), 0 3px 10px rgba(0,0,0,.4);
-}
-
-/* ══════════════════════════════════════════════════════
-   ♡  base
-   ══════════════════════════════════════════════════════ */
+/* ══════════════ base ══════════════ */
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background-color: var(--milk);
-  background-image:
-    radial-gradient(circle at 12% 8%,  color-mix(in srgb, var(--blush) 55%, transparent) 0, transparent 42%),
-    radial-gradient(circle at 88% 22%, color-mix(in srgb, var(--lilac) 42%, transparent) 0, transparent 40%),
-    radial-gradient(circle at 50% 96%, color-mix(in srgb, var(--blush) 45%, transparent) 0, transparent 46%);
-  background-attachment: fixed;
+  background-color: var(--sand);
   color: var(--ink);
   font-family: var(--f-body);
   font-size: 16px;
-  line-height: 1.85;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-a { color: var(--fuchsia); text-decoration: none; }
-a:hover { text-decoration: underline; text-underline-offset: 4px; }
-
-:focus-visible {
-  outline: 2px dashed var(--fuchsia);
-  outline-offset: 4px;
-  border-radius: 6px;
-}
-
-h1, h2, h3 { margin: 0; font-family: var(--f-serif); font-weight: 700; line-height: 1.4; text-wrap: balance; }
+a { color: var(--magenta); text-decoration: none; }
+h1, h2, h3 { margin: 0; line-height: 1.25; }
 p { margin: 0; }
 
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.25rem; }
+:focus-visible { outline: 3px dashed var(--hotpink); outline-offset: 3px; }
 
-/* ── ornament: gold hairline + jewel divider ─────────── */
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 3.5rem 0;
-  color: var(--gold);
-}
-.divider::before, .divider::after {
-  content: "";
-  flex: 1;
-  height: 3px;
-  border-top: 1px solid var(--gold-lite);
-  border-bottom: 1px solid var(--gold-lite);
-}
-.divider span { font-size: 1rem; letter-spacing: .5em; opacity: .9; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }
 
-/* ── ornament: scallop lace strip ────────────────────── */
-.lace {
-  height: 14px;
-  background:
-    radial-gradient(circle at 9px 0, transparent 8px, var(--lace) 8.5px) 0 0 / 18px 14px repeat-x;
-  filter: drop-shadow(0 2px 0 color-mix(in srgb, var(--frame) 60%, transparent));
+/* ══════════════ 🐆 THE LEOPARD ══════════════
+   전부 CSS radial-gradient로 그린 호피 무늬 (이미지 0장)
+   순서: 지우개 → 중심 → 링 → 바탕                        */
+.leopard {
+  background-color: var(--lp-base);
+  background-image:
+    /* 1. 지우개 — 링을 불규칙하게 끊어줌 */
+    radial-gradient(ellipse 10px 7px at 27px 15px,  var(--lp-base) 0 99%, transparent),
+    radial-gradient(ellipse 8px 6px  at 113px 28px, var(--lp-base) 0 99%, transparent),
+    radial-gradient(ellipse 9px 6px  at 47px 79px,  var(--lp-base) 0 99%, transparent),
+    radial-gradient(ellipse 8px 6px  at 95px 97px,  var(--lp-base) 0 99%, transparent),
+    radial-gradient(ellipse 8px 6px  at 21px 123px, var(--lp-base) 0 99%, transparent),
+    radial-gradient(ellipse 8px 6px  at 139px 118px,var(--lp-base) 0 99%, transparent),
+    /* 2. 카라멜 중심 */
+    radial-gradient(ellipse 9px 6px  at 20px 24px,  var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 6px 5px  at 68px 14px,  var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 9px 7px  at 106px 36px, var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 7px 5px  at 40px 70px,  var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 8px 7px  at 88px 90px,  var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 6px 5px  at 134px 76px, var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 7px 5px  at 14px 114px, var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 8px 6px  at 120px 132px,var(--lp-mid) 0 99%, transparent),
+    /* 3. 진한 갈색 링 (로제트) */
+    radial-gradient(ellipse 13px 11px at 20px 24px,  transparent 0 62%, var(--lp-dark) 64% 99%, transparent),
+    radial-gradient(ellipse 10px 9px  at 68px 14px,  transparent 0 60%, var(--lp-dark) 62% 99%, transparent),
+    radial-gradient(ellipse 15px 12px at 106px 36px, transparent 0 63%, var(--lp-dark) 65% 99%, transparent),
+    radial-gradient(ellipse 11px 10px at 40px 70px,  transparent 0 61%, var(--lp-dark) 63% 99%, transparent),
+    radial-gradient(ellipse 13px 12px at 88px 90px,  transparent 0 62%, var(--lp-dark) 64% 99%, transparent),
+    radial-gradient(ellipse 10px 9px  at 134px 76px, transparent 0 60%, var(--lp-dark) 62% 99%, transparent),
+    radial-gradient(ellipse 12px 10px at 14px 114px, transparent 0 61%, var(--lp-dark) 63% 99%, transparent),
+    radial-gradient(ellipse 13px 11px at 120px 132px,transparent 0 62%, var(--lp-dark) 64% 99%, transparent),
+    /* 4. 작은 점 */
+    radial-gradient(ellipse 3.5px 3px at 60px 52px,  var(--lp-dark) 0 99%, transparent),
+    radial-gradient(ellipse 3px 2.5px at 148px 8px,  var(--lp-dark) 0 99%, transparent),
+    radial-gradient(ellipse 3.5px 3px at 4px 62px,   var(--lp-dark) 0 99%, transparent),
+    radial-gradient(ellipse 3px 2.5px at 74px 128px, var(--lp-dark) 0 99%, transparent),
+    radial-gradient(ellipse 3.5px 3px at 152px 100px,var(--lp-dark) 0 99%, transparent),
+    /* 5. 두 번째 타일 — 격자 리듬을 깨뜨리는 층 (서로소 크기) */
+    radial-gradient(ellipse 7px 5px  at 30px 60px,  var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 8px 6px  at 74px 20px,  var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 6px 5px  at 12px 12px,  var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 11px 9px  at 30px 60px, transparent 0 61%, var(--lp-dark) 63% 99%, transparent),
+    radial-gradient(ellipse 12px 10px at 74px 20px, transparent 0 62%, var(--lp-dark) 64% 99%, transparent),
+    radial-gradient(ellipse 10px 9px  at 12px 12px, transparent 0 60%, var(--lp-dark) 62% 99%, transparent),
+    /* 6. 세 번째 타일 — 잔점 */
+    radial-gradient(ellipse 3px 2.5px at 20px 30px, var(--lp-dark) 0 99%, transparent),
+    radial-gradient(ellipse 3.5px 3px at 88px 66px, var(--lp-dark) 0 99%, transparent),
+    radial-gradient(ellipse 3px 2.5px at 54px 88px, var(--lp-dark) 0 99%, transparent);
+  background-size:
+    160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px,
+    160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px,
+    160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px,
+    160px 150px, 160px 150px, 160px 150px, 160px 150px, 160px 150px,
+    97px 89px, 97px 89px, 97px 89px, 97px 89px, 97px 89px, 97px 89px,
+    113px 101px, 113px 101px, 113px 101px;
+  background-repeat: repeat;
 }
-.lace.up { transform: rotate(180deg); }
 
-/* ══════════════════════════════════════════════════════
-   ♡  sparkle canvas + control
-   ══════════════════════════════════════════════════════ */
-#sparkles {
-  position: fixed;
+/* 작은 면적(테이프·게이지·프로필)용 촘촘한 호피 */
+.leopard-sm {
+  background-color: var(--lp-base);
+  background-image:
+    radial-gradient(ellipse 5px 4px   at 17px 8px,  var(--lp-base) 0 99%, transparent),
+    radial-gradient(ellipse 4px 3px   at 45px 6px,  var(--lp-base) 0 99%, transparent),
+    radial-gradient(ellipse 5px 4px   at 31px 30px, var(--lp-base) 0 99%, transparent),
+    radial-gradient(ellipse 4px 3.5px at 12px 13px, var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 3px 2.5px at 40px 9px,  var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 4px 3px   at 26px 35px, var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 3px 2.5px at 51px 41px, var(--lp-mid) 0 99%, transparent),
+    radial-gradient(ellipse 7px 6px   at 12px 13px, transparent 0 60%, var(--lp-dark) 62% 99%, transparent),
+    radial-gradient(ellipse 5.5px 5px at 40px 9px,  transparent 0 58%, var(--lp-dark) 60% 99%, transparent),
+    radial-gradient(ellipse 6.5px 5.5px at 26px 35px,transparent 0 59%, var(--lp-dark) 61% 99%, transparent),
+    radial-gradient(ellipse 5px 4.5px at 51px 41px, transparent 0 58%, var(--lp-dark) 60% 99%, transparent),
+    radial-gradient(ellipse 2px 1.6px at 6px 45px,  var(--lp-dark) 0 99%, transparent),
+    radial-gradient(ellipse 1.8px 1.5px at 35px 51px, var(--lp-dark) 0 99%, transparent),
+    radial-gradient(ellipse 2px 1.6px at 56px 21px, var(--lp-dark) 0 99%, transparent);
+  background-size: 62px 56px;
+  background-repeat: repeat;
+}
+
+/* ══════════════ 💄 스티커 (직접 그린 SVG) ══════════════ */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ic { display: block; width: 100%; height: 100%; }
+.dc .ic { width: 68%; height: 68%; }
+.cap .ic { width: 1.15em; height: 1.15em; flex: none; }
+.cap { display: flex; align-items: center; gap: .4rem; }
+
+.hero .deco-layer {
+  position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+.deco {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  filter: drop-shadow(2px 3px 0 rgba(0,0,0,.28));
+  animation: bob 4.5s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50%      { transform: translateY(-8px) rotate(calc(var(--rot, 0deg) + 4deg)); }
+}
+
+/* 동그란 다이컷 스티커 */
+.dc {
+  display: grid;
+  place-items: center;
+  width: 3.2rem; height: 3.2rem;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 3px solid var(--espresso);
+  box-shadow: var(--sh-s);
+  font-size: 1.5rem;
+  filter: none;
+}
+.dc.pink { background: var(--pinklite); }
+.dc.gold { background: var(--goldlite); }
+.dc.lime { background: var(--lime); }
+.dc.aqua { background: var(--aqua); }
+
+/* 스티커 띠 */
+.deco-strip {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin-top: -1.9rem;
+  position: relative;
+  z-index: 6;
+}
+.deco-strip .dc { animation: bob 5s ease-in-out infinite; }
+.deco-strip .dc:nth-child(2) { animation-delay: .4s; }
+.deco-strip .dc:nth-child(3) { animation-delay: .8s; }
+.deco-strip .dc:nth-child(4) { animation-delay: 1.2s; }
+.deco-strip .dc:nth-child(5) { animation-delay: 1.6s; }
+.deco-strip .dc:nth-child(6) { animation-delay: 2s; }
+.deco-strip .dc:nth-child(7) { animation-delay: 2.4s; }
+
+/* 글 카드 모서리 스티커 */
+.post .st {
+  position: absolute;
+  right: -14px; bottom: -14px;
+  width: 2.7rem; height: 2.7rem;
+  font-size: 1.25rem;
   z-index: 3;
 }
 
-.glitter-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 6;
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .45rem .85rem .45rem .7rem;
+/* 호피 테이프 (스티커 붙인 느낌) */
+.tape {
+  position: absolute;
+  width: 84px;
+  height: 24px;
+  border: 2px solid var(--espresso);
+  box-shadow: 2px 2px 0 rgba(0,0,0,.25);
+}
+
+/* ══════════════ ✧ glitter canvas ══════════════ */
+#glitterCanvas {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 3;
+}
+
+.fx-toggle {
+  position: fixed; top: .75rem; right: .75rem; z-index: 20;
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .4rem .8rem;
+  border: 2px solid var(--espresso);
   border-radius: 999px;
-  border: 1px solid var(--gold-lite);
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
-  backdrop-filter: blur(6px);
-  color: var(--ink-2);
-  font-family: var(--f-body);
-  font-size: .78rem;
+  background: var(--hotpink);
+  color: #fff;
+  font-family: var(--f-body); font-weight: 800; font-size: .74rem;
+  letter-spacing: .04em;
   cursor: pointer;
-  box-shadow: var(--shadow-s);
-  transition: transform .18s, box-shadow .18s;
+  box-shadow: var(--sh-s);
+  transition: transform .15s;
 }
-.glitter-toggle:hover { transform: translateY(-1px); box-shadow: var(--shadow-m); }
-.glitter-toggle .pip {
-  width: .55rem; height: .55rem; border-radius: 50%;
-  background: var(--fuchsia);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--fuchsia) 22%, transparent);
-}
-.glitter-toggle[aria-pressed="false"] .pip { background: var(--muted); box-shadow: none; }
+.fx-toggle:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--espresso); }
+.fx-toggle:active { transform: translate(1px, 1px); box-shadow: 0 0 0 var(--espresso); }
+.fx-toggle .pip { width: .5rem; height: .5rem; border-radius: 50%; background: var(--goldlite); border: 1px solid var(--espresso); }
+.fx-toggle[aria-pressed="false"] { background: var(--muted); }
+.fx-toggle[aria-pressed="false"] .pip { background: var(--sand); }
 
-/* ══════════════════════════════════════════════════════
-   ♡  hero — the vanity mirror
-   ══════════════════════════════════════════════════════ */
-header.hero { position: relative; z-index: 4; padding: 3.5rem 0 1rem; }
-
-.frame {
+/* ══════════════ marquee bars ══════════════ */
+.bar {
   position: relative;
-  background: var(--surface);
-  border: 1px solid var(--frame);
-  border-radius: 28px;
-  box-shadow: var(--shadow-l);
-  padding: 3.25rem 2rem 2.75rem;
-  text-align: center;
+  z-index: 5;
+  border-top: 3px solid var(--espresso);
+  border-bottom: 3px solid var(--espresso);
+  background: var(--hotpink);
   overflow: hidden;
 }
-.frame::before {
+.bar .run {
+  display: flex; gap: 2rem;
+  width: max-content;
+  padding: .35rem 0;
+  white-space: nowrap;
+  font-family: var(--f-latin);
+  font-size: .92rem;
+  letter-spacing: .14em;
+  color: #fff;
+  text-transform: uppercase;
+  animation: run 26s linear infinite;
+}
+.bar.alt { background: var(--gold); }
+.bar.alt .run { color: var(--espresso); animation-duration: 34s; animation-direction: reverse; }
+@keyframes run { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.bar:hover .run { animation-play-state: paused; }
+
+/* ══════════════ HERO ══════════════ */
+.hero {
+  position: relative;
+  z-index: 4;
+  padding: 3.5rem 0 4rem;
+  border-bottom: 4px solid var(--espresso);
+}
+.hero::after {
   content: "";
-  position: absolute;
-  inset: 9px;
-  border: 1px solid var(--gold-lite);
-  border-radius: 20px;
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 72%, color-mix(in srgb, var(--espresso) 6%, transparent));
   pointer-events: none;
 }
-.frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% -10%, color-mix(in srgb, var(--blush) 75%, transparent) 0, transparent 58%);
-  pointer-events: none;
-}
-.frame > * { position: relative; z-index: 1; }
+.hero > * { position: relative; z-index: 1; }
 
-.crown { display: block; margin: 0 auto .6rem; width: 76px; height: auto; }
-
-.script {
-  font-family: var(--f-script);
-  font-size: clamp(1.5rem, 4vw, 2.1rem);
-  color: var(--rose);
-  line-height: 1;
+.sticker {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+  background: var(--cream);
+  border: 4px solid var(--espresso);
+  border-radius: 6px;
+  box-shadow: var(--sh-l);
+  padding: 2.5rem 1.75rem 2rem;
+  text-align: center;
+  transform: rotate(-1.2deg);
 }
+.sticker .tape.t1 { top: -14px; left: 26px; transform: rotate(-8deg); }
+.sticker .tape.t2 { bottom: -14px; right: 30px; transform: rotate(6deg); }
 
-h1.title {
-  font-family: var(--f-display);
-  font-weight: 400;
-  font-size: clamp(2.6rem, 9vw, 4.75rem);
-  letter-spacing: .06em;
-  line-height: 1.05;
-  margin: .35rem 0 .1rem;
-  color: var(--ink);
-}
-h1.title em {
-  font-style: normal;
-  display: block;
-  font-family: var(--f-serif);
-  font-size: clamp(.95rem, 2.6vw, 1.15rem);
-  letter-spacing: .22em;
-  color: var(--fuchsia);
-  margin-top: .9rem;
+.eyebrow {
+  display: inline-block;
+  font-family: var(--f-latin);
+  font-size: .82rem;
+  letter-spacing: .3em;
+  color: var(--cream);
+  background: var(--espresso);
+  padding: .18rem 1rem .1rem;
+  border-radius: 3px;
+  margin-bottom: .9rem;
 }
 
-.tagline {
-  font-family: var(--f-serif);
-  color: var(--ink-2);
-  max-width: 34ch;
-  margin: 1.1rem auto 0;
-  font-size: 1.02rem;
+h1.big {
+  font-family: var(--f-latin);
+  font-size: clamp(3rem, 12vw, 6.5rem);
+  letter-spacing: .01em;
+  line-height: .92;
+  color: var(--goldlite);
+  text-transform: uppercase;
+  text-shadow:
+    -3px -3px 0 var(--espresso),  3px -3px 0 var(--espresso),
+    -3px  3px 0 var(--espresso),  3px  3px 0 var(--espresso),
+     8px  8px 0 var(--hotpink),
+    11px 11px 0 var(--espresso);
+}
+h1.big .l2 { display: block; color: var(--hotpink); }
+
+.kr {
+  font-family: var(--f-disp);
+  font-size: clamp(1.15rem, 4.2vw, 1.7rem);
+  color: var(--espresso);
+  margin-top: 1.5rem;
+  letter-spacing: -.01em;
+}
+.hand {
+  font-family: var(--f-hand);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--magenta);
+  margin-top: .5rem;
+  transform: rotate(-1deg);
 }
 
-.charms {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: .5rem;
-  margin-top: 1.75rem;
-}
-.charm {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  padding: .35rem .85rem;
+.badges { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.5rem; }
+.badge {
+  font-family: var(--f-body);
+  font-weight: 800;
+  font-size: .76rem;
+  padding: .28rem .8rem;
+  border: 2px solid var(--espresso);
   border-radius: 999px;
-  background: var(--surface-2);
-  border: 1px solid var(--blush);
-  color: var(--ink-2);
-  font-size: .8rem;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--sh-s);
 }
-.charm i { font-style: normal; color: var(--fuchsia); }
+.badge.pink { background: var(--hotpink); color: #fff; }
+.badge.gold { background: var(--gold); color: var(--espresso); }
+.badge.lime { background: var(--lime); color: var(--espresso); }
+.badge.aqua { background: var(--aqua); color: var(--espresso); }
 
-/* ══════════════════════════════════════════════════════
-   ♡  layout
-   ══════════════════════════════════════════════════════ */
-main { position: relative; z-index: 4; }
+/* ══════════════ layout ══════════════ */
+main { position: relative; z-index: 4; padding: 2.5rem 0 1rem; }
 
-.columns {
+.cols {
   display: grid;
-  grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  gap: 1.75rem;
   align-items: start;
 }
 
-.section-head { margin-bottom: 1.5rem; }
-.section-head .eyebrow {
-  font-family: var(--f-script);
-  font-size: 1.5rem;
-  color: var(--rose);
-  line-height: 1;
+/* 간판형 섹션 제목 */
+.sign {
+  position: relative;
+  display: inline-block;
+  background: var(--espresso);
+  color: var(--goldlite);
+  font-family: var(--f-disp);
+  font-size: 1.28rem;
+  padding: .45rem 1.5rem .35rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--sh-s);
 }
-.section-head h2 {
-  font-size: 1.5rem;
-  letter-spacing: -.01em;
-  margin-top: .1rem;
-}
-.section-head h2 small {
+.sign small {
   font-family: var(--f-mono);
-  font-size: .62em;
-  font-weight: 400;
-  color: var(--muted);
-  letter-spacing: .1em;
+  font-size: .72rem;
+  color: var(--hotpink);
   margin-left: .6rem;
+  letter-spacing: .1em;
 }
 
-/* ── post cards ──────────────────────────────────────── */
-.posts { display: grid; gap: 1.25rem; }
+/* ══════════════ post cards ══════════════ */
+.posts { display: grid; gap: 1.5rem; }
 
 .post {
   position: relative;
   display: block;
-  background: var(--surface);
-  border: 1px solid var(--blush);
-  border-radius: 20px;
-  padding: 1.5rem 1.6rem 1.4rem;
-  box-shadow: var(--shadow-s);
+  background: var(--paper);
+  border: 3px solid var(--espresso);
+  border-radius: 5px;
+  padding: 1.4rem 1.4rem 1.2rem;
+  box-shadow: var(--sh-m);
   color: inherit;
-  text-decoration: none;
-  overflow: hidden;
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  transition: transform .16s ease, box-shadow .16s ease;
 }
-.post::before {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border: 1px solid transparent;
-  border-radius: 14px;
-  transition: border-color .22s ease;
-  pointer-events: none;
-}
+.post:nth-child(odd)  { transform: rotate(-.5deg); }
+.post:nth-child(even) { transform: rotate(.5deg); }
 .post:hover, .post:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-m);
-  border-color: var(--rose);
-  text-decoration: none;
+  transform: rotate(0deg) translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--hotpink), 8px 8px 0 2px var(--espresso);
 }
-.post:hover::before { border-color: var(--gold-lite); }
+.post .tape { top: -12px; left: 22px; transform: rotate(-6deg); width: 70px; height: 22px; }
 
-/* shimmer sweep */
-.post .sheen {
-  position: absolute;
-  top: 0; bottom: 0; left: -60%;
-  width: 45%;
-  background: linear-gradient(105deg, transparent, color-mix(in srgb, var(--gold-lite) 45%, transparent), transparent);
-  opacity: 0;
-  pointer-events: none;
-}
-.post:hover .sheen { animation: sweep .85s ease-out; }
-@keyframes sweep {
-  0%   { left: -60%; opacity: .0; }
-  20%  { opacity: .9; }
-  100% { left: 115%; opacity: 0; }
-}
-
-.post .meta {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  flex-wrap: wrap;
-  margin-bottom: .6rem;
-}
-.ribbon {
-  position: relative;
-  display: inline-block;
-  padding: .18rem .8rem;
-  font-size: .7rem;
-  letter-spacing: .08em;
-  background: var(--fuchsia);
-  border-radius: 4px;
-  box-shadow: 0 2px 0 var(--fuchsia-2);
-  color: var(--ribbon-ink);
-}
-.ribbon.gold  { background: var(--gold); box-shadow: 0 2px 0 var(--gold-deep); color: var(--ribbon-ink); }
-.ribbon.lilac { background: var(--lilac); box-shadow: 0 2px 0 color-mix(in srgb, var(--lilac) 70%, #000); color: var(--ink); }
-.ribbon.mint  { background: var(--mint);  box-shadow: 0 2px 0 color-mix(in srgb, var(--mint) 70%, #000);  color: var(--ink); }
-
-.post .date {
-  font-family: var(--f-mono);
+.meta { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin: .35rem 0 .55rem; }
+.tag {
+  font-family: var(--f-latin);
   font-size: .72rem;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
+  letter-spacing: .12em;
+  padding: .12rem .6rem 0;
+  border: 2px solid var(--espresso);
+  border-radius: 3px;
+  background: var(--hotpink);
+  color: #fff;
 }
+.tag.gold { background: var(--gold); color: var(--espresso); }
+.tag.lime { background: var(--lime); color: var(--espresso); }
+.tag.aqua { background: var(--aqua); color: var(--espresso); }
+.date { font-family: var(--f-mono); font-size: .76rem; color: var(--muted); }
 
 .post h3 {
-  font-size: 1.22rem;
+  font-family: var(--f-disp);
+  font-size: 1.3rem;
   color: var(--ink);
-  margin-bottom: .4rem;
-  transition: color .22s;
+  margin-bottom: .45rem;
+  letter-spacing: -.01em;
 }
-.post:hover h3 { color: var(--fuchsia); }
-.post p { color: var(--ink-2); font-size: .92rem; }
+.post:hover h3 { color: var(--magenta); }
+.post p { font-size: .9rem; color: var(--ink-2); }
 
-.post .more {
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
+.more {
+  display: inline-block;
   margin-top: .9rem;
-  font-family: var(--f-serif);
-  font-size: .85rem;
-  color: var(--fuchsia);
+  font-family: var(--f-body);
+  font-weight: 800;
+  font-size: .8rem;
+  color: var(--magenta);
 }
-.post .more span { transition: transform .22s; }
-.post:hover .more span { transform: translateX(4px); }
+.post:hover .more { text-decoration: underline; text-underline-offset: 3px; }
 
-/* featured */
-.post.featured {
-  background:
-    linear-gradient(160deg, color-mix(in srgb, var(--blush) 55%, var(--surface)) 0%, var(--surface) 55%);
-  border-color: var(--rose);
-  padding: 1.9rem 1.8rem 1.7rem;
+.post.top { border-width: 4px; }
+.post.top h3 { font-size: 1.6rem; }
+.post.top::after {
+  content: "★ PICK";
+  position: absolute;
+  top: -14px; right: -10px;
+  font-family: var(--f-latin);
+  font-size: .78rem;
+  letter-spacing: .1em;
+  background: var(--gold);
+  color: var(--espresso);
+  border: 2px solid var(--espresso);
+  border-radius: 3px;
+  padding: .1rem .55rem 0;
+  transform: rotate(6deg);
+  box-shadow: var(--sh-s);
 }
-.post.featured h3 { font-size: 1.55rem; }
-.post.featured .crown-mini { position: absolute; top: 1.1rem; right: 1.2rem; opacity: .5; }
 
-/* ══════════════════════════════════════════════════════
-   ♡  sidebar
-   ══════════════════════════════════════════════════════ */
-aside { display: grid; gap: 1.25rem; position: sticky; top: 1.25rem; }
+/* ══════════════ sidebar ══════════════ */
+aside { display: grid; gap: 1.5rem; position: sticky; top: 1rem; }
 
-.card {
-  background: var(--surface);
-  border: 1px solid var(--blush);
-  border-radius: 20px;
-  box-shadow: var(--shadow-s);
+.box {
+  background: var(--paper);
+  border: 3px solid var(--espresso);
+  border-radius: 5px;
+  box-shadow: var(--sh-m);
   overflow: hidden;
 }
-.card .cap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  padding: .7rem 1rem;
-  background: var(--surface-2);
-  border-bottom: 1px solid var(--blush);
-  font-family: var(--f-serif);
-  font-size: .88rem;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: .04em;
-}
-.card .cap b { color: var(--rose); font-weight: 400; }
-.card .inner { padding: 1.25rem 1.15rem; }
-
-/* profile */
-.avatar {
-  width: 92px; height: 92px;
-  margin: 0 auto .8rem;
-  border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #fff 0, var(--blush) 45%, var(--rose) 100%);
-  border: 3px solid var(--surface);
-  box-shadow: 0 0 0 2px var(--gold-lite), var(--shadow-s);
-  display: grid;
-  place-items: center;
-  font-size: 2.2rem;
-  color: var(--fuchsia);
-}
-.profile { text-align: center; }
-.profile .name { font-family: var(--f-serif); font-weight: 700; font-size: 1.05rem; }
-.profile .handle { font-family: var(--f-mono); font-size: .74rem; color: var(--muted); }
-.profile .bio { font-size: .85rem; color: var(--ink-2); margin-top: .7rem; }
-.profile .links { display: flex; justify-content: center; gap: .4rem; margin-top: .9rem; flex-wrap: wrap; }
-.profile .links a {
-  font-size: .74rem;
-  padding: .25rem .7rem;
-  border-radius: 999px;
-  border: 1px solid var(--blush);
-  background: var(--surface-2);
-  color: var(--ink-2);
-}
-.profile .links a:hover { border-color: var(--rose); color: var(--fuchsia); text-decoration: none; }
-
-/* category list */
-ul.cats { list-style: none; margin: 0; padding: 0; }
-ul.cats li + li { border-top: 1px dashed var(--blush); }
-ul.cats a {
-  display: flex;
-  align-items: center;
-  gap: .55rem;
-  padding: .55rem .2rem;
-  color: var(--ink-2);
+.box .cap {
+  font-family: var(--f-disp);
   font-size: .9rem;
+  color: var(--cream);
+  background: var(--espresso);
+  padding: .45rem .9rem .35rem;
+  display: flex; align-items: center; gap: .4rem;
 }
-ul.cats a:hover { color: var(--fuchsia); text-decoration: none; }
-ul.cats .jewel {
-  width: 9px; height: 9px; border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fff 0 18%, var(--rose) 60%, var(--fuchsia) 100%);
-  flex: none;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--rose) 25%, transparent);
-}
-ul.cats .n {
-  margin-left: auto;
-  font-family: var(--f-mono);
-  font-size: .74rem;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
+.box .cap b { color: var(--gold); font-weight: 400; }
+.box .in { padding: 1.1rem 1rem; }
 
-/* progress */
-.prog + .prog { margin-top: 1rem; }
-.prog .row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-size: .84rem;
-  color: var(--ink-2);
-  margin-bottom: .35rem;
-}
-.prog .row b { font-family: var(--f-mono); font-size: .74rem; color: var(--fuchsia); font-weight: 500; }
-.bar {
-  height: 12px;
-  border-radius: 999px;
-  background: var(--surface-2);
-  border: 1px solid var(--blush);
-  overflow: hidden;
-  padding: 2px;
-}
-.bar i {
-  display: block;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--rose), var(--fuchsia));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
-}
-
-/* counter */
-.counter { text-align: center; }
-.counter .digits {
-  display: inline-flex;
-  gap: 3px;
-  margin-bottom: .5rem;
-}
-.counter .digits b {
-  font-family: var(--f-mono);
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--gold-lite);
-  background: #2A1428;
-  border: 1px solid var(--gold-deep);
-  border-radius: 4px;
-  padding: .1rem .4rem;
-  font-variant-numeric: tabular-nums;
-}
-.counter small { display: block; font-size: .74rem; color: var(--muted); }
-
-/* ══════════════════════════════════════════════════════
-   ♡  now-learning strip
-   ══════════════════════════════════════════════════════ */
-.marquee-frame {
-  margin-top: 3.5rem;
-  border: 1px solid var(--frame);
-  border-radius: 20px;
-  background: var(--surface);
-  box-shadow: var(--shadow-m);
-  overflow: hidden;
-}
-.marquee {
-  display: flex;
-  gap: 2.5rem;
-  padding: .85rem 0;
-  white-space: nowrap;
-  font-family: var(--f-serif);
-  color: var(--ink-2);
-  font-size: .92rem;
-  width: max-content;
-  animation: slide 34s linear infinite;
-}
-.marquee span i { font-style: normal; color: var(--rose); margin: 0 .5rem; }
-@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.marquee-frame:hover .marquee { animation-play-state: paused; }
-
-/* ══════════════════════════════════════════════════════
-   ♡  footer
-   ══════════════════════════════════════════════════════ */
-footer {
+/* 푸리클 프로필 */
+.puri { text-align: center; }
+.puri .photo {
   position: relative;
-  z-index: 4;
-  text-align: center;
-  padding: 3rem 0 4rem;
+  width: 120px; height: 120px;
+  margin: 0 auto .75rem;
+  border: 4px solid var(--espresso);
+  border-radius: 4px;
+  display: grid; place-items: center;
+  font-size: 3rem;
+  box-shadow: var(--sh-s);
+  --lp-base: var(--pinklite);      /* 핑크 바탕 호피 액자 */
 }
-footer .sig {
-  font-family: var(--f-script);
-  font-size: 2.2rem;
-  color: var(--rose);
-  line-height: 1.2;
+.puri .photo span { display: block; width: 74px; height: 74px; filter: drop-shadow(0 2px 0 rgba(0,0,0,.3)); }
+.puri .nm { font-family: var(--f-disp); font-size: 1.15rem; }
+.puri .id { font-family: var(--f-mono); font-size: .76rem; color: var(--muted); }
+.puri .bio { font-family: var(--f-hand); font-weight: 700; font-size: 1.05rem; color: var(--ink-2); margin-top: .5rem; line-height: 1.5; }
+.puri .sns { display: flex; justify-content: center; gap: .35rem; margin-top: .8rem; flex-wrap: wrap; }
+.puri .sns a {
+  font-family: var(--f-latin);
+  font-size: .68rem; letter-spacing: .1em;
+  padding: .18rem .6rem 0;
+  border: 2px solid var(--espresso);
+  border-radius: 3px;
+  background: var(--pinklite);
+  color: var(--ink);
+  box-shadow: var(--sh-s);
+}
+.puri .sns a:hover { background: var(--hotpink); color: #fff; }
+
+/* 카테고리 */
+ul.cat { list-style: none; margin: 0; padding: 0; }
+ul.cat li + li { border-top: 2px dotted var(--line); }
+ul.cat a {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .5rem .1rem;
+  font-weight: 500;
+  font-size: .9rem;
+  color: var(--ink-2);
+}
+ul.cat a:hover { color: var(--magenta); }
+ul.cat .sp {
+  width: 12px; height: 10px; flex: none;
+  border-radius: 50%;
+  background: var(--lp-mid);
+  border: 2px solid var(--lp-dark);
+}
+ul.cat .n { margin-left: auto; font-family: var(--f-mono); font-size: .78rem; color: var(--muted); }
+
+/* 진행도 — 게이지 안이 호피 */
+.pr + .pr { margin-top: .95rem; }
+.pr .lb { display: flex; justify-content: space-between; align-items: baseline; font-size: .82rem; font-weight: 700; margin-bottom: .3rem; }
+.pr .lb b { font-family: var(--f-mono); color: var(--magenta); font-weight: 400; }
+.gauge {
+  height: 18px;
+  border: 3px solid var(--espresso);
+  border-radius: 3px;
+  background: var(--sand);
+  overflow: hidden;
+}
+.gauge i {
+  display: block; height: 100%;
+  border-right: 3px solid var(--espresso);
+  --lp-base: var(--hotpink);       /* 핑크 바탕 호피 */
+}
+
+/* 카운터 — 폴더폰 액정 */
+.cnt { text-align: center; }
+.lcd {
+  display: inline-block;
+  background: #1B2A16;
+  border: 3px solid var(--espresso);
+  border-radius: 4px;
+  padding: .35rem .7rem .25rem;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.6);
+}
+.lcd b {
+  font-family: var(--f-mono);
+  font-size: 1.35rem;
+  color: var(--lime);
+  letter-spacing: .22em;
+  text-shadow: 0 0 8px color-mix(in srgb, var(--lime) 70%, transparent);
+}
+.cnt small { display: block; margin-top: .5rem; font-family: var(--f-mono); font-size: .74rem; color: var(--muted); }
+
+/* ══════════════ footer ══════════════ */
+footer {
+  position: relative; z-index: 4;
+  margin-top: 3rem;
+  border-top: 4px solid var(--espresso);
+  padding: 3rem 0;
+  text-align: center;
+}
+footer .thx {
+  font-family: var(--f-latin);
+  font-size: clamp(1.8rem, 7vw, 3.2rem);
+  letter-spacing: .04em;
+  color: var(--goldlite);
+  text-transform: uppercase;
+  text-shadow:
+    -2px -2px 0 var(--espresso), 2px -2px 0 var(--espresso),
+    -2px  2px 0 var(--espresso), 2px  2px 0 var(--espresso),
+     5px  5px 0 var(--hotpink);
 }
 footer .fine {
+  display: inline-block;
   font-family: var(--f-mono);
-  font-size: .72rem;
-  color: var(--muted);
-  letter-spacing: .08em;
-  margin-top: .5rem;
+  font-size: .74rem;
+  color: var(--goldlite);
+  letter-spacing: .1em;
+  margin-top: 1.1rem;
+  background: var(--espresso);
+  border-radius: 999px;
+  padding: .25rem 1.1rem;
 }
 
-/* ══════════════════════════════════════════════════════
-   ♡  responsive
-   ══════════════════════════════════════════════════════ */
-@media (max-width: 880px) {
-  .columns { grid-template-columns: minmax(0, 1fr); }
+
+/* ══════════════ 🎵 싸이월드st BGM 플레이어 ══════════════ */
+.bgm {
+  position: fixed;
+  top: .75rem; left: .75rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .35rem .5rem;
+  background: var(--paper);
+  border: 3px solid var(--espresso);
+  border-radius: 8px;
+  box-shadow: var(--sh-s);
+  font-family: var(--f-mono);
+}
+.bgm-btn {
+  width: 26px; height: 26px; flex: none;
+  display: grid; place-items: center;
+  border: 2px solid var(--espresso);
+  border-radius: 50%;
+  background: var(--hotpink);
+  color: #fff;
+  font-size: .66rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 2px 0 var(--espresso);
+}
+.bgm-btn:active { transform: translateY(2px); box-shadow: none; }
+
+.bgm-eq { display: flex; align-items: flex-end; gap: 2px; height: 16px; }
+.bgm-eq i { width: 3px; height: 4px; background: var(--gold); border: 1px solid var(--espresso); }
+.bgm.playing .bgm-eq i { animation: eq .55s ease-in-out infinite alternate; }
+.bgm.playing .bgm-eq i:nth-child(2) { animation-delay: .14s; }
+.bgm.playing .bgm-eq i:nth-child(3) { animation-delay: .28s; }
+.bgm.playing .bgm-eq i:nth-child(4) { animation-delay: .42s; }
+@keyframes eq { from { height: 4px; } to { height: 15px; } }
+
+.bgm-screen {
+  width: 120px;
+  overflow: hidden;
+  background: #1B2A16;
+  border: 2px solid var(--espresso);
+  border-radius: 4px;
+  padding: .12rem 0;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.6);
+}
+.bgm-track { display: flex; width: max-content; }
+.bgm-track span {
+  padding: 0 .55rem;
+  font-size: .66rem;
+  color: var(--lime);
+  white-space: nowrap;
+  text-shadow: 0 0 6px color-mix(in srgb, var(--lime) 70%, transparent);
+}
+.bgm.playing .bgm-track { animation: bgmscroll 9s linear infinite; }
+@keyframes bgmscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.bgm-vol { width: 52px; accent-color: var(--hotpink); }
+
+@media (max-width: 760px) {
+  .bgm { gap: .35rem; padding: .3rem .4rem; }
+  .bgm-screen { width: 62px; }
+  .bgm-vol, .bgm-eq { display: none; }
+}
+
+/* ══════════════ responsive ══════════════ */
+@media (max-width: 860px) {
+  .cols { grid-template-columns: minmax(0, 1fr); }
   aside { position: static; }
-  .frame { padding: 2.5rem 1.25rem 2.25rem; border-radius: 22px; }
-  .divider { margin: 2.5rem 0; }
+  .sticker { transform: none; padding: 2rem 1.1rem 1.75rem; }
+  .post:nth-child(odd), .post:nth-child(even) { transform: none; }
+  h1.big { text-shadow:
+    -2px -2px 0 var(--espresso), 2px -2px 0 var(--espresso),
+    -2px  2px 0 var(--espresso), 2px  2px 0 var(--espresso),
+     5px  5px 0 var(--hotpink), 7px 7px 0 var(--espresso); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .marquee { width: auto; overflow-x: auto; }
+  .bar .run { width: auto; overflow-x: auto; }
 }
 </style>
 </head>
 <body>
-<canvas id="sparkles" aria-hidden="true"></canvas>
+<!-- ══════════════ 🎨 직접 그린 갸루 스티커 (SVG 스프라이트) ══════════════
+     유니코드 이모지 대신 직접 그려서 기기·브라우저 상관없이 똑같이 보입니다 -->
+<svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false"><defs>
 
-<button class="glitter-toggle" id="glitter" aria-pressed="true">
-  <span class="pip" aria-hidden="true"></span> 반짝임
+  <!-- 금발 갸루 -->
+  <symbol id="s-gy-blonde" viewBox="0 0 100 100">
+    <path d="M50 6C27 6 19 24 19 46c0 17 2 31 5 44h52c3-13 5-27 5-44 0-22-8-40-31-40z" fill="#F2CE6B" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <ellipse cx="50" cy="53" rx="25" ry="28" fill="#EDBB8C" stroke="#2B180A" stroke-width="3.5"/>
+    <path d="M25 41C26 22 36 12 50 12s24 10 25 29c-6-12-14-16-25-15s-19 5-25 15z" fill="#F2CE6B" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <ellipse cx="30" cy="63" rx="5.6" ry="3.6" fill="#FF9CC4"/>
+    <ellipse cx="70" cy="63" rx="5.6" ry="3.6" fill="#FF9CC4"/>
+    <ellipse cx="39" cy="54" rx="7.6" ry="8.6" fill="#fff" stroke="#2B180A" stroke-width="2.8"/>
+    <ellipse cx="61" cy="54" rx="7.6" ry="8.6" fill="#fff" stroke="#2B180A" stroke-width="2.8"/>
+    <circle cx="39" cy="55" r="5" fill="#4B2B12"/>
+    <circle cx="61" cy="55" r="5" fill="#4B2B12"/>
+    <circle cx="41" cy="52.5" r="1.9" fill="#fff"/>
+    <circle cx="63" cy="52.5" r="1.9" fill="#fff"/>
+    <g stroke="#2B180A" stroke-width="3.4" fill="none" stroke-linecap="round">
+      <path d="M30.5 46.5q8.5-6 17 0"/><path d="M52.5 46.5q8.5-6 17 0"/>
+      <path d="M30.5 45.5l-4-3.6M69.5 45.5l4-3.6"/>
+    </g>
+    <path d="M43 72q7 6.5 14 0q-7 4-14 0z" fill="#FF2E88" stroke="#2B180A" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M17 58l1.9 3.9 4.3.6-3.1 2.9.8 4.3-3.9-2.1-3.9 2.1.8-4.3-3.1-2.9 4.3-.6z" fill="#FFDD7A" stroke="#2B180A" stroke-width="1.9" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- 트윈테일 갸루 (윙크) -->
+  <symbol id="s-gy-twin" viewBox="0 0 100 100">
+    <circle cx="12" cy="56" r="11" fill="#B87A3E" stroke="#2B180A" stroke-width="3.5"/>
+    <circle cx="88" cy="56" r="11" fill="#B87A3E" stroke="#2B180A" stroke-width="3.5"/>
+    <path d="M50 6C28 6 20 24 20 46c0 17 2 31 5 44h50c3-13 5-27 5-44 0-22-8-40-30-40z" fill="#B87A3E" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <ellipse cx="50" cy="53" rx="24" ry="27" fill="#EDBB8C" stroke="#2B180A" stroke-width="3.5"/>
+    <path d="M26 41C27 22 37 12 50 12s23 10 24 29c-6-12-13-16-24-15s-18 5-24 15z" fill="#B87A3E" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <ellipse cx="31" cy="63" rx="5.4" ry="3.5" fill="#FF9CC4"/>
+    <ellipse cx="69" cy="63" rx="5.4" ry="3.5" fill="#FF9CC4"/>
+    <ellipse cx="40" cy="54" rx="7.4" ry="8.4" fill="#fff" stroke="#2B180A" stroke-width="2.8"/>
+    <circle cx="40" cy="55" r="4.9" fill="#3F2410"/>
+    <circle cx="42" cy="52.5" r="1.8" fill="#fff"/>
+    <g stroke="#2B180A" stroke-width="3.4" fill="none" stroke-linecap="round">
+      <path d="M32 46.5q8-6 16 0"/>
+      <path d="M53 56q8-7 15 0"/>
+      <path d="M31.6 45.6l-3.8-3.4"/>
+      <path d="M68.4 54l3.8-3.4"/>
+    </g>
+    <path d="M44 72q6.5 6.5 13 0q-6.5 4-13 0z" fill="#FF2E88" stroke="#2B180A" stroke-width="2.2" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- 선글라스 갸루 -->
+  <symbol id="s-gy-shades" viewBox="0 0 100 100">
+    <path d="M50 6C27 6 19 24 19 46c0 17 2 31 5 44h52c3-13 5-27 5-44 0-22-8-40-31-40z" fill="#F2CE6B" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <ellipse cx="50" cy="55" rx="25" ry="28" fill="#EDBB8C" stroke="#2B180A" stroke-width="3.5"/>
+    <path d="M25 40C26 21 36 11 50 11s24 10 25 29c-6-12-14-16-25-15s-19 5-25 15z" fill="#F2CE6B" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <ellipse cx="30" cy="68" rx="5.6" ry="3.6" fill="#FF9CC4"/>
+    <ellipse cx="70" cy="68" rx="5.6" ry="3.6" fill="#FF9CC4"/>
+    <path d="M43 74q7 6.5 14 0q-7 4-14 0z" fill="#FF2E88" stroke="#2B180A" stroke-width="2.2" stroke-linejoin="round"/>
+    <g stroke="#2B180A" stroke-width="3.4" stroke-linejoin="round">
+      <path d="M26 50h48" fill="none" stroke-linecap="round"/>
+      <rect x="26" y="48" width="20" height="15" rx="7" fill="#3FD8E0"/>
+      <rect x="54" y="48" width="20" height="15" rx="7" fill="#3FD8E0"/>
+      <path d="M46 53h8" fill="none" stroke-linecap="round"/>
+    </g>
+    <path d="M31 52.5q4.5-2.5 9 0" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".9"/>
+    <path d="M59 52.5q4.5-2.5 9 0" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".9"/>
+  </symbol>
+
+  <!-- 립스틱 -->
+  <symbol id="s-lipstick" viewBox="0 0 100 100">
+    <path d="M36 40h28v42a6 6 0 0 1-6 6H42a6 6 0 0 1-6-6z" fill="#E8AE2C" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <rect x="33" y="34" width="34" height="10" rx="3" fill="#FFDD7A" stroke="#2B180A" stroke-width="3.5"/>
+    <path d="M40 34V16a10 10 0 0 1 20 0v18z" fill="#FF2E88" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M40 22l20-8v8z" fill="#C1005E" stroke="#2B180A" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M42 58h16" stroke="#2B180A" stroke-width="2.6" stroke-linecap="round" opacity=".35"/>
+  </symbol>
+
+  <!-- 매니큐어 -->
+  <symbol id="s-polish" viewBox="0 0 100 100">
+    <rect x="42" y="10" width="16" height="16" rx="3" fill="#2B180A"/>
+    <rect x="45" y="24" width="10" height="10" fill="#8A6A4A" stroke="#2B180A" stroke-width="2.6"/>
+    <path d="M32 42a18 18 0 0 1 36 0v36a8 8 0 0 1-8 8H40a8 8 0 0 1-8-8z" fill="#FF2E88" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M39 46a11 11 0 0 1 9-8" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".6"/>
+    <path d="M32 62h36" stroke="#2B180A" stroke-width="3" opacity=".3"/>
+  </symbol>
+
+  <!-- 하이힐 -->
+  <symbol id="s-heel" viewBox="0 0 100 100">
+    <path d="M12 66c14-2 26-8 34-18 6-8 10-16 12-24l14 6c-3 12-6 20-6 26 0 8 6 12 14 14v10H12z" fill="#FF2E88" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M74 70v18h8V70z" fill="#C1005E" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M20 60c10-3 18-8 24-14" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" opacity=".5"/>
+    <circle cx="60" cy="34" r="5" fill="#FFDD7A" stroke="#2B180A" stroke-width="2.6"/>
+  </symbol>
+
+  <!-- 리본 -->
+  <symbol id="s-bow" viewBox="0 0 100 100">
+    <path d="M46 50 18 30c-6-4-12 2-12 10v20c0 8 6 14 12 10l28-20z" fill="#FF2E88" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M54 50l28-20c6-4 12 2 12 10v20c0 8-6 14-12 10L54 50z" fill="#FF2E88" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M46 62l-8 24 12-8 12 8-8-24z" fill="#C1005E" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <circle cx="50" cy="50" r="10" fill="#FFDD7A" stroke="#2B180A" stroke-width="3.5"/>
+  </symbol>
+
+  <!-- 왕관 -->
+  <symbol id="s-crown" viewBox="0 0 100 100">
+    <path d="M12 74 6 28l24 16 20-26 20 26 24-16-6 46z" fill="#FFDD7A" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <rect x="12" y="74" width="76" height="12" rx="5" fill="#E8AE2C" stroke="#2B180A" stroke-width="3.5"/>
+    <circle cx="50" cy="40" r="6" fill="#FF2E88" stroke="#2B180A" stroke-width="2.6"/>
+    <circle cx="28" cy="58" r="4.5" fill="#3FD8E0" stroke="#2B180A" stroke-width="2.2"/>
+    <circle cx="72" cy="58" r="4.5" fill="#3FD8E0" stroke="#2B180A" stroke-width="2.2"/>
+  </symbol>
+
+  <!-- 별 -->
+  <symbol id="s-star" viewBox="0 0 100 100">
+    <path d="M50 6l12 28 30 3-22 20 6 30-26-15-26 15 6-30L8 37l30-3z" fill="#FFDD7A" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M50 20l7 17" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".65"/>
+  </symbol>
+
+  <!-- 하트 -->
+  <symbol id="s-heart" viewBox="0 0 100 100">
+    <path d="M50 88C22 68 8 54 8 38 8 24 18 14 30 14c8 0 15 4 20 11 5-7 12-11 20-11 12 0 22 10 22 24 0 16-14 30-42 50z" fill="#FF2E88" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M26 32a10 10 0 0 1 9-8" stroke="#fff" stroke-width="4.5" fill="none" stroke-linecap="round" opacity=".7"/>
+  </symbol>
+
+  <!-- 입술 -->
+  <symbol id="s-kiss" viewBox="0 0 100 100">
+    <path d="M50 38c6-12 18-16 26-10 7 5 8 14 4 20 6 0 10 5 8 12-3 12-20 24-38 24S15 72 12 60c-2-7 2-12 8-12-4-6-3-15 4-20 8-6 20-2 26 10z" fill="#FF2E88" stroke="#2B180A" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M14 50h72" stroke="#2B180A" stroke-width="3" opacity=".45"/>
+    <path d="M30 62q20 8 40 0" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" opacity=".45"/>
+  </symbol>
+
+  <!-- 손거울 -->
+  <symbol id="s-mirror" viewBox="0 0 100 100">
+    <circle cx="50" cy="38" r="28" fill="#FFD3E6" stroke="#2B180A" stroke-width="3.5"/>
+    <circle cx="50" cy="38" r="19" fill="#3FD8E0" stroke="#2B180A" stroke-width="3"/>
+    <path d="M40 30q8-6 16 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8"/>
+    <rect x="43" y="64" width="14" height="28" rx="6" fill="#FF2E88" stroke="#2B180A" stroke-width="3.5"/>
+  </symbol>
+
+</defs></svg>
+
+<canvas id="glitterCanvas" aria-hidden="true"></canvas>
+
+<button class="fx-toggle" id="fx" aria-pressed="true">
+  <span class="pip" aria-hidden="true"></span> GLITTER
 </button>
 
+<!-- 🎵 싸이월드st BGM — assets/bgm.mp3 파일을 넣으면 재생됩니다 -->
+<div class="bgm" id="bgm">
+  <button class="bgm-btn" id="bgmBtn" aria-label="음악 재생">&#9654;</button>
+  <div class="bgm-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="bgm-screen">
+    <div class="bgm-track" id="bgmTrack">
+      <span>&#9834; MY BGM &mdash; 첫 배포 기념 &#9834;</span>
+      <span>&#9834; MY BGM &mdash; 첫 배포 기념 &#9834;</span>
+    </div>
+  </div>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="100" value="55" aria-label="볼륨">
+  <audio id="bgmAudio" loop preload="none" src="{{ '/assets/bgm.mp3' | relative_url }}"></audio>
+</div>
+
+
+<!-- ══════════════ TOP BAR ══════════════ -->
+<div class="bar">
+  <div class="run" aria-hidden="true">
+    <span>★ shibuya code 109 ★ git &amp; github ★ 첫 배포 성공 ★ react 공부중 ★ 독학 1주차 ★ commit or die ★</span>
+    <span>★ shibuya code 109 ★ git &amp; github ★ 첫 배포 성공 ★ react 공부중 ★ 독학 1주차 ★ commit or die ★</span>
+  </div>
+</div>
+
 <!-- ══════════════ HERO ══════════════ -->
-<header class="hero">
+<header class="hero leopard">
+  <div class="deco-layer" aria-hidden="true">
+    <span class="deco" style="left:3.5%; top:10%; --rot:-14deg; width:74px; height:74px;"><svg class="ic" viewBox="0 0 100 100"><use href="#s-gy-blonde"/></svg></span>
+    <span class="deco" style="left:10%;  top:48%; --rot:10deg;  width:56px; height:56px; animation-delay:.6s;"><svg class="ic" viewBox="0 0 100 100"><use href="#s-lipstick"/></svg></span>
+    <span class="deco" style="left:2.5%; top:74%; --rot:-8deg;  width:58px; height:58px; animation-delay:1.2s;"><svg class="ic" viewBox="0 0 100 100"><use href="#s-polish"/></svg></span>
+    <span class="deco" style="right:4%;  top:12%; --rot:12deg;  width:74px; height:74px; animation-delay:.3s;"><svg class="ic" viewBox="0 0 100 100"><use href="#s-gy-twin"/></svg></span>
+    <span class="deco" style="right:10%; top:46%; --rot:-10deg; width:60px; height:60px; animation-delay:.9s;"><svg class="ic" viewBox="0 0 100 100"><use href="#s-heel"/></svg></span>
+    <span class="deco" style="right:3%;  top:74%; --rot:8deg;   width:70px; height:70px; animation-delay:1.5s;"><svg class="ic" viewBox="0 0 100 100"><use href="#s-gy-shades"/></svg></span>
+    <span class="deco" style="left:21%;  top:4%;  --rot:-18deg; width:44px; height:44px; animation-delay:1.8s;"><svg class="ic" viewBox="0 0 100 100"><use href="#s-star"/></svg></span>
+    <span class="deco" style="right:23%; top:5%;  --rot:16deg;  width:40px; height:40px; animation-delay:2.1s;"><svg class="ic" viewBox="0 0 100 100"><use href="#s-heart"/></svg></span>
+    <span class="deco" style="left:25%;  bottom:5%;--rot:14deg; width:46px; height:46px; animation-delay:.5s;"><svg class="ic" viewBox="0 0 100 100"><use href="#s-bow"/></svg></span>
+    <span class="deco" style="right:26%; bottom:4%;--rot:-12deg;width:44px; height:44px; animation-delay:1.1s;"><svg class="ic" viewBox="0 0 100 100"><use href="#s-kiss"/></svg></span>
+  </div>
   <div class="wrap">
-    <div class="frame">
-      <svg class="crown" viewBox="0 0 120 74" fill="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#F6E3A8"/>
-            <stop offset="45%" stop-color="#D9B255"/>
-            <stop offset="100%" stop-color="#A8801F"/>
-          </linearGradient>
-        </defs>
-        <path d="M10 60 L4 20 L30 38 L60 8 L90 38 L116 20 L110 60 Z"
-              fill="url(#g)" stroke="#8E6B1E" stroke-width="2" stroke-linejoin="round"/>
-        <rect x="10" y="60" width="100" height="9" rx="4" fill="url(#g)" stroke="#8E6B1E" stroke-width="2"/>
-        <circle cx="60" cy="30" r="6" fill="#F3A3C6" stroke="#CE2F79" stroke-width="1.5"/>
-        <circle cx="30" cy="47" r="4" fill="#DCC9F2" stroke="#8E6B1E" stroke-width="1.2"/>
-        <circle cx="90" cy="47" r="4" fill="#DCC9F2" stroke="#8E6B1E" stroke-width="1.2"/>
-        <circle cx="4" cy="18" r="4.5" fill="#F3A3C6" stroke="#8E6B1E" stroke-width="1.5"/>
-        <circle cx="116" cy="18" r="4.5" fill="#F3A3C6" stroke="#8E6B1E" stroke-width="1.5"/>
-        <circle cx="60" cy="6" r="5" fill="#F6E3A8" stroke="#8E6B1E" stroke-width="1.5"/>
-      </svg>
+    <div class="sticker">
+      <span class="tape t1 leopard-sm" aria-hidden="true"></span>
+      <span class="tape t2 leopard-sm" aria-hidden="true"></span>
 
-      <div class="script">welcome to my</div>
-      <h1 class="title">Code Princess<em>독학 개발자의 반짝이는 성장 기록</em></h1>
-      <p class="tagline">깃도 배우고, 배포도 하고, 예쁜 것도 포기 못 하는 사람의 개발 일기장 ♡</p>
+      <div class="eyebrow">DEV DIARY ★ EST.2026</div>
+      <h1 class="big">SHIBUYA<span class="l2">CODE 109</span></h1>
+      <p class="kr">독학 개발자의 시부야 스타일 성장기</p>
+      <p class="hand">깃도 배우고, 배포도 하고, 꾸미는 것도 포기 못 함 ♡</p>
 
-      <div class="charms">
-        <span class="charm"><i>✦</i> 독학 1주차</span>
-        <span class="charm"><i>♡</i> Git &amp; GitHub</span>
-        <span class="charm"><i>✧</i> 첫 배포 완료</span>
-        <span class="charm"><i>❦</i> React 공부 중</span>
+      <div class="badges">
+        <span class="badge pink">독학 1주차</span>
+        <span class="badge gold">GIT &amp; GITHUB</span>
+        <span class="badge lime">첫 배포 완료</span>
+        <span class="badge aqua">REACT 공부중</span>
       </div>
     </div>
   </div>
 </header>
 
-<div class="wrap"><div class="divider"><span>❦</span></div></div>
+<div class="wrap deco-strip" aria-hidden="true">
+  <span class="dc pink"><svg class="ic" viewBox="0 0 100 100"><use href="#s-gy-blonde"/></svg></span>
+  <span class="dc gold"><svg class="ic" viewBox="0 0 100 100"><use href="#s-star"/></svg></span>
+  <span class="dc "><svg class="ic" viewBox="0 0 100 100"><use href="#s-lipstick"/></svg></span>
+  <span class="dc lime"><svg class="ic" viewBox="0 0 100 100"><use href="#s-bow"/></svg></span>
+  <span class="dc aqua"><svg class="ic" viewBox="0 0 100 100"><use href="#s-crown"/></svg></span>
+  <span class="dc pink"><svg class="ic" viewBox="0 0 100 100"><use href="#s-kiss"/></svg></span>
+  <span class="dc gold"><svg class="ic" viewBox="0 0 100 100"><use href="#s-gy-twin"/></svg></span>
+</div>
+
+<div class="bar alt">
+  <div class="run" aria-hidden="true">
+    <span>♥ git init ♥ git add . ♥ git commit -m ♥ git push origin main ♥ git branch ♥ git merge ♥</span>
+    <span>♥ git init ♥ git add . ♥ git commit -m ♥ git push origin main ♥ git branch ♥ git merge ♥</span>
+  </div>
+</div>
 
 <!-- ══════════════ MAIN ══════════════ -->
-<main class="wrap">
-  <div class="columns">
+<main>
+  <div class="wrap">
+    <div class="cols">
 
-    <!-- ─── posts ─── -->
-    <div>
-      <div class="section-head">
-        <div class="eyebrow">latest diary</div>
-        <h2>최근에 쓴 글<small>ALL 12</small></h2>
+      <!-- posts -->
+      <div>
+        <div class="sign">최근에 쓴 글<small>ALL {{ site.posts | size }}</small></div>
+
+        <div class="posts">
+{% if site.posts.size > 0 %}
+{% for post in site.posts %}
+          <a class="post{% if forloop.first %} top{% endif %}" href="{{ post.url | relative_url }}">
+            <span class="tape leopard-sm" aria-hidden="true"></span>
+            <div class="meta">
+              <span class="tag{% cycle 'tagcolor': '', ' gold', ' aqua', ' lime' %}">{% if post.categories.first %}{{ post.categories.first | upcase }}{% else %}DIARY{% endif %}</span>
+              <span class="date">{{ post.date | date: "%Y.%m.%d" }}</span>
+            </div>
+            <h3>{{ post.title | escape }}</h3>
+            <p>{{ post.excerpt | strip_html | strip_newlines | truncate: 110 }}</p>
+            <span class="more">READ MORE →</span>
+            <span class="dc st" aria-hidden="true"><svg class="ic" viewBox="0 0 100 100"><use href="#{% cycle 'sticker': 's-gy-blonde', 's-star', 's-heart', 's-polish', 's-kiss' %}"/></svg></span>
+          </a>
+{% endfor %}
+{% else %}
+          <a class="post top" href="#">
+            <span class="tape leopard-sm" aria-hidden="true"></span>
+            <div class="meta"><span class="tag">SOON</span></div>
+            <h3>아직 글이 없어요</h3>
+            <p>_posts 폴더에 <code>2026-08-31-제목.md</code> 형식으로 글을 올리면 여기에 자동으로 나타납니다.</p>
+            <span class="more">첫 글 쓰러 가기 →</span>
+          </a>
+{% endif %}
+        </div>
       </div>
 
-      <div class="posts">
+      <!-- sidebar -->
+      <aside>
 
-        <a class="post featured" href="#">
-          <span class="sheen" aria-hidden="true"></span>
-          <svg class="crown-mini" width="26" height="17" viewBox="0 0 120 74" aria-hidden="true">
-            <path d="M10 60 L4 20 L30 38 L60 8 L90 38 L116 20 L110 60 Z" fill="#D9B255"/>
-            <rect x="10" y="60" width="100" height="9" rx="4" fill="#D9B255"/>
-          </svg>
-          <div class="meta">
-            <span class="ribbon">PICK</span>
-            <span class="date">2026 · 08 · 24</span>
+        <section class="box">
+          <div class="cap"><b>★</b> PROFILE <svg class="ic" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-mirror"/></svg></div>
+          <div class="in puri">
+            <div class="photo leopard-sm"><span><svg class="ic" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-gy-blonde"/></svg></span></div>
+            <div class="nm">서연</div>
+            <div class="id">@seoyeon.dev</div>
+            <p class="bio">독학으로 코딩 배우는 중!<br>예쁜 코드보다 예쁜 화면이 먼저야 ♡</p>
+            <div class="sns">
+              <a href="#">GITHUB</a>
+              <a href="#">INSTA</a>
+              <a href="#">MAIL</a>
+            </div>
           </div>
-          <h3>Git과 GitHub, 일주일 만에 친해지기</h3>
-          <p>init부터 push까지. 처음엔 명령어가 하나도 안 외워졌는데, 8단계로 나눠서 정리했더니
-            손이 먼저 기억하기 시작했어요. 커밋 메시지 잘 쓰는 법까지 같이 적어뒀습니다.</p>
-          <span class="more">이어서 읽기 <span>→</span></span>
-        </a>
+        </section>
 
-        <a class="post" href="#">
-          <span class="sheen" aria-hidden="true"></span>
-          <div class="meta">
-            <span class="ribbon gold">DEPLOY</span>
-            <span class="date">2026 · 08 · 21</span>
+        <section class="box">
+          <div class="cap"><b>★</b> CATEGORY <svg class="ic" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-bow"/></svg></div>
+          <div class="in">
+            <ul class="cat">
+{% if site.categories.size > 0 %}
+{% for cat in site.categories %}
+              <li><a href="{{ '/' | relative_url }}"><span class="sp"></span> {{ cat[0] }} <span class="n">{{ cat[1] | size }}</span></a></li>
+{% endfor %}
+{% else %}
+              <li><a href="{{ '/' | relative_url }}"><span class="sp"></span> 전체 글 <span class="n">{{ site.posts | size }}</span></a></li>
+{% endif %}
+            </ul>
           </div>
-          <h3>드디어 내 블로그를 인터넷에 배포했다</h3>
-          <p>주소창에 내 이름이 들어간 링크가 뜬 순간의 기분. 배포하면서 막혔던 부분과
-            해결한 방법을 순서대로 남겨둡니다.</p>
-          <span class="more">이어서 읽기 <span>→</span></span>
-        </a>
+        </section>
 
-        <a class="post" href="#">
-          <span class="sheen" aria-hidden="true"></span>
-          <div class="meta">
-            <span class="ribbon lilac">STUDY</span>
-            <span class="date">2026 · 08 · 18</span>
+        <section class="box">
+          <div class="cap"><b>★</b> 공부 진행도 <svg class="ic" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-polish"/></svg></div>
+          <div class="in">
+            <div class="pr">
+              <div class="lb"><span>Git 기초</span> <b>90%</b></div>
+              <div class="gauge"><i class="leopard-sm" style="width:90%"></i></div>
+            </div>
+            <div class="pr">
+              <div class="lb"><span>HTML · CSS</span> <b>70%</b></div>
+              <div class="gauge"><i class="leopard-sm" style="width:70%"></i></div>
+            </div>
+            <div class="pr">
+              <div class="lb"><span>JavaScript</span> <b>45%</b></div>
+              <div class="gauge"><i class="leopard-sm" style="width:45%"></i></div>
+            </div>
+            <div class="pr">
+              <div class="lb"><span>React</span> <b>20%</b></div>
+              <div class="gauge"><i class="leopard-sm" style="width:20%"></i></div>
+            </div>
           </div>
-          <h3>React 입문 — 컴포넌트가 대체 뭔가요?</h3>
-          <p>레고 블록 비유가 제일 이해가 잘 됐어요. 버튼 하나를 컴포넌트로 만들어보면서
-            state가 왜 필요한지 감을 잡은 날.</p>
-          <span class="more">이어서 읽기 <span>→</span></span>
-        </a>
+        </section>
 
-        <a class="post" href="#">
-          <span class="sheen" aria-hidden="true"></span>
-          <div class="meta">
-            <span class="ribbon mint">TROUBLE</span>
-            <span class="date">2026 · 08 · 15</span>
+        <section class="box">
+          <div class="cap"><b>★</b> TODAY <svg class="ic" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-star"/></svg></div>
+          <div class="in cnt">
+            <div class="lcd"><b>001024</b></div>
+            <small>TOTAL ♥ TODAY 27</small>
           </div>
-          <h3>브랜치를 만들다 merge conflict를 만났다</h3>
-          <p>같은 줄을 서로 다르게 고치면 이런 일이 생기는구나. 무서워서 창을 닫을 뻔했지만
-            결국 직접 골라서 해결한 기록.</p>
-          <span class="more">이어서 읽기 <span>→</span></span>
-        </a>
+        </section>
 
-        <a class="post" href="#">
-          <span class="sheen" aria-hidden="true"></span>
-          <div class="meta">
-            <span class="ribbon lilac">TIP</span>
-            <span class="date">2026 · 08 · 12</span>
-          </div>
-          <h3>다음 주의 나를 위한 커밋 메시지 쓰는 법</h3>
-          <p>“수정했어” 말고 “회원가입 버튼 색상 변경”. 한 줄 요약 30자, 이 규칙 하나로
-            git log가 읽히기 시작했습니다.</p>
-          <span class="more">이어서 읽기 <span>→</span></span>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- ─── sidebar ─── -->
-    <aside>
-
-      <section class="card">
-        <div class="cap"><b>♡</b> PROFILE <b>♡</b></div>
-        <div class="inner profile">
-          <div class="avatar" aria-hidden="true">♛</div>
-          <div class="name">서연</div>
-          <div class="handle">@seoyeon.dev</div>
-          <p class="bio">독학으로 코딩 배우는 중. 예쁜 코드보다 예쁜 화면을 먼저 만들고 싶은 사람.</p>
-          <div class="links">
-            <a href="#">GitHub</a>
-            <a href="#">Instagram</a>
-            <a href="#">Mail</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="cap"><b>✧</b> CATEGORY <b>✧</b></div>
-        <div class="inner">
-          <ul class="cats">
-            <li><a href="#"><span class="jewel"></span> 개발 일기 <span class="n">05</span></a></li>
-            <li><a href="#"><span class="jewel"></span> Git &amp; GitHub <span class="n">03</span></a></li>
-            <li><a href="#"><span class="jewel"></span> React 공부 <span class="n">02</span></a></li>
-            <li><a href="#"><span class="jewel"></span> 배포 기록 <span class="n">01</span></a></li>
-            <li><a href="#"><span class="jewel"></span> 잡담 <span class="n">01</span></a></li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="cap"><b>❦</b> 공부 진행도 <b>❦</b></div>
-        <div class="inner">
-          <div class="prog">
-            <div class="row"><span>Git 기초</span> <b>90%</b></div>
-            <div class="bar"><i style="width:90%"></i></div>
-          </div>
-          <div class="prog">
-            <div class="row"><span>HTML · CSS</span> <b>70%</b></div>
-            <div class="bar"><i style="width:70%"></i></div>
-          </div>
-          <div class="prog">
-            <div class="row"><span>JavaScript</span> <b>45%</b></div>
-            <div class="bar"><i style="width:45%"></i></div>
-          </div>
-          <div class="prog">
-            <div class="row"><span>React</span> <b>20%</b></div>
-            <div class="bar"><i style="width:20%"></i></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="cap"><b>✦</b> TODAY <b>✦</b></div>
-        <div class="inner counter">
-          <div class="digits" aria-label="누적 방문 1024회">
-            <b>0</b><b>0</b><b>1</b><b>0</b><b>2</b><b>4</b>
-          </div>
-          <small>TOTAL VISITS ♡ TODAY 27</small>
-        </div>
-      </section>
-
-    </aside>
-  </div>
-
-  <!-- now learning marquee -->
-  <div class="marquee-frame">
-    <div class="marquee" aria-hidden="true">
-      <span>지금 공부하는 것 <i>♡</i> React useState <i>✧</i> git rebase가 뭔지 <i>♡</i> CSS 그리드 <i>✦</i> 반응형 레이아웃 <i>♡</i> API 호출 <i>❦</i> 다음 배포 준비 <i>✧</i></span>
-      <span>지금 공부하는 것 <i>♡</i> React useState <i>✧</i> git rebase가 뭔지 <i>♡</i> CSS 그리드 <i>✦</i> 반응형 레이아웃 <i>♡</i> API 호출 <i>❦</i> 다음 배포 준비 <i>✧</i></span>
+      </aside>
     </div>
   </div>
-
-  <div class="divider"><span>❦</span></div>
 </main>
 
-<footer>
+<div class="bar">
+  <div class="run" aria-hidden="true">
+    <span>★ thank you for visiting ★ 또 놀러와 ★ commit 자주 하기 ★ 다음 글도 기대해줘 ★</span>
+    <span>★ thank you for visiting ★ 또 놀러와 ★ commit 자주 하기 ★ 다음 글도 기대해줘 ★</span>
+  </div>
+</div>
+
+<footer class="leopard">
   <div class="wrap">
-    <div class="sig">thank you for visiting ♡</div>
+    <div class="thx">THANK YOU ★</div>
     <div class="fine">© 2026 SEOYEON · MADE WITH GIT &amp; GLITTER</div>
   </div>
 </footer>
 
 <script>
 (function () {
-  var canvas = document.getElementById('sparkles');
+  var canvas = document.getElementById('glitterCanvas');
   var ctx = canvas.getContext('2d');
-  var btn = document.getElementById('glitter');
+  var btn = document.getElementById('fx');
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   var on = !reduce.matches;
   var parts = [];
   var w = 0, h = 0, dpr = 1, raf = null;
 
-  var COLORS = ['#F3A3C6', '#E8CE84', '#FFFFFF', '#DCC9F2', '#CE2F79'];
+  var COLORS = ['#FFDD7A', '#FF2E88', '#FFFFFF', '#B6E63E', '#3FD8E0', '#E8AE2C'];
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -886,38 +1074,52 @@ footer .fine {
   function spawn(x, y, burst) {
     return {
       x: x, y: y,
-      r: 2 + Math.random() * 4,
-      vx: (Math.random() - 0.5) * (burst ? 1.4 : 0.35),
-      vy: burst ? (Math.random() - 0.5) * 1.4 : -(0.15 + Math.random() * 0.35),
+      r: 2.5 + Math.random() * 4.5,
+      vx: (Math.random() - 0.5) * (burst ? 1.8 : 0.4),
+      vy: burst ? (Math.random() - 0.5) * 1.8 : -(0.2 + Math.random() * 0.45),
       life: 1,
-      decay: burst ? 0.018 : 0.004 + Math.random() * 0.004,
+      decay: burst ? 0.02 : 0.005 + Math.random() * 0.005,
       rot: Math.random() * Math.PI,
-      spin: (Math.random() - 0.5) * 0.05,
+      spin: (Math.random() - 0.5) * 0.09,
       color: COLORS[(Math.random() * COLORS.length) | 0],
-      heart: Math.random() < 0.35
+      kind: Math.random()
     };
   }
 
-  function star(x, y, r) {
+  /* 4각 반짝이 */
+  function sparkle(r) {
     ctx.beginPath();
     for (var i = 0; i < 4; i++) {
       var a = (Math.PI / 2) * i;
       ctx.quadraticCurveTo(
-        x + Math.cos(a + Math.PI / 4) * r * 0.22,
-        y + Math.sin(a + Math.PI / 4) * r * 0.22,
-        x + Math.cos(a + Math.PI / 2) * r,
-        y + Math.sin(a + Math.PI / 2) * r
+        Math.cos(a + Math.PI / 4) * r * 0.18,
+        Math.sin(a + Math.PI / 4) * r * 0.18,
+        Math.cos(a + Math.PI / 2) * r,
+        Math.sin(a + Math.PI / 2) * r
       );
     }
     ctx.closePath();
     ctx.fill();
   }
 
-  function heart(x, y, r) {
+  /* 5각 별 */
+  function starShape(r) {
     ctx.beginPath();
-    ctx.moveTo(x, y + r * 0.75);
-    ctx.bezierCurveTo(x - r * 1.3, y - r * 0.35, x - r * 0.35, y - r * 1.15, x, y - r * 0.35);
-    ctx.bezierCurveTo(x + r * 0.35, y - r * 1.15, x + r * 1.3, y - r * 0.35, x, y + r * 0.75);
+    for (var i = 0; i < 10; i++) {
+      var rad = (i % 2 === 0) ? r : r * 0.45;
+      var a = (Math.PI / 5) * i - Math.PI / 2;
+      var px = Math.cos(a) * rad, py = Math.sin(a) * rad;
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function heartShape(r) {
+    ctx.beginPath();
+    ctx.moveTo(0, r * 0.75);
+    ctx.bezierCurveTo(-r * 1.3, -r * 0.35, -r * 0.35, -r * 1.15, 0, -r * 0.35);
+    ctx.bezierCurveTo(r * 0.35, -r * 1.15, r * 1.3, -r * 0.35, 0, r * 0.75);
     ctx.closePath();
     ctx.fill();
   }
@@ -925,24 +1127,26 @@ footer .fine {
   function frame() {
     ctx.clearRect(0, 0, w, h);
 
-    if (on && parts.length < 90 && Math.random() < 0.5) {
-      parts.push(spawn(Math.random() * w, h + 12, false));
+    if (on && parts.length < 95 && Math.random() < 0.55) {
+      parts.push(spawn(Math.random() * w, h + 14, false));
     }
 
     for (var i = parts.length - 1; i >= 0; i--) {
       var p = parts[i];
       p.x += p.vx; p.y += p.vy;
-      p.vy -= 0.0016;
+      p.vy -= 0.0018;
       p.life -= p.decay;
       p.rot += p.spin;
-      if (p.life <= 0 || p.y < -30) { parts.splice(i, 1); continue; }
+      if (p.life <= 0 || p.y < -34) { parts.splice(i, 1); continue; }
 
       ctx.save();
-      ctx.globalAlpha = Math.max(0, Math.min(1, p.life)) * 0.85;
+      ctx.globalAlpha = Math.max(0, Math.min(1, p.life)) * 0.9;
       ctx.fillStyle = p.color;
       ctx.translate(p.x, p.y);
       ctx.rotate(p.rot);
-      if (p.heart) heart(0, 0, p.r); else star(0, 0, p.r * 1.5);
+      if (p.kind < 0.45) sparkle(p.r * 1.7);
+      else if (p.kind < 0.78) starShape(p.r);
+      else heartShape(p.r);
       ctx.restore();
     }
 
@@ -956,13 +1160,13 @@ footer .fine {
     ctx.clearRect(0, 0, w, h);
   }
 
-  var lastTrail = 0;
+  var last = 0;
   window.addEventListener('pointermove', function (e) {
     if (!on) return;
     var now = performance.now();
-    if (now - lastTrail < 55) return;
-    lastTrail = now;
-    if (parts.length < 130) parts.push(spawn(e.clientX, e.clientY, true));
+    if (now - last < 50) return;
+    last = now;
+    if (parts.length < 140) parts.push(spawn(e.clientX, e.clientY, true));
   }, { passive: true });
 
   window.addEventListener('resize', function () { if (raf) resize(); });
@@ -975,6 +1179,46 @@ footer .fine {
 
   btn.setAttribute('aria-pressed', String(on));
   if (on) start();
+})();
+</script>
+
+<script>
+/* 🎵 BGM 플레이어 — 브라우저 정책상 자동재생이 막혀 있어서 버튼을 눌러야 시작됩니다 */
+(function () {
+  var wrap  = document.getElementById('bgm');
+  if (!wrap) return;
+  var btn   = document.getElementById('bgmBtn');
+  var audio = document.getElementById('bgmAudio');
+  var vol   = document.getElementById('bgmVol');
+  var track = document.getElementById('bgmTrack');
+
+  function notify(msg) { track.innerHTML = '<span>\u266A ' + msg + ' \u266A</span>'; }
+
+  audio.volume = vol.value / 100;
+  vol.addEventListener('input', function () { audio.volume = vol.value / 100; });
+
+  btn.addEventListener('click', function () {
+    if (audio.paused) {
+      audio.play().then(function () {
+        wrap.classList.add('playing');
+        btn.innerHTML = '&#10074;&#10074;';
+        btn.setAttribute('aria-label', '일시정지');
+      }).catch(function () {
+        notify('assets/bgm.mp3 파일을 넣어주세요');
+      });
+    } else {
+      audio.pause();
+      wrap.classList.remove('playing');
+      btn.innerHTML = '&#9654;';
+      btn.setAttribute('aria-label', '음악 재생');
+    }
+  });
+
+  audio.addEventListener('error', function () { notify('음원 없음 — assets/bgm.mp3'); });
+  audio.addEventListener('ended', function () {
+    wrap.classList.remove('playing');
+    btn.innerHTML = '&#9654;';
+  });
 })();
 </script>
 </body>
