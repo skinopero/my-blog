@@ -592,6 +592,21 @@ ul.cat .n { margin-left: auto; font-family: var(--f-mono); font-size: .78rem; co
   --lp-base: var(--hotpink);       /* 핑크 바탕 호피 */
 }
 
+
+/* 방문자 수 배지 (hits.sh) */
+.cnt .hits {
+  display: inline-block;
+  line-height: 0;
+  border: 3px solid var(--espresso);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--sh-s);
+  transition: transform .15s;
+}
+.cnt .hits:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--espresso); }
+.cnt .hits img { display: block; height: 34px; width: auto; }
+.cnt.failed .hits { display: none; }
+
 /* 카운터 — 폴더폰 액정 */
 .cnt { text-align: center; }
 .lcd {
@@ -1037,8 +1052,11 @@ footer .fine {
         <section class="box">
           <div class="cap"><b>★</b> TODAY <svg class="ic" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-star"/></svg></div>
           <div class="in cnt">
-            <div class="lcd"><b id="visitCount">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</b></div>
-            <small id="visitLabel">TOTAL VISITS &#9829;</small>
+            <a class="hits" href="https://hits.sh/skinopero.github.io/my-blog/" target="_blank" rel="noopener" title="방문자 수 자세히 보기">
+              <img id="hitsImg" alt="오늘 / 전체 방문자 수"
+                   src="https://hits.sh/skinopero.github.io/my-blog.svg?view=today-total&amp;style=for-the-badge&amp;label=TODAY&amp;color=ff2e88&amp;labelColor=2b180a">
+            </a>
+            <small id="visitLabel">오늘 / 전체 &#9829;</small>
           </div>
         </section>
 
@@ -1232,43 +1250,18 @@ footer .fine {
 })();
 </script>
 
+
 <script>
-/* 🔢 방문자 카운터 — 가입 없이 쓰는 무료 카운터 API
-   숫자가 안 나오면 아래 API 주소만 다른 서비스로 바꾸면 됩니다 */
+/* 방문자 배지가 안 뜰 때 대비 */
 (function () {
-  var el    = document.getElementById('visitCount');
-  var label = document.getElementById('visitLabel');
-  if (!el) return;
-
-  var API = 'https://api.counterapi.dev/v1/skinopero-myblog/visits/up';
-  var KEY = 'myblog-visits';
-
-  function show(n) {
-    el.textContent = String(n).padStart(6, '0');   /* 옛날 카운터처럼 6자리 */
-  }
-  function fail() {
-    el.textContent = '------';
-    if (label) label.textContent = '카운터 연결 안 됨';
-  }
-
-  var cached = null;
-  try { cached = sessionStorage.getItem(KEY); } catch (e) {}
-  if (cached) { show(cached); return; }           /* 한 방문당 1회만 집계 */
-
-  var done = false;
-  var timer = setTimeout(function () { if (!done) fail(); }, 6000);
-
-  fetch(API, { cache: 'no-store' })
-    .then(function (r) { return r.json(); })
-    .then(function (d) {
-      done = true; clearTimeout(timer);
-      var n = (d && (d.count !== undefined ? d.count : d.value));
-      if (typeof n === 'number' || (typeof n === 'string' && n !== '')) {
-        try { sessionStorage.setItem(KEY, n); } catch (e) {}
-        show(n);
-      } else { fail(); }
-    })
-    .catch(function () { done = true; clearTimeout(timer); fail(); });
+  var img = document.getElementById('hitsImg');
+  if (!img) return;
+  img.addEventListener('error', function () {
+    var box = img.closest('.cnt');
+    if (box) box.classList.add('failed');
+    var lb = document.getElementById('visitLabel');
+    if (lb) lb.textContent = '카운터 연결 안 됨';
+  });
 })();
 </script>
 </body>
