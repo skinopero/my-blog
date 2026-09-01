@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ page.title | escape }} &#9733; {{ site.title }}</title>
+<title>{{ page.title | escape }} &#9733; 개발 오이데~</title>
 <meta name="description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 150 }}">
 <meta name="theme-color" content="#FF2E88">
 <meta name="color-scheme" content="light only">
@@ -19,7 +19,7 @@
 
 <style>
 /* ══════════════════════════════════════════════════════════
-   🐆  SHIBUYA CODE 109  ·  Y2K leopard gyaru
+   🐆  개발 오이데~ 🎵  ·  Y2K leopard gyaru
    ══════════════════════════════════════════════════════════ */
 :root {
   /* leopard — 살짝 불투명하게 (연한 호피) */
@@ -886,6 +886,27 @@ h1.post-title {
   justify-content: center;
 }
 
+/* ── mermaid 다이어그램 ── */
+.paper .mermaid {
+  margin: 1.7rem 0;
+  padding: 1.3rem 1rem;
+  background: var(--sand);
+  border: 3px solid var(--espresso);
+  border-radius: 8px;
+  box-shadow: var(--sh-s);
+  overflow-x: auto;
+  text-align: center;
+}
+.paper .mermaid svg { max-width: 100%; height: auto; }
+.paper .mermaid[data-processed] { background: var(--cream); }
+.paper .mermaid-failed {
+  text-align: left;
+  font-family: var(--f-mono);
+  font-size: .8rem;
+  white-space: pre;
+  color: var(--ink-2);
+}
+
 @media (max-width: 760px) {
   .paper { padding: 1.5rem 1.15rem 1.75rem; font-size: .98rem; }
   .post-sticker { transform: none; padding: 1.5rem 1.1rem 1.35rem; }
@@ -1036,8 +1057,8 @@ h1.post-title {
   <div class="bgm-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <div class="bgm-screen">
     <div class="bgm-track" id="bgmTrack">
-      <span>&#9834; MY BGM &mdash; 첫 배포 기념 &#9834;</span>
-      <span>&#9834; MY BGM &mdash; 첫 배포 기념 &#9834;</span>
+      <span>&#9834; PRINCESS SONG &#9834;</span>
+      <span>&#9834; PRINCESS SONG &#9834;</span>
     </div>
   </div>
   <input type="range" class="bgm-vol" id="bgmVol" min="0" max="100" value="55" aria-label="볼륨">
@@ -1048,21 +1069,21 @@ h1.post-title {
 <!-- ══════════════ TOP BAR ══════════════ -->
 <div class="bar">
   <div class="run" aria-hidden="true">
-    <span>★ shibuya code 109 ★ git &amp; github ★ 첫 배포 성공 ★ react 공부중 ★ 독학 1주차 ★ commit or die ★</span>
-    <span>★ shibuya code 109 ★ git &amp; github ★ 첫 배포 성공 ★ react 공부중 ★ 독학 1주차 ★ commit or die ★</span>
+    <span>★ 개발 오이데~ ★ git &amp; github ★ 첫 배포 성공 ★ react 공부중 ★ 독학 1주차 ★ commit or die ★</span>
+    <span>★ 개발 오이데~ ★ git &amp; github ★ 첫 배포 성공 ★ react 공부중 ★ 독학 1주차 ★ commit or die ★</span>
   </div>
 </div>
 
 <div class="bar">
   <div class="run" aria-hidden="true">
-    <span>&#9733; shibuya code 109 &#9733; git &amp; github &#9733; 첫 배포 성공 &#9733; react 공부중 &#9733; 독학 1주차 &#9733; commit or die &#9733;</span>
-    <span>&#9733; shibuya code 109 &#9733; git &amp; github &#9733; 첫 배포 성공 &#9733; react 공부중 &#9733; 독학 1주차 &#9733; commit or die &#9733;</span>
+    <span>&#9733; 개발 오이데~ &#9733; git &amp; github &#9733; 첫 배포 성공 &#9733; react 공부중 &#9733; 독학 1주차 &#9733; commit or die &#9733;</span>
+    <span>&#9733; 개발 오이데~ &#9733; git &amp; github &#9733; 첫 배포 성공 &#9733; react 공부중 &#9733; 독학 1주차 &#9733; commit or die &#9733;</span>
   </div>
 </div>
 
 <header class="post-hero leopard">
   <div class="wrap">
-    <a class="home-chip" href="{{ '/' | relative_url }}">&larr; SHIBUYA CODE 109</a>
+    <a class="home-chip" href="{{ '/' | relative_url }}">&larr; 개발 오이데~</a>
     <div class="post-sticker">
       <span class="tape a leopard-sm" aria-hidden="true"></span>
       <span class="tape b leopard-sm" aria-hidden="true"></span>
@@ -1279,10 +1300,30 @@ h1.post-title {
 </script>
 
 <script>
-/* 📋 코드 블록 복사 버튼 */
+/* 🧩 mermaid 다이어그램 렌더 + 📋 코드 복사 버튼 */
 (function () {
-  var blocks = document.querySelectorAll('.paper pre');
-  Array.prototype.forEach.call(blocks, function (pre) {
+
+  /* ── 1. mermaid 코드블록 → 다이어그램으로 변환 ── */
+  var mer = [];
+  var hosts = document.querySelectorAll(
+    '.paper [class*="language-mermaid"], .paper [class*="lang-mermaid"]'
+  );
+  Array.prototype.forEach.call(hosts, function (el) {
+    if (!el.isConnected) return;                       /* 이미 교체된 것 건너뜀 */
+    var code = el.matches('code') ? el : el.querySelector('code');
+    if (!code) return;
+    var host = el.matches('code')
+      ? (el.closest('.highlight') || el.closest('pre') || el)
+      : el;
+    var div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = code.textContent;
+    host.parentNode.replaceChild(div, host);
+    mer.push(div);
+  });
+
+  /* ── 2. 남은 코드블록에 복사 버튼 ── */
+  Array.prototype.forEach.call(document.querySelectorAll('.paper pre'), function (pre) {
     var wrap = document.createElement('div');
     wrap.className = 'code-wrap';
     pre.parentNode.insertBefore(wrap, pre);
@@ -1301,12 +1342,16 @@ h1.post-title {
       function done(msg, ok) {
         btn.textContent = msg;
         if (ok) btn.classList.add('done');
-        setTimeout(function () { btn.textContent = 'COPY'; btn.classList.remove('done'); }, 1600);
+        setTimeout(function () {
+          btn.textContent = 'COPY';
+          btn.classList.remove('done');
+        }, 1600);
       }
       if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(function () { done('복사됨!', true); })
-                                           .catch(function () { done('실패', false); });
-      } else {                                   /* 구형 브라우저 대비 */
+        navigator.clipboard.writeText(text)
+          .then(function () { done('복사됨!', true); })
+          .catch(function () { done('실패', false); });
+      } else {
         var ta = document.createElement('textarea');
         ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
         document.body.appendChild(ta); ta.select();
@@ -1317,12 +1362,46 @@ h1.post-title {
     });
   });
 
-  /* 넓은 표는 가로 스크롤 */
+  /* ── 3. 넓은 표는 가로 스크롤 ── */
   Array.prototype.forEach.call(document.querySelectorAll('.paper table'), function (t) {
-    var s = document.createElement('div');
-    s.className = 'table-scroll';
-    t.parentNode.insertBefore(s, t); s.appendChild(t);
+    var sc = document.createElement('div');
+    sc.className = 'table-scroll';
+    t.parentNode.insertBefore(sc, t);
+    sc.appendChild(t);
   });
+
+  /* ── 4. mermaid가 있을 때만 라이브러리 불러오기 ── */
+  if (mer.length) {
+    var sc = document.createElement('script');
+    sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js';
+    sc.onload = function () {
+      try {
+        window.mermaid.initialize({
+          startOnLoad: false,
+          theme: 'base',
+          securityLevel: 'strict',
+          themeVariables: {
+            fontFamily: 'Gothic A1, sans-serif',
+            fontSize: '15px',
+            primaryColor: '#FFD3E6',
+            primaryTextColor: '#2B180A',
+            primaryBorderColor: '#2B180A',
+            lineColor: '#C1005E',
+            secondaryColor: '#FFF4E2',
+            tertiaryColor: '#B6E63E',
+            textColor: '#2B180A'
+          }
+        });
+        window.mermaid.run({ nodes: mer });
+      } catch (e) {
+        mer.forEach(function (d) { d.classList.add('mermaid-failed'); });
+      }
+    };
+    sc.onerror = function () {                 /* 인터넷이 막혀도 원문은 보이게 */
+      mer.forEach(function (d) { d.classList.add('mermaid-failed'); });
+    };
+    document.head.appendChild(sc);
+  }
 })();
 </script>
 
