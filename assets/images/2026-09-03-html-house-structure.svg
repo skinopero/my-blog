@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 480" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="820" height="480" fill="#fbfbfb"/>
+
+  <text x="410" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">HTML 문서는 집 한 채와 같아요</text>
+
+  <!-- roof -->
+  <polygon points="410,60 110,190 710,190" fill="#fbd38d" stroke="#dd6b20" stroke-width="3"/>
+  <text x="410" y="150" text-anchor="middle" font-size="16" font-weight="bold" fill="#9c4221">&lt;html&gt;</text>
+  <text x="410" y="172" text-anchor="middle" font-size="12" fill="#9c4221">우리 집 전체</text>
+
+  <!-- house body -->
+  <rect x="110" y="190" width="600" height="240" fill="#fffaf0" stroke="#dd6b20" stroke-width="3"/>
+
+  <!-- divider -->
+  <line x1="330" y1="190" x2="330" y2="430" stroke="#dd6b20" stroke-width="3"/>
+
+  <!-- head room -->
+  <rect x="130" y="220" width="180" height="60" rx="6" fill="#e2e8f0" stroke="#4a5568" stroke-width="2"/>
+  <text x="220" y="256" text-anchor="middle" font-size="13" fill="#4a5568">설계도 서랍</text>
+  <text x="220" y="330" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">&lt;head&gt;</text>
+  <text x="220" y="352" text-anchor="middle" font-size="12" fill="#4a5568">안 보이는 방</text>
+  <text x="220" y="370" text-anchor="middle" font-size="12" fill="#4a5568">(제목, 설정 문서)</text>
+
+  <!-- body room -->
+  <rect x="360" y="220" width="120" height="90" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="420" y="270" text-anchor="middle" font-size="12" fill="#2b6cb0">창문</text>
+  <circle cx="560" cy="255" r="30" fill="#faf089" stroke="#d69e2e" stroke-width="2"/>
+  <text x="560" y="260" text-anchor="middle" font-size="12" fill="#744210">그림</text>
+  <line x1="360" y1="330" x2="660" y2="330" stroke="#a0aec0" stroke-width="4"/>
+  <line x1="360" y1="350" x2="600" y2="350" stroke="#a0aec0" stroke-width="4"/>
+  <text x="500" y="390" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">&lt;body&gt;</text>
+  <text x="500" y="412" text-anchor="middle" font-size="12" fill="#4a5568">보여주는 방 (실제 화면)</text>
+
+  <text x="410" y="460" text-anchor="middle" font-size="13" fill="#a0aec0">head는 손님이 못 보는 방, body는 손님이 실제로 구경하는 방이에요</text>
+</svg>

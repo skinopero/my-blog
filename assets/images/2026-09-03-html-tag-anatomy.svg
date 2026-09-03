@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 320" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="820" height="320" fill="#fbfbfb"/>
+
+  <text x="410" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">태그 하나는 이렇게 생겼어요</text>
+
+  <!-- open tag -->
+  <rect x="60" y="100" width="150" height="70" rx="10" fill="#bee3f8" stroke="#2b6cb0" stroke-width="3"/>
+  <text x="135" y="143" text-anchor="middle" font-size="20" font-weight="bold" fill="#2b6cb0">&lt;p&gt;</text>
+
+  <!-- content -->
+  <rect x="220" y="100" width="360" height="70" rx="10" fill="#fefcbf" stroke="#d69e2e" stroke-width="3"/>
+  <text x="400" y="143" text-anchor="middle" font-size="18" fill="#744210">안녕, 나는 문단이야!</text>
+
+  <!-- close tag -->
+  <rect x="590" y="100" width="170" height="70" rx="10" fill="#fed7d7" stroke="#e53e3e" stroke-width="3"/>
+  <text x="675" y="143" text-anchor="middle" font-size="20" font-weight="bold" fill="#c53030">&lt;/p&gt;</text>
+
+  <!-- arrows down -->
+  <line x1="135" y1="170" x2="135" y2="205" stroke="#2b6cb0" stroke-width="3"/>
+  <polygon points="126,197 135,215 144,197" fill="#2b6cb0"/>
+  <line x1="400" y1="170" x2="400" y2="205" stroke="#d69e2e" stroke-width="3"/>
+  <polygon points="391,197 400,215 409,197" fill="#d69e2e"/>
+  <line x1="675" y1="170" x2="675" y2="205" stroke="#e53e3e" stroke-width="3"/>
+  <polygon points="666,197 675,215 684,197" fill="#e53e3e"/>
+
+  <!-- captions -->
+  <text x="135" y="238" text-anchor="middle" font-size="14" font-weight="bold" fill="#2b6cb0">여는 뚜껑</text>
+  <text x="135" y="258" text-anchor="middle" font-size="12" fill="#4a5568">상자를 여는 표시</text>
+
+  <text x="400" y="238" text-anchor="middle" font-size="14" font-weight="bold" fill="#b7791f">내용물</text>
+  <text x="400" y="258" text-anchor="middle" font-size="12" fill="#4a5568">상자 안에 들어있는 것</text>
+
+  <text x="675" y="238" text-anchor="middle" font-size="14" font-weight="bold" fill="#c53030">닫는 뚜껑</text>
+  <text x="675" y="258" text-anchor="middle" font-size="12" fill="#4a5568">슬래시(/)가 붙으면 "닫는다"는 뜻</text>
+
+  <text x="410" y="300" text-anchor="middle" font-size="13" fill="#a0aec0">열 때는 &lt;p&gt;, 닫을 때는 &lt;/p&gt; — 짝을 꼭 맞춰줘야 해요</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 480" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="820" height="480" fill="#fbfbfb"/>
+
+  <text x="410" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">큰 상자 안에 작은 상자들을 넣어요</text>
+
+  <!-- outer box -->
+  <rect x="40" y="70" width="740" height="330" rx="14" fill="#faf5ff" stroke="#805ad5" stroke-width="3" stroke-dasharray="8 5"/>
+  <text x="60" y="96" font-size="16" font-weight="bold" fill="#805ad5">&lt;div&gt;</text>
+  <text x="760" y="384" text-anchor="end" font-size="16" font-weight="bold" fill="#805ad5">&lt;/div&gt;</text>
+
+  <!-- inner box 1 -->
+  <rect x="90" y="120" width="660" height="100" rx="10" fill="#bee3f8" stroke="#2b6cb0" stroke-width="3"/>
+  <text x="420" y="176" text-anchor="middle" font-size="17" font-weight="bold" fill="#2b6cb0">&lt;h1&gt; 제목이에요 &lt;/h1&gt;</text>
+
+  <!-- inner box 2 -->
+  <rect x="90" y="250" width="660" height="100" rx="10" fill="#fefcbf" stroke="#d69e2e" stroke-width="3"/>
+  <text x="420" y="306" text-anchor="middle" font-size="17" font-weight="bold" fill="#b7791f">&lt;p&gt; 내용이에요 &lt;/p&gt;</text>
+
+  <!-- order steps -->
+  <g font-size="13" fill="#4a5568">
+    <circle cx="130" cy="430" r="16" fill="#805ad5"/>
+    <text x="130" y="435" text-anchor="middle" fill="#fff" font-weight="bold">1</text>
+    <text x="130" y="460" text-anchor="middle">&lt;div&gt; 열기</text>
+
+    <circle cx="320" cy="430" r="16" fill="#2b6cb0"/>
+    <text x="320" y="435" text-anchor="middle" fill="#fff" font-weight="bold">2</text>
+    <text x="320" y="460" text-anchor="middle">h1 상자 통째로</text>
+
+    <circle cx="510" cy="430" r="16" fill="#d69e2e"/>
+    <text x="510" y="435" text-anchor="middle" fill="#fff" font-weight="bold">3</text>
+    <text x="510" y="460" text-anchor="middle">p 상자 통째로</text>
+
+    <circle cx="700" cy="430" r="16" fill="#805ad5"/>
+    <text x="700" y="435" text-anchor="middle" fill="#fff" font-weight="bold">4</text>
+    <text x="700" y="460" text-anchor="middle">&lt;/div&gt; 닫기</text>
+  </g>
+</svg>
