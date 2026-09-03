@@ -353,6 +353,7 @@ h1.big .l2 { display: block; color: var(--hotpink); }
 
 .kr {
   font-family: var(--f-disp);
+  font-weight: 400;
   font-size: clamp(1.15rem, 4.2vw, 1.7rem);
   color: var(--espresso);
   margin-top: 1.5rem;
@@ -733,6 +734,7 @@ footer .fine {
   transition: transform .15s;
 }
 .home-chip:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--espresso); text-decoration: none; }
+.home-chip-thin { font-family: var(--f-body); font-weight: 50; }
 
 .post-sticker {
   position: relative;
@@ -1083,7 +1085,7 @@ h1.post-title {
 
 <header class="post-hero leopard">
   <div class="wrap">
-    <a class="home-chip" href="{{ '/' | relative_url }}">&larr; 개발 오이데~</a>
+    <a class="home-chip" href="{{ '/' | relative_url }}">&larr; <span class="home-chip-thin">개발</span> 오이데~</a>
     <div class="post-sticker">
       <span class="tape a leopard-sm" aria-hidden="true"></span>
       <span class="tape b leopard-sm" aria-hidden="true"></span>

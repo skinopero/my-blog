@@ -18,7 +18,7 @@ layout: null
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐆</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Gothic+A1:wght@400;500;700;800&family=Gaegu:wght@400;700&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Gothic+A1:wght@400;500;700;800&family=Jua&family=Gaegu:wght@400;700&family=Share+Tech+Mono&display=swap">
 
 <style>
 /* ══════════════════════════════════════════════════════════
@@ -356,7 +356,16 @@ h1.big .l2 { display: block; color: var(--hotpink); }
 
 
 /* 한글 큰 제목 — Anton엔 한글이 없어서 Black Han Sans로 */
-h1.big.kr { font-family: var(--f-disp); letter-spacing: -.02em; line-height: 1.02; }
+h1.big.kr {
+  font-family: "Jua", var(--f-disp);   /* 동글동글한 한글 폰트 */
+  letter-spacing: -.015em;
+  line-height: 1.06;
+  text-shadow:
+    -2px -2px 0 var(--espresso),  2px -2px 0 var(--espresso),
+    -2px  2px 0 var(--espresso),  2px  2px 0 var(--espresso),
+     6px  6px 0 var(--hotpink),
+     8px  8px 0 var(--espresso);
+}
 h1.big .note {
   text-shadow: none;
   filter: drop-shadow(3px 3px 0 rgba(0,0,0,.28));
@@ -730,10 +739,10 @@ footer .fine {
   aside { position: static; }
   .sticker { transform: none; padding: 2rem 1.1rem 1.75rem; }
   .post:nth-child(odd), .post:nth-child(even) { transform: none; }
-  h1.big { text-shadow:
+  h1.big, h1.big.kr { text-shadow:
     -2px -2px 0 var(--espresso), 2px -2px 0 var(--espresso),
     -2px  2px 0 var(--espresso), 2px  2px 0 var(--espresso),
-     5px  5px 0 var(--hotpink), 7px 7px 0 var(--espresso); }
+     4px  4px 0 var(--hotpink), 6px 6px 0 var(--espresso); }
 }
 
 @media (prefers-reduced-motion: reduce) {
