@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 320" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="820" height="320" fill="#fbfbfb"/>
+
+  <text x="410" y="34" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">역할을 적는 자리 — 스킬 vs 서브에이전트</text>
+
+  <!-- LEFT: skills folder -->
+  <text x="150" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#2b6cb0">.claude/skills/</text>
+  <rect x="40" y="70" width="60" height="14" rx="3" fill="#2b6cb0"/>
+  <rect x="40" y="80" width="220" height="185" rx="10" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+
+  <!-- inner learn/ folder -->
+  <rect x="70" y="110" width="46" height="12" rx="3" fill="#718096"/>
+  <rect x="70" y="120" width="160" height="115" rx="8" fill="#ffffff" stroke="#4a5568" stroke-width="1.5"/>
+  <text x="150" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#4a5568">learn/</text>
+
+  <!-- SKILL.md file -->
+  <rect x="95" y="160" width="110" height="40" rx="4" fill="#fefcbf" stroke="#d69e2e" stroke-width="2"/>
+  <text x="150" y="185" text-anchor="middle" font-size="13" font-weight="bold" fill="#975a16">SKILL.md</text>
+
+  <text x="150" y="285" text-anchor="middle" font-size="12" fill="#4a5568">폴더 → 폴더 → 파일</text>
+  <text x="150" y="303" text-anchor="middle" font-size="12" fill="#4a5568">머리말 없어도 됨</text>
+
+  <!-- RIGHT: agents folder -->
+  <text x="610" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#7c3aed">.claude/agents/</text>
+  <rect x="480" y="70" width="60" height="14" rx="3" fill="#7c3aed"/>
+  <rect x="480" y="80" width="260" height="185" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+
+  <!-- file 1 -->
+  <rect x="505" y="115" width="210" height="42" rx="4" fill="#fefcbf" stroke="#d69e2e" stroke-width="2"/>
+  <text x="610" y="141" text-anchor="middle" font-size="13" font-weight="bold" fill="#975a16">ui-designer.md</text>
+
+  <!-- file 2 -->
+  <rect x="505" y="172" width="210" height="42" rx="4" fill="#fefcbf" stroke="#d69e2e" stroke-width="2"/>
+  <text x="610" y="198" text-anchor="middle" font-size="13" font-weight="bold" fill="#975a16">web-publisher.md</text>
+
+  <text x="610" y="285" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b46c1">파일 하나 = 직원 하나</text>
+  <text x="610" y="303" text-anchor="middle" font-size="12" fill="#4a5568">name: 을 꼭 적어야 함</text>
+</svg>

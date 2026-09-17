@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 340" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="820" height="340" fill="#fbfbfb"/>
+
+  <text x="410" y="34" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">출입증(tools:)이 다르면 할 수 있는 일도 달라져요</text>
+
+  <line x1="410" y1="60" x2="410" y2="300" stroke="#cbd5e0" stroke-width="2" stroke-dasharray="6,4"/>
+
+  <!-- LEFT: designer -->
+  <circle cx="210" cy="105" r="42" fill="#fbd38d" stroke="#c05621" stroke-width="2"/>
+  <circle cx="190" cy="100" r="12" fill="none" stroke="#2d3748" stroke-width="3"/>
+  <circle cx="230" cy="100" r="12" fill="none" stroke="#2d3748" stroke-width="3"/>
+  <line x1="202" y1="100" x2="218" y2="100" stroke="#2d3748" stroke-width="3"/>
+
+  <text x="210" y="168" text-anchor="middle" font-size="15" font-weight="bold" fill="#2d3748">UI/UX 디자이너</text>
+
+  <rect x="105" y="182" width="210" height="40" rx="8" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="210" y="207" text-anchor="middle" font-size="14" font-weight="bold" fill="#2b6cb0">출입증: Read</text>
+
+  <circle cx="210" cy="270" r="32" fill="none" stroke="#e53e3e" stroke-width="4"/>
+  <line x1="188" y1="248" x2="232" y2="292" stroke="#e53e3e" stroke-width="4"/>
+  <rect x="196" y="258" width="28" height="20" rx="2" fill="#fff5f5" stroke="#c53030" stroke-width="2"/>
+  <text x="210" y="320" text-anchor="middle" font-size="13" font-weight="bold" fill="#c53030">HTML·CSS 수정 ⛔</text>
+
+  <!-- RIGHT: publisher -->
+  <circle cx="610" cy="105" r="42" fill="#fbd38d" stroke="#c05621" stroke-width="2"/>
+  <line x1="588" y1="88" x2="632" y2="122" stroke="#2d3748" stroke-width="4"/>
+  <circle cx="588" cy="88" r="7" fill="#2d3748"/>
+
+  <text x="610" y="168" text-anchor="middle" font-size="15" font-weight="bold" fill="#2d3748">웹 퍼블리셔</text>
+
+  <rect x="495" y="182" width="230" height="40" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="610" y="207" text-anchor="middle" font-size="13" font-weight="bold" fill="#6b46c1">출입증: Read·Write·Edit</text>
+
+  <circle cx="610" cy="270" r="32" fill="none" stroke="#e53e3e" stroke-width="4"/>
+  <line x1="588" y1="248" x2="632" y2="292" stroke="#e53e3e" stroke-width="4"/>
+  <ellipse cx="610" cy="268" rx="16" ry="10" fill="none" stroke="#c53030" stroke-width="2"/>
+  <circle cx="610" cy="268" r="4" fill="#c53030"/>
+  <text x="610" y="320" text-anchor="middle" font-size="13" font-weight="bold" fill="#c53030">원본 사이트 보기 ⛔</text>
+</svg>

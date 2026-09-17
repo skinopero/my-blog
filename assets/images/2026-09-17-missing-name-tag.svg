@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="820" height="300" fill="#fbfbfb"/>
+
+  <text x="410" y="34" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">name: 을 빠뜨리면 명단에 아예 안 떠요</text>
+
+  <text x="170" y="65" text-anchor="middle" font-size="14" font-weight="bold" fill="#2d3748">내가 만든 에이전트</text>
+  <rect x="60" y="75" width="220" height="150" rx="10" fill="#f7fafc" stroke="#a0aec0" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="170" y="170" text-anchor="middle" font-size="64" fill="#a0aec0">?</text>
+  <text x="170" y="205" text-anchor="middle" font-size="13" font-weight="bold" fill="#718096">name: 없음</text>
+
+  <line x1="300" y1="150" x2="380" y2="150" stroke="#2d3748" stroke-width="3"/>
+  <polygon points="380,142 398,150 380,158" fill="#2d3748"/>
+  <text x="340" y="130" text-anchor="middle" font-size="12" fill="#4a5568">불러보면</text>
+
+  <rect x="410" y="80" width="360" height="150" rx="10" fill="#1a202c"/>
+  <text x="430" y="115" font-family="'Consolas','Courier New',monospace" font-size="13" fill="#fc8181">Agent type 'noname' not found.</text>
+  <text x="430" y="145" font-family="'Consolas','Courier New',monospace" font-size="12" fill="#90cdf4">Available agents:</text>
+  <text x="430" y="168" font-family="'Consolas','Courier New',monospace" font-size="12" fill="#68d391">claude, Explore, general-purpose,</text>
+  <text x="430" y="188" font-family="'Consolas','Courier New',monospace" font-size="12" fill="#68d391">Plan, reader</text>
+
+  <text x="410" y="270" text-anchor="middle" font-size="13" fill="#718096">쓸 수 있는 이름을 전부 알려주니, 그 자리에서 바로 알 수 있어요</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="900" height="360" fill="#fbfbfb"/>
+
+  <text x="450" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">화면 여러 개를 함께 봐야 진짜 시스템인지 알 수 있어요</text>
+
+  <!-- 4 screens -->
+  <g>
+    <!-- screen 1 -->
+    <rect x="40" y="60" width="180" height="110" rx="8" fill="#ffffff" stroke="#a0aec0" stroke-width="2"/>
+    <rect x="40" y="60" width="180" height="18" rx="8" fill="#edf2f7"/>
+    <circle cx="52" cy="69" r="4" fill="#cbd5e0"/><circle cx="66" cy="69" r="4" fill="#cbd5e0"/><circle cx="80" cy="69" r="4" fill="#cbd5e0"/>
+    <text x="130" y="190" text-anchor="middle" font-size="13" font-weight="bold" fill="#2d3748">화면 1</text>
+    <rect x="60" y="203" width="14" height="14" fill="#474747"/>
+    <text x="105" y="215" font-size="15" font-weight="bold" fill="#e53e3e">✗</text>
+    <rect x="60" y="228" width="14" height="14" fill="#a0a0a0"/>
+    <text x="105" y="240" font-size="15" font-weight="bold" fill="#38a169">✓</text>
+  </g>
+
+  <g>
+    <!-- screen 2 -->
+    <rect x="250" y="60" width="180" height="110" rx="8" fill="#ffffff" stroke="#a0aec0" stroke-width="2"/>
+    <rect x="250" y="60" width="180" height="18" rx="8" fill="#edf2f7"/>
+    <circle cx="262" cy="69" r="4" fill="#cbd5e0"/><circle cx="276" cy="69" r="4" fill="#cbd5e0"/><circle cx="290" cy="69" r="4" fill="#cbd5e0"/>
+    <text x="340" y="190" text-anchor="middle" font-size="13" font-weight="bold" fill="#2d3748">화면 2</text>
+    <rect x="270" y="203" width="14" height="14" fill="#474747"/>
+    <text x="315" y="215" font-size="15" font-weight="bold" fill="#38a169">✓</text>
+    <rect x="270" y="228" width="14" height="14" fill="#a0a0a0"/>
+    <text x="315" y="240" font-size="15" font-weight="bold" fill="#38a169">✓</text>
+  </g>
+
+  <g>
+    <!-- screen 3 -->
+    <rect x="460" y="60" width="180" height="110" rx="8" fill="#ffffff" stroke="#a0aec0" stroke-width="2"/>
+    <rect x="460" y="60" width="180" height="18" rx="8" fill="#edf2f7"/>
+    <circle cx="472" cy="69" r="4" fill="#cbd5e0"/><circle cx="486" cy="69" r="4" fill="#cbd5e0"/><circle cx="500" cy="69" r="4" fill="#cbd5e0"/>
+    <text x="550" y="190" text-anchor="middle" font-size="13" font-weight="bold" fill="#2d3748">화면 3</text>
+    <rect x="480" y="203" width="14" height="14" fill="#474747"/>
+    <text x="525" y="215" font-size="15" font-weight="bold" fill="#e53e3e">✗</text>
+    <rect x="480" y="228" width="14" height="14" fill="#a0a0a0"/>
+    <text x="525" y="240" font-size="15" font-weight="bold" fill="#38a169">✓</text>
+  </g>
+
+  <g>
+    <!-- screen 4 -->
+    <rect x="670" y="60" width="180" height="110" rx="8" fill="#ffffff" stroke="#a0aec0" stroke-width="2"/>
+    <rect x="670" y="60" width="180" height="18" rx="8" fill="#edf2f7"/>
+    <circle cx="682" cy="69" r="4" fill="#cbd5e0"/><circle cx="696" cy="69" r="4" fill="#cbd5e0"/><circle cx="710" cy="69" r="4" fill="#cbd5e0"/>
+    <text x="760" y="190" text-anchor="middle" font-size="13" font-weight="bold" fill="#2d3748">화면 4</text>
+    <rect x="690" y="203" width="14" height="14" fill="#474747"/>
+    <text x="735" y="215" font-size="15" font-weight="bold" fill="#e53e3e">✗</text>
+    <rect x="690" y="228" width="14" height="14" fill="#a0a0a0"/>
+    <text x="735" y="240" font-size="15" font-weight="bold" fill="#e53e3e">✗</text>
+  </g>
+
+  <text x="450" y="290" text-anchor="middle" font-size="15" font-weight="bold" fill="#c53030">#474747 — 4개 중 1개 화면에만 있음 → 예외</text>
+  <text x="450" y="318" text-anchor="middle" font-size="15" font-weight="bold" fill="#2f855a">#a0a0a0 — 4개 중 3개 화면에 있음 → 시스템</text>
+</svg>
