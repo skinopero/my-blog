@@ -2,5 +2,10 @@ title: 공쥬의 학습 노트
 remote_theme: daattali/beautiful-jekyll@6.0.1
 baseurl: "/my-blog"
 
+collections:
+  quizzes:
+    output: true
+    permalink: /quiz/:path/
+
 plugins:
   - jekyll-remote-theme
