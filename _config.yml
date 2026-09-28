@@ -6,6 +6,9 @@ collections:
   quizzes:
     output: true
     permalink: /quiz/:path/
+  mistakes:
+    output: true
+    permalink: /mistakes/:path/
 
 plugins:
   - jekyll-remote-theme
