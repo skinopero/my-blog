@@ -1095,7 +1095,6 @@ footer .fine {
             <ul class="cat">
               <li{% if include.category == nil and include.archive == nil %} class="active"{% endif %}><a href="{{ '/' | relative_url }}"><span class="sp"></span> 전체 <span class="n">{{ site.posts | size }}</span></a></li>
               <li{% if include.category == "개념" %} class="active"{% endif %}><a href="{{ '/concept/' | relative_url }}"><span class="sp"></span> 개념 <span class="n">{{ site.categories["개념"] | size }}</span></a></li>
-              <li{% if include.category == "후기" %} class="active"{% endif %}><a href="{{ '/review/' | relative_url }}"><span class="sp"></span> 서연이의 후기 <span class="n">{{ site.categories["후기"] | size }}</span></a></li>
               <li{% if include.category == "프로젝트" %} class="active"{% endif %}><a href="{{ '/project/' | relative_url }}"><span class="sp"></span> 프로젝트 <span class="n">{{ site.categories["프로젝트"] | size }}</span></a></li>
               <li{% if include.archive %} class="active"{% endif %}><a href="{{ '/archive/' | relative_url }}"><span class="sp"></span> 전체 기록(날짜순) <span class="n">{{ site.posts | size }}</span></a></li>
             </ul>
