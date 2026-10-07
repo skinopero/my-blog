@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="760" height="420" fill="#fbfbfb"/>
+  <text x="380" y="34" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">와일드카드는 Bunny를 기준으로 위/아래를 막는다</text>
+
+  <!-- ladder -->
+  <line x1="380" y1="70" x2="380" y2="370" stroke="#cbd5e0" stroke-width="3"/>
+
+  <rect x="300" y="70"  width="160" height="46" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="380" y="99" text-anchor="middle" font-size="13" fill="#2d3748">Rabbit (부모)</text>
+
+  <rect x="300" y="187" width="160" height="46" rx="8" fill="#e6f3ff" stroke="#2b6cb0" stroke-width="3"/>
+  <text x="380" y="216" text-anchor="middle" font-size="13" font-weight="bold" fill="#2b6cb0">Bunny (기준)</text>
+
+  <rect x="300" y="304" width="160" height="46" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="380" y="333" text-anchor="middle" font-size="12.5" fill="#2d3748">DrunkenBunny (자식)</text>
+
+  <!-- extends arrow (down allowed) -->
+  <g>
+    <path d="M520 210 C 600 210, 600 330, 520 330" fill="none" stroke="#dd6b20" stroke-width="3"/>
+    <polygon points="520,322 500,330 520,338" fill="#dd6b20"/>
+    <text x="615" y="275" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#dd6b20">? extends Bunny</text>
+    <text x="615" y="293" text-anchor="middle" font-size="11" fill="#975a16">Bunny ~ 자식만 OK</text>
+  </g>
+
+  <!-- super arrow (up allowed) -->
+  <g>
+    <path d="M240 210 C 160 210, 160 95, 240 95" fill="none" stroke="#c53030" stroke-width="3"/>
+    <polygon points="240,103 260,95 240,87" fill="#c53030"/>
+    <text x="150" y="150" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c53030">? super Bunny</text>
+    <text x="150" y="168" text-anchor="middle" font-size="11" fill="#9b2c2c">Bunny ~ 부모만 OK</text>
+  </g>
+
+  <text x="380" y="400" text-anchor="middle" font-size="12" fill="#a0aec0">extends는 아래(자식)로, super는 위(부모)로만 허용 범위가 열린다</text>
+</svg>
