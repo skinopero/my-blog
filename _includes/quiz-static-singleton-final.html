@@ -1,0 +1,135 @@
+<div id="ssf-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text"><code>static</code> 변수는 언제 초기화되나?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">인스턴스가 생성될 때마다</button>
+<button class="qz-opt" data-correct="true">애플리케이션이 시작되는 시점에</button>
+<button class="qz-opt">메소드가 호출될 때마다</button>
+<button class="qz-opt">프로그램이 종료될 때</button>
+</div>
+<div class="qz-explain"><code>static</code>이 붙은 변수는 객체 생성 시점이 아니라 애플리케이션 시작 시점에 딱 한 번 초기화돼.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">인스턴스 100개를 만들면, <code>static</code> 변수는 몇 개 존재하나?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">100개 (인스턴스마다 하나씩)</button>
+<button class="qz-opt" data-correct="true">1개 (클래스 전체가 공유)</button>
+<button class="qz-opt">0개</button>
+<button class="qz-opt">인스턴스 개수에 따라 다르다</button>
+</div>
+<div class="qz-explain"><code>static</code> 변수는 인스턴스마다 따로 있는 게 아니라, 클래스 전체에 딱 하나만 있고 모든 인스턴스가 그걸 공유해.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text"><code>static</code> 변수에 접근하는 올바른 방법은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>this.변수명</code></button>
+<button class="qz-opt" data-correct="true"><code>클래스명.변수명</code></button>
+<button class="qz-opt"><code>super.변수명</code></button>
+<button class="qz-opt">직접 접근할 수 없다</button>
+</div>
+<div class="qz-explain"><code>static</code> 변수는 인스턴스가 아니라 클래스에 속하기 때문에 <code>클래스명.변수명</code>으로 접근해.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">싱글톤 패턴의 목적은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">인스턴스를 최대한 많이 만들어 성능을 높인다</button>
+<button class="qz-opt" data-correct="true">애플리케이션 전체에서 인스턴스를 딱 1개만 만들어 공유한다</button>
+<button class="qz-opt">모든 필드를 public으로 만든다</button>
+<button class="qz-opt">생성자를 여러 개 만든다</button>
+</div>
+<div class="qz-explain">리모컨처럼 여러 개 있을 필요 없이 하나만 있으면 되는 경우에, 인스턴스를 1개로 제한해서 공유하는 디자인 패턴이야.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">싱글톤 클래스에서 생성자를 <code>private</code>으로 막는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">컴파일 속도를 높이기 위해</button>
+<button class="qz-opt" data-correct="true">외부에서 <code>new</code>로 직접 인스턴스를 만들지 못하게 막기 위해</button>
+<button class="qz-opt">메소드를 숨기기 위해</button>
+<button class="qz-opt">상속을 막기 위해</button>
+</div>
+<div class="qz-explain">생성자가 <code>private</code>이면 외부에서는 <code>new</code>로 새 인스턴스를 만들 수 없고, 오직 <code>getInstance()</code>로만 받을 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">이른 초기화(Eager)와 게으른 초기화(Lazy)의 차이는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Eager는 느리고 Lazy는 빠르다</button>
+<button class="qz-opt" data-correct="true">Eager는 필드 선언과 동시에, Lazy는 처음 필요할 때 생성한다</button>
+<button class="qz-opt">Eager만 private 생성자를 쓴다</button>
+<button class="qz-opt">둘 다 완전히 같은 방식이다</button>
+</div>
+<div class="qz-explain">Eager는 <code>private static EagerSingleton eager = new EagerSingleton();</code>처럼 바로 만들고, Lazy는 <code>getInstance()</code>에서 null일 때만 그때 생성해.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>final</code>이 붙은 변수는 초기화 이후 몇 번 더 값을 바꿀 수 있나?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">제한 없이 여러 번</button>
+<button class="qz-opt">1번 더</button>
+<button class="qz-opt" data-correct="true">0번 — 더 이상 바꿀 수 없다</button>
+<button class="qz-opt">생성자 안에서만 계속 바꿀 수 있다</button>
+</div>
+<div class="qz-explain"><code>final</code> 변수는 (선언과 동시에, 또는 생성자에서) 딱 한 번만 초기화되고, 그 뒤로는 setter로도 값을 바꿀 수 없어.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text"><code>final</code> 변수의 네이밍 관례는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">카멜케이스 (camelCase)</button>
+<button class="qz-opt" data-correct="true">대문자와 언더바 (예: NON_STATIC_NUM)</button>
+<button class="qz-opt">언더바로 시작</button>
+<button class="qz-opt">특별한 관례가 없다</button>
+</div>
+<div class="qz-explain">값이 바뀌지 않는다는 걸 한눈에 알아볼 수 있도록, <code>final</code> 변수는 관례상 대문자와 언더바로 써.</div>
+</div>
+<button class="qz-reset" id="ssf-reset-btn">다시 풀기</button>
+</div>
+<style>
+#ssf-quiz{margin:1.5rem 0;font-family:inherit}
+#ssf-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#ssf-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#ssf-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#ssf-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#ssf-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#ssf-quiz .qz-opt:hover{border-color:#FF2E88}
+#ssf-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#ssf-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#ssf-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#ssf-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#ssf-quiz .qz-q.answered .qz-explain{display:block}
+#ssf-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#ssf-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('ssf-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('ssf-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

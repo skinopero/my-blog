@@ -1,0 +1,135 @@
+<div id="oip-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">메소드 시그니처에 포함되는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">메소드명 + 매개변수(타입·개수·순서)</button>
+<button class="qz-opt">접근제어자</button>
+<button class="qz-opt">반환 타입</button>
+<button class="qz-opt">매개변수 이름</button>
+</div>
+<div class="qz-explain">시그니처는 <code>메소드명([매개변수])</code> 부분만 가리켜. 접근제어자, 반환 타입, 매개변수 이름은 시그니처에 포함되지 않아.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>test(int num)</code>을 <code>test(int num2)</code>로, 매개변수 이름만 바꿔서 또 작성하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">오버로딩이 성립해 둘 다 쓸 수 있다</button>
+<button class="qz-opt" data-correct="true">시그니처가 같아서 에러가 난다</button>
+<button class="qz-opt">나중에 작성한 것만 남는다</button>
+<button class="qz-opt">둘 다 삭제된다</button>
+</div>
+<div class="qz-explain">매개변수 이름은 시그니처에 영향을 주지 않아서, 이름만 다르면 완전히 같은 메소드로 취급되어 에러가 나.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">매개변수는 동일하고 반환 타입만 다르게 오버로딩하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">반환 타입으로 구분되어 오버로딩이 성립한다</button>
+<button class="qz-opt" data-correct="true">시그니처에 영향 없어서 에러가 난다</button>
+<button class="qz-opt">둘 다 같이 실행된다</button>
+<button class="qz-opt">접근제어자가 자동으로 바뀐다</button>
+</div>
+<div class="qz-explain">반환 타입도 시그니처에 포함되지 않아서, 매개변수가 같으면 반환 타입만 달라도 에러가 나.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">부모 클래스의 메소드를 자식이 다르게 동작하도록 다시 작성하는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">오버로딩(Overloading)</button>
+<button class="qz-opt" data-correct="true">오버라이딩(Overriding) — @Override</button>
+<button class="qz-opt">캡슐화(Encapsulation)</button>
+<button class="qz-opt">인스턴스화(Instantiation)</button>
+</div>
+<div class="qz-explain">부모가 가진 메소드 선언부는 그대로 두고, 몸체(구현)만 자식이 새로 작성하는 걸 오버라이딩이라고 해.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">자식 클래스의 메소드 안에서 <code>super.soundHorn()</code>을 호출하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">자기 자신의 soundHorn()을 다시 호출한다</button>
+<button class="qz-opt" data-correct="true">부모 클래스의 soundHorn() 구현을 그대로 실행한다</button>
+<button class="qz-opt">컴파일 에러가 난다</button>
+<button class="qz-opt">아무 일도 일어나지 않는다</button>
+</div>
+<div class="qz-explain"><code>super</code>는 부모의 인스턴스를 가리켜서, <code>super.메소드()</code>는 부모의 구현을 그대로 실행해.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">인터페이스(interface)에 대한 설명으로 틀린 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">구현해야 할 메소드를 강제한다 (Can-Do)</button>
+<button class="qz-opt"><code>implements</code>로 상속받는다</button>
+<button class="qz-opt" data-correct="true">생성자를 가질 수 있다</button>
+<button class="qz-opt">자체로는 인스턴스를 만들 수 없다</button>
+</div>
+<div class="qz-explain">인터페이스는 생성자도, 구현부가 있는 일반 메소드도 가질 수 없어. 그걸 구현한 클래스를 통해서만 인스턴스가 생겨.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>Animal a1 = new Raccoon(); a1.bark();</code>를 호출하면 실제로 실행되는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>Animal</code>의 <code>bark()</code></button>
+<button class="qz-opt" data-correct="true"><code>Raccoon</code>이 재정의한 <code>bark()</code></button>
+<button class="qz-opt">둘 다 동시에 실행된다</button>
+<button class="qz-opt">컴파일 에러</button>
+</div>
+<div class="qz-explain">동적 바인딩 때문에, 컴파일 타임엔 Animal 타입이지만 런타임엔 실제 인스턴스인 Raccoon의 오버라이딩된 메소드가 실행돼.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text"><code>Animal a1 = new Raccoon();</code>일 때, <code>a1.bite()</code>(Raccoon 고유 메소드)를 바로 호출하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">문제없이 실행된다</button>
+<button class="qz-opt" data-correct="true">컴파일 에러 — a1은 Animal 타입이라 bite()를 모른다</button>
+<button class="qz-opt">런타임 에러만 난다</button>
+<button class="qz-opt">bark()가 대신 실행된다</button>
+</div>
+<div class="qz-explain">컴파일 시점에 a1은 Animal 타입으로 취급되어 Raccoon 고유 기능을 모르기 때문에 에러가 나. <code>((Raccoon) a1).bite()</code>처럼 형변환을 해야 호출할 수 있어.</div>
+</div>
+<button class="qz-reset" id="oip-reset-btn">다시 풀기</button>
+</div>
+<style>
+#oip-quiz{margin:1.5rem 0;font-family:inherit}
+#oip-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#oip-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#oip-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#oip-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#oip-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#oip-quiz .qz-opt:hover{border-color:#FF2E88}
+#oip-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#oip-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#oip-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#oip-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#oip-quiz .qz-q.answered .qz-explain{display:block}
+#oip-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#oip-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('oip-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('oip-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

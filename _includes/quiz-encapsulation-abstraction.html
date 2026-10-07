@@ -1,0 +1,135 @@
+<div id="enc-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">필드가 <code>public</code>이라서 생기는 가장 큰 문제는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">메소드를 만들 수 없다</button>
+<button class="qz-opt" data-correct="true">검증 없이 아무 값(음수 체력 등)이나 직접 대입될 수 있다</button>
+<button class="qz-opt">컴파일 속도가 느려진다</button>
+<button class="qz-opt">인스턴스를 만들 수 없다</button>
+</div>
+<div class="qz-explain">필드가 <code>public</code>이면 <code>monster.hp = -200;</code>처럼 외부에서 검증 없이 바로 값을 바꿀 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">필드가 <code>public</code>일 때, 필드 이름을 바꾸면 생기는 문제는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">아무 문제 없다</button>
+<button class="qz-opt" data-correct="true">그 필드를 직접 쓰던 외부 코드 전체가 컴파일 에러가 난다</button>
+<button class="qz-opt">필드 값이 자동으로 초기화된다</button>
+<button class="qz-opt">프로그램 속도가 빨라진다</button>
+</div>
+<div class="qz-explain">필드에 직접 접근하게 해두면, 그 필드를 쓰는 모든 외부 코드가 이름 변경 같은 내부 변경에 그대로 영향을 받아.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text"><code>setHp()</code> 같은 메소드가 있어도, 필드가 여전히 <code>public</code>이면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">메소드를 거치지 않고는 절대 값을 못 바꾼다</button>
+<button class="qz-opt" data-correct="true">필드에 직접 대입해서 메소드의 검증을 우회할 수 있다</button>
+<button class="qz-opt">메소드가 아예 동작하지 않는다</button>
+<button class="qz-opt">자동으로 private이 된다</button>
+</div>
+<div class="qz-explain">필드가 <code>public</code>이면 <code>monster.hp = -5500;</code>처럼 <code>setHp()</code>를 건너뛰고 바로 값을 바꿔버릴 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">위 세 문제를 전부 해결하는 핵심 키워드는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">static</button>
+<button class="qz-opt">final</button>
+<button class="qz-opt" data-correct="true">private</button>
+<button class="qz-opt">void</button>
+</div>
+<div class="qz-explain">필드를 <code>private</code>으로 막으면 외부에서는 직접 접근 자체가 컴파일 에러가 되고, 오직 공개된 메소드로만 접근할 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">추상화(abstraction)의 정의로 가장 알맞은 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">모든 필드를 private으로 막는 것</button>
+<button class="qz-opt" data-correct="true">공통된 부분을 추출하고, 불필요한 부분은 제거해서 단순화하는 것</button>
+<button class="qz-opt">메소드 이름을 짧게 줄이는 것</button>
+<button class="qz-opt">클래스를 여러 개로 쪼개는 것</button>
+</div>
+<div class="qz-explain">추상화는 복잡한 현실세계를 프로그램의 목적에 맞게, 필요한 부분만 남기고 단순화하는 것을 말해.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text"><code>CarRacer</code>가 <code>Car</code>를 필드로 가지고, 메소드 호출을 그대로 <code>Car</code>에게 전달하는 구조의 의미는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Car가 CarRacer를 상속받는다</button>
+<button class="qz-opt" data-correct="true">Application은 Car를 몰라도 되고, CarRacer에게만 메세지를 보내면 된다</button>
+<button class="qz-opt">Car와 CarRacer는 같은 클래스다</button>
+<button class="qz-opt">Car의 필드가 모두 public이 된다</button>
+</div>
+<div class="qz-explain">Application은 복잡한 Car의 내부 상태를 몰라도, CarRacer에게 "시동 걸어" 같은 메세지만 보내면 돼 — 복잡함을 걷어낸 추상화야.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">자동차가 달리는 중(<code>speed &gt; 0</code>)일 때 <code>turnOff()</code>를 호출하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">바로 시동이 꺼진다</button>
+<button class="qz-opt" data-correct="true">거부된다 — 먼저 멈춰야 시동을 끌 수 있다</button>
+<button class="qz-opt">속도가 0으로 바뀐다</button>
+<button class="qz-opt">프로그램이 종료된다</button>
+</div>
+<div class="qz-explain">요구사항에 "자동차가 달리는 중이라면 시동을 끌 수 없다"고 정의되어 있어서, 먼저 브레이크로 멈춰야 시동을 끌 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">반복문 안에서 <code>CarRacer racer = new CarRacer();</code>를 매번 쓰면 생기는 문제는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">아무 문제 없다, 오히려 안전하다</button>
+<button class="qz-opt" data-correct="true">메뉴를 고를 때마다 새 인스턴스가 생겨서 메모리를 낭비한다</button>
+<button class="qz-opt">컴파일 에러가 난다</button>
+<button class="qz-opt">자동차 속도가 더 빨라진다</button>
+</div>
+<div class="qz-explain">객체는 반복문 밖에서 한 번만 만들고, 반복문 안에서는 그 객체의 메소드만 호출해야 메모리를 낭비하지 않아.</div>
+</div>
+<button class="qz-reset" id="enc-reset-btn">다시 풀기</button>
+</div>
+<style>
+#enc-quiz{margin:1.5rem 0;font-family:inherit}
+#enc-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#enc-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#enc-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#enc-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#enc-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#enc-quiz .qz-opt:hover{border-color:#FF2E88}
+#enc-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#enc-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#enc-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#enc-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#enc-quiz .qz-q.answered .qz-explain{display:block}
+#enc-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#enc-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('enc-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('enc-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

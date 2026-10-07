@@ -1,0 +1,135 @@
+<div id="col-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text"><code>List</code>는 순서와 중복을 각각 허용하는가?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">순서만 허용, 중복은 안 됨</button>
+<button class="qz-opt" data-correct="true">순서, 중복 둘 다 허용</button>
+<button class="qz-opt">둘 다 허용 안 함</button>
+<button class="qz-opt">중복만 허용, 순서는 없음</button>
+</div>
+<div class="qz-explain"><code>List</code>는 index로 순서를 유지하고, 같은 값을 여러 번 넣는 것도 허용해.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>Set</code>은 순서와 중복을 각각 허용하는가?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">순서, 중복 둘 다 허용 안 함</button>
+<button class="qz-opt">둘 다 허용</button>
+<button class="qz-opt">순서는 허용, 중복은 안 됨</button>
+<button class="qz-opt">중복은 허용, 순서는 없음</button>
+</div>
+<div class="qz-explain"><code>Set</code>은 저장 순서를 유지하지 않고, 같은 요소를 중복해서 저장하지 않아.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text"><code>List</code>와 <code>Set</code> 같은 인터페이스로 직접 객체를 생성할 수 있는가?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">가능하다, <code>new List()</code>로 만들면 된다</button>
+<button class="qz-opt" data-correct="true">불가능하다 — ArrayList, HashSet 같은 구현체를 통해서만 만든다</button>
+<button class="qz-opt">static 메소드로만 만들 수 있다</button>
+<button class="qz-opt">둘 다 추상 클래스라 상관없다</button>
+</div>
+<div class="qz-explain">인터페이스는 생성자가 없어서 직접 객체를 만들 수 없어. <code>List</code>는 <code>ArrayList</code>, <code>Set</code>은 <code>HashSet</code>처럼 구현한 클래스로 만들어야 해.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">DTO(Data Transfer Object)의 역할은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">복잡한 비즈니스 로직을 처리한다</button>
+<button class="qz-opt" data-correct="true">메소드(행위)보다 데이터 운반에 집중한다</button>
+<button class="qz-opt">싱글톤 인스턴스를 관리한다</button>
+<button class="qz-opt">제네릭 타입만 다룬다</button>
+</div>
+<div class="qz-explain">DTO는 필드, 생성자, getter/setter, toString으로 이루어진, 데이터를 운반하기 위한 클래스야.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">향상된 for문(enhanced for)의 형식은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>for (int i=0; i&lt;n; i++)</code></button>
+<button class="qz-opt" data-correct="true"><code>for (타입 변수 : 컬렉션)</code></button>
+<button class="qz-opt"><code>while (컬렉션.hasNext())</code></button>
+<button class="qz-opt"><code>for (컬렉션 in 변수)</code></button>
+</div>
+<div class="qz-explain">향상된 for문은 인덱스를 직접 세지 않고, 컬렉션 안의 값을 하나씩 꺼내서 변수에 담아줘.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text"><code>HashSet</code>에 <code>"jpa"</code>를 이미 넣은 상태에서 <code>"jpa"</code>를 또 <code>add()</code>하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">"jpa"가 2개 저장된다</button>
+<button class="qz-opt" data-correct="true">그대로 1개만 유지된다 (중복 제거)</button>
+<button class="qz-opt">예외가 발생한다</button>
+<button class="qz-opt">기존 값이 삭제된다</button>
+</div>
+<div class="qz-explain"><code>Set</code>은 중복을 허용하지 않아서, 같은 값을 또 넣어도 그냥 무시되고 1개만 남아.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>TreeSet</code>이 <code>HashSet</code>과 다른 점은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">중복을 허용한다</button>
+<button class="qz-opt" data-correct="true">이진 검색 트리 구조로 데이터의 정렬을 보장한다</button>
+<button class="qz-opt">순서를 전혀 유지하지 않는다</button>
+<button class="qz-opt">Map 인터페이스를 구현한다</button>
+</div>
+<div class="qz-explain"><code>TreeSet</code>도 중복은 허용 안 하지만, 추가로 이진 검색 트리 구조라서 데이터가 항상 정렬된 상태로 유지돼.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text"><code>(int)(Math.random() * 45) + 1</code>이 만들어내는 범위는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">0 ~ 44</button>
+<button class="qz-opt">0 ~ 45</button>
+<button class="qz-opt" data-correct="true">1 ~ 45</button>
+<button class="qz-opt">1 ~ 44</button>
+</div>
+<div class="qz-explain"><code>Math.random()</code>은 0 이상 1 미만이라 <code>*45</code>하면 0~44.99..., <code>(int)</code>로 0~44가 되고, <code>+1</code>로 최종 1~45 범위가 돼.</div>
+</div>
+<button class="qz-reset" id="col-reset-btn">다시 풀기</button>
+</div>
+<style>
+#col-quiz{margin:1.5rem 0;font-family:inherit}
+#col-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#col-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#col-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#col-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#col-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#col-quiz .qz-opt:hover{border-color:#FF2E88}
+#col-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#col-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#col-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#col-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#col-quiz .qz-q.answered .qz-explain{display:block}
+#col-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#col-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('col-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('col-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

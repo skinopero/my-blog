@@ -1,0 +1,135 @@
+<div id="gen-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">제네릭을 쓰는 가장 큰 목적은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">코드 실행 속도를 높이기 위해</button>
+<button class="qz-opt" data-correct="true">타입을 컴파일 시점에 지정해서 타입 안정성을 높이기 위해</button>
+<button class="qz-opt">메모리 사용량을 줄이기 위해</button>
+<button class="qz-opt">반복문을 줄이기 위해</button>
+</div>
+<div class="qz-explain">제네릭은 클래스나 메소드에서 쓸 타입을 컴파일 시점에 미리 지정해서, 엉뚱한 타입이 들어오는 걸 미리 걸러줘.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">타입을 지정하지 않은 raw type <code>GenericTest gt</code>에 <code>gt.setValue(1)</code>과 <code>gt.setValue("안녕")</code>을 둘 다 호출하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">둘 다 컴파일 에러가 난다</button>
+<button class="qz-opt" data-correct="true">둘 다 가능하다 — 타입이 제한되어 있지 않아서 위험하다</button>
+<button class="qz-opt">첫 번째 호출만 가능하다</button>
+<button class="qz-opt">자동으로 String으로 통일된다</button>
+</div>
+<div class="qz-explain">타입을 지정하지 않으면(raw type) 아무 타입이나 다 들어가 버려서, 어떤 타입이 들어올지 예측할 수 없어 위험해.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">제네릭의 다이아몬드 연산자 <code>&lt;&gt;</code> 안에 직접 넣을 수 없는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>String</code></button>
+<button class="qz-opt" data-correct="true"><code>int</code> 같은 기본 자료형</button>
+<button class="qz-opt"><code>Integer</code></button>
+<button class="qz-opt">사용자 정의 클래스</button>
+</div>
+<div class="qz-explain">기본 자료형(int, char, boolean 등)은 못 들어가고, 대신 Wrapper 클래스(Integer, Character, Boolean)를 써야 해.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text"><code>RabbitFarm&lt;T extends Rabbit&gt;</code>일 때, <code>RabbitFarm&lt;Mammal&gt;</code>(Rabbit의 부모)은 가능한가?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">가능하다</button>
+<button class="qz-opt" data-correct="true">불가능하다 — Mammal은 Rabbit의 부모라 Rabbit에 포함되지 않는다</button>
+<button class="qz-opt">경고만 뜨고 실행은 된다</button>
+<button class="qz-opt">Rabbit으로 자동 형변환된다</button>
+</div>
+<div class="qz-explain"><code>T extends Rabbit</code>은 Rabbit이거나 그 자손만 허용해. Mammal은 Rabbit의 부모라서 포함되지 않아 컴파일 에러가 나.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text"><code>RabbitFarm&lt;?&gt;</code>의 의미는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">아무 타입도 받지 않는다</button>
+<button class="qz-opt" data-correct="true">제한 없음 — 어떤 타입의 RabbitFarm이든 받는다</button>
+<button class="qz-opt">Rabbit만 받는다</button>
+<button class="qz-opt">컴파일 에러가 난다</button>
+</div>
+<div class="qz-explain"><code>?</code>는 제한 없는 와일드카드로, 타입 변수가 뭐든 상관없이 다 받을 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text"><code>RabbitFarm&lt;? extends Bunny&gt;</code> 매개변수에 <code>RabbitFarm&lt;Rabbit&gt;</code>(Bunny의 부모)을 전달하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">가능하다</button>
+<button class="qz-opt" data-correct="true">불가능하다 — extends는 Bunny이거나 그 자식만 허용한다</button>
+<button class="qz-opt">경고만 뜨고 실행된다</button>
+<button class="qz-opt">자동으로 Bunny로 변환된다</button>
+</div>
+<div class="qz-explain"><code>? extends Bunny</code>는 상한 제한으로, Bunny이거나 Bunny의 자식(DrunkenBunny)만 받아. 부모인 Rabbit은 안 돼.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>RabbitFarm&lt;? super Bunny&gt;</code> 매개변수에 <code>RabbitFarm&lt;DrunkenBunny&gt;</code>(Bunny의 자식)을 전달하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">가능하다</button>
+<button class="qz-opt" data-correct="true">불가능하다 — super는 Bunny이거나 그 부모만 허용한다</button>
+<button class="qz-opt">둘 다 같은 의미라 상관없다</button>
+<button class="qz-opt">컴파일은 되지만 실행이 안 된다</button>
+</div>
+<div class="qz-explain"><code>? super Bunny</code>는 하한 제한으로, Bunny이거나 그 부모(Rabbit)만 받아. 자식인 DrunkenBunny는 안 돼.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">와일드카드에서 "자식 쪽으로만 범위가 열리는" 키워드는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true"><code>extends</code></button>
+<button class="qz-opt"><code>super</code></button>
+<button class="qz-opt">둘 다 자식 쪽으로 열린다</button>
+<button class="qz-opt">둘 다 부모 쪽으로 열린다</button>
+</div>
+<div class="qz-explain"><code>extends</code>는 기준 타입의 자식 쪽(상한)으로, <code>super</code>는 부모 쪽(하한)으로 허용 범위가 열려.</div>
+</div>
+<button class="qz-reset" id="gen-reset-btn">다시 풀기</button>
+</div>
+<style>
+#gen-quiz{margin:1.5rem 0;font-family:inherit}
+#gen-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#gen-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#gen-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#gen-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#gen-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#gen-quiz .qz-opt:hover{border-color:#FF2E88}
+#gen-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#gen-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#gen-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#gen-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#gen-quiz .qz-q.answered .qz-explain{display:block}
+#gen-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#gen-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('gen-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('gen-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>
