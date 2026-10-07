@@ -4,6 +4,7 @@ title: "static·싱글톤·final"
 date: 2026-10-05
 categories: [개념]
 tags: [java, oop, static, singleton, final]
+mermaid: true
 ---
 
 오늘 배운 세 가지 — `static`, 싱글톤 패턴, `final` — 는 전부 "값을 인스턴스 하나하나에 맡기지 않고 어떻게 통제할까"라는 하나의 질문으로 묶였다.
@@ -36,6 +37,21 @@ StaticFieldTest st2 = new StaticFieldTest();  // 새 인스턴스
 | 접근 방법 | `인스턴스.변수명` | `클래스명.변수명` |
 | 초기화 시점 | 인스턴스 생성 시점 | 애플리케이션 시작 시점 |
 
+```mermaid
+flowchart LR
+    subgraph st1["st1 인스턴스"]
+        n1["nonStaticInt = 1"]
+    end
+    subgraph st2["st2 인스턴스 (새로 생성)"]
+        n2["nonStaticInt = 0"]
+    end
+    shared["staticInt = 1<br/>(클래스에 딱 하나, st1·st2 모두 공유)"]
+    st1 -.참조.-> shared
+    st2 -.참조.-> shared
+```
+
+`nonStaticInt`는 `st1`과 `st2`가 각자 따로 가지고 있어서 서로 영향이 없지만, `staticInt`는 클래스 전체에 딱 하나만 존재해서 `st1`이 증가시킨 값을 `st2`에서도 그대로 보게 된다.
+
 ## 2. 싱글톤 패턴 — 인스턴스를 딱 하나만
 
 `static`을 응용하면, 애플리케이션 전체에서 인스턴스를 1개만 만들어 공유하는 **싱글톤 패턴**을 만들 수 있다. 리모컨처럼 여러 개 있을 필요 없이 하나만 있으면 되는 경우에 쓴다고 했다.
@@ -62,6 +78,15 @@ public class LazySingletion {
 ```
 
 생성자를 `private`으로 막아뒀기 때문에 `new EagerSingleton()`은 아예 불가능하고, 오직 `getInstance()`로만 받을 수 있다. 실제로 `eager1.hashCode()`와 `eager2.hashCode()`를 찍어보니 완전히 같은 값이 나와서, 정말 같은 인스턴스라는 걸 눈으로 확인할 수 있었다.
+
+```mermaid
+flowchart LR
+    A["getInstance() 호출 #1"] --> S(["단 하나의 인스턴스"])
+    B["getInstance() 호출 #2"] --> S
+    C["getInstance() 호출 #3"] --> S
+```
+
+몇 번을 호출하든 `getInstance()`는 항상 같은 인스턴스 하나를 돌려준다. 생성자가 `private`이라 이 메소드를 거치지 않고는 애초에 새 인스턴스를 만들 방법이 없다.
 
 ## 3. final — 한 번 정해지면 끝
 
