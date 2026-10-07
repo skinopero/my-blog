@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "내가 짠 코드로 만든 자바 기초 퀴즈"
+title: "9/28 JDK·연산자·변수 퀴즈"
 date: 2026-09-28
 categories: [퀴즈]
 tags: [java, operator, variable, quiz]

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "메소드 유연성·접근제어자·삼항연산자 퀴즈"
+title: "9/30 메소드 유연성·접근제어자·삼항연산자 퀴즈"
 date: 2026-09-30
 categories: [퀴즈]
 tags: [java, method, access-modifier, ternary, quiz]

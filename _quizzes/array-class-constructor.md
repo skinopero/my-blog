@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "String·배열·생성자 퀴즈"
+title: "10/1 String·배열·생성자 퀴즈"
 date: 2026-10-01
 categories: [퀴즈]
 tags: [java, string, array, constructor, quiz]

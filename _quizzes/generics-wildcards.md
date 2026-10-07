@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "제네릭·와일드카드 퀴즈"
+title: "10/7 제네릭·와일드카드 퀴즈"
 date: 2026-10-07 08:30:00 +0900
 categories: [퀴즈]
 tags: [java, generic, wildcard, quiz]

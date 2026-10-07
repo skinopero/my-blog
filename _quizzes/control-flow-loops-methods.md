@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "조건문·반복문·메소드 퀴즈"
+title: "9/29 조건문·반복문·메소드 퀴즈"
 date: 2026-09-29
 categories: [퀴즈]
 tags: [java, control-flow, loop, method, quiz]

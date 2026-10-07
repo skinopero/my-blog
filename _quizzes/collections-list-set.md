@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "List·Set·TreeSet 퀴즈"
+title: "10/7 List·Set·TreeSet 퀴즈"
 date: 2026-10-07 09:30:00 +0900
 categories: [퀴즈]
 tags: [java, collection, list, set, quiz]
