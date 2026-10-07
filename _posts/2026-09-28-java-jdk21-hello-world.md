@@ -207,10 +207,3 @@ Mac이 Windows 프로그램을 그대로 실행할 수 있어서 / javac가 모�
 - **가비지 컬렉션(Garbage Collection)** — JVM의 메모리 관리 부분이 오늘 다룬 "실행 엔진" 옆에 있었어. 자바가 메모리 해제를 어떻게 자동으로 처리하는지는 다음 단계에서 꼭 필요한 개념이야.
 - **자바 모듈 시스템(JPMS)** — Java 9부터 JDK 자체도 모듈 단위로 쪼개졌어. `java.base`, `java.desktop` 같은 이름을 마주치기 시작하면 이 개념을 먼저 봐야 해.
 
-## 참고 자료
-
-- [Oracle - Java SE 21 공식 문서](https://docs.oracle.com/en/java/javase/21/)
-- [OpenJDK 공식 사이트](https://openjdk.org/)
-- [Eclipse Adoptium - Temurin 다운로드](https://adoptium.net/temurin/releases/)
-- [Oracle - Java SE Support Roadmap (LTS 안내)](https://www.oracle.com/java/technologies/java-se-support-roadmap.html)
-- [The Java Virtual Machine Specification, SE 21](https://docs.oracle.com/javase/specs/jvms/se21/html/index.html)
