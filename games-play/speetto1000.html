@@ -1,0 +1,1006 @@
+---
+layout: null
+permalink: /games/speetto1000/play/
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스피또1000 - 럭키 복권</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: linear-gradient(45deg, #FF1744, #F50057, #C51162, #880E4F);
+            background-size: 400% 400%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 550px;
+        }
+
+        /* 1등 당첨 전체 화면 효과 */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            animation: confettiFall 3s ease-out forwards;
+            z-index: 1000;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-10vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* 1등 플래시 효과 */
+        .jackpot-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.8), transparent);
+            pointer-events: none;
+            display: none;
+            z-index: 999;
+            animation: jackpotFlash 2s ease-out;
+        }
+
+        @keyframes jackpotFlash {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .lottery-ticket {
+            background: linear-gradient(135deg, #FFE55C 0%, #FFD700 50%, #FFC107 100%);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5),
+                        0 0 40px rgba(255, 215, 0, 0.8),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 4px solid #FF6F00;
+            position: relative;
+            overflow: hidden;
+            transform: perspective(1000px) rotateX(5deg);
+        }
+
+        .lottery-ticket::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(
+                90deg,
+                #FF6F00,
+                #FF6F00 10px,
+                #FFD700 10px,
+                #FFD700 20px
+            );
+            z-index: 10;
+        }
+
+        .lottery-ticket::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(
+                90deg,
+                #FF6F00,
+                #FF6F00 10px,
+                #FFD700 10px,
+                #FFD700 20px
+            );
+            z-index: 10;
+        }
+
+        /* 상단 정보 영역 */
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 3px dashed #FF6F00;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .ticket-number {
+            font-size: 12px;
+            color: #333;
+        }
+
+        .ticket-price {
+            font-size: 18px;
+            color: #FF1744;
+            animation: pulsePrize 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulsePrize {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .logo {
+            font-size: 14px;
+            color: #FF6F00;
+            font-weight: bold;
+        }
+
+        /* 광고 배너 */
+        .banner {
+            background: linear-gradient(135deg, #FF1744 0%, #F50057 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(255, 23, 68, 0.5);
+            animation: bannerPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes bannerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .banner-title {
+            font-size: 32px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: titleBounce 1s ease-in-out infinite;
+        }
+
+        @keyframes titleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .banner-subtitle {
+            font-size: 12px;
+            opacity: 0.95;
+            font-weight: bold;
+        }
+
+        /* 게임 영역 */
+        .game-area {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        /* 좌측: 행운숫자 */
+        .lucky-number-section {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lucky-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #FF1744, #F50057);
+            padding: 5px 10px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .lucky-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border: 4px solid #FF6F00;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 6px 15px rgba(255, 107, 0, 0.6),
+                        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+                        0 0 20px rgba(255, 165, 0, 0.8);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            animation: luckyGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes luckyGlow {
+            0%, 100% {
+                box-shadow: 0 6px 15px rgba(255, 107, 0, 0.6),
+                            inset 0 2px 4px rgba(255, 255, 255, 0.4),
+                            0 0 20px rgba(255, 165, 0, 0.8);
+            }
+            50% {
+                box-shadow: 0 6px 15px rgba(255, 107, 0, 0.8),
+                            inset 0 2px 4px rgba(255, 255, 255, 0.5),
+                            0 0 30px rgba(255, 215, 0, 1);
+            }
+        }
+
+        .lucky-info {
+            font-size: 10px;
+            color: #333;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* 중앙: 스크래치 영역 */
+        .scratch-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .scratch-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            animation: scratchBlink 1s ease-in-out infinite;
+        }
+
+        @keyframes scratchBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        #scratchCanvas {
+            border: 3px solid #FF6F00;
+            border-radius: 12px;
+            background: white;
+            cursor: cell;
+            display: block;
+            width: 100%;
+            max-width: 280px;
+            height: 190px;
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4),
+                        inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #scratchCanvas:active {
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.6),
+                        inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 우측: 당첨금액 */
+        .prize-section {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background: linear-gradient(135deg, white, #FFF9E6);
+            border-radius: 12px;
+            border: 3px solid #FF1744;
+            min-width: 95px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(255, 23, 68, 0.3);
+        }
+
+        .prize-label {
+            font-size: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .prize-amount {
+            font-size: 16px;
+            font-weight: bold;
+            color: #FF6F00;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .prize-unit {
+            font-size: 11px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* 버튼 영역 */
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateX(-2deg);
+        }
+
+        .btn-new {
+            background: linear-gradient(135deg, #FF1744 0%, #F50057 100%);
+            color: white;
+        }
+
+        .btn-new:hover {
+            transform: perspective(1000px) rotateX(-2deg) translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 23, 68, 0.5);
+        }
+
+        .btn-new:active {
+            transform: perspective(1000px) rotateX(0) translateY(-1px);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+        }
+
+        .btn-reset:hover {
+            transform: perspective(1000px) rotateX(-2deg) translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
+        }
+
+        .btn-reset:active {
+            transform: perspective(1000px) rotateX(0) translateY(-1px);
+        }
+
+        /* 결과 영역 */
+        .result {
+            background: linear-gradient(135deg, white 0%, #FFF9E6 100%);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+            border: 4px solid #FF6F00;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .result.show {
+            display: block;
+            animation: resultPopIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes resultPopIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) rotate(-5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        .result-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            animation: titleShake 0.6s ease;
+        }
+
+        @keyframes titleShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .result-rank {
+            font-size: 20px;
+            font-weight: bold;
+            color: #FF1744;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-prize {
+            font-size: 36px;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: prizeSparkle 1s ease-in-out infinite;
+        }
+
+        @keyframes prizeSparkle {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+            50% { text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.8); }
+        }
+
+        .result-message {
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* 통계 */
+        .stats {
+            background: rgba(255, 215, 0, 0.15);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #333;
+            border: 2px solid #FFD700;
+            box-shadow: inset 0 2px 4px rgba(255, 215, 0, 0.2);
+            font-weight: bold;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px dashed #FFD700;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 600px) {
+            .game-area {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .prize-section {
+                width: 100%;
+            }
+
+            #scratchCanvas {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="jackpot-flash" id="jackpotFlash"></div>
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <div class="container">
+        <div class="lottery-ticket">
+            <!-- 상단 정보 -->
+            <div class="header-info">
+                <div class="ticket-number">제 108회 | 000000-0000000-0000</div>
+                <div class="ticket-price">1,000원</div>
+                <div class="logo">스피또</div>
+            </div>
+
+            <!-- 배너 -->
+            <div class="banner">
+                <div class="banner-title">🍀 스피또 1000 🍀</div>
+                <div class="banner-subtitle">행운숫자와 나의 숫자가 일치하면 당첨!</div>
+            </div>
+
+            <!-- 게임 영역 -->
+            <div class="game-area">
+                <!-- 좌측: 행운숫자 -->
+                <div class="lucky-number-section">
+                    <div class="lucky-label">행운<br>숫자</div>
+                    <div class="lucky-number" id="luckyNumber">-</div>
+                    <div class="lucky-info">1~9 중<br>1개</div>
+                </div>
+
+                <!-- 중앙: 스크래치 영역 -->
+                <div class="scratch-container">
+                    <div class="scratch-label">👇 마우스로 긁어보세요 👇</div>
+                    <canvas id="scratchCanvas"></canvas>
+                </div>
+
+                <!-- 우측: 당첨금액 -->
+                <div class="prize-section">
+                    <div class="prize-label">당첨시<br>금액</div>
+                    <div class="prize-amount" id="prizeAmount">예정금액</div>
+                    <div class="prize-unit">원</div>
+                </div>
+            </div>
+
+            <!-- 버튼 -->
+            <div class="button-group">
+                <button class="btn-new" onclick="startNewGame()">🎲 새 복권</button>
+                <button class="btn-reset" onclick="resetScratch()">🔄 초기화</button>
+            </div>
+
+            <!-- 결과 -->
+            <div class="result" id="result">
+                <div class="result-title" id="resultTitle"></div>
+                <div class="result-rank" id="resultRank"></div>
+                <div class="result-prize" id="resultPrize"></div>
+                <div class="result-message" id="resultMessage"></div>
+            </div>
+
+            <!-- 통계 -->
+            <div class="stats">
+                <div class="stat-item">
+                    <span>긁은 비율:</span>
+                    <span id="scratchPercent">0%</span>
+                </div>
+                <div class="stat-item">
+                    <span>당첨확률:</span>
+                    <span id="winProbability">계산중...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('scratchCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // 숨겨진 숫자 캔버스 (참고용)
+        const revealCanvas = document.createElement('canvas');
+        const revealCtx = revealCanvas.getContext('2d');
+
+        // Canvas 크기 (2행 3열)
+        canvas.width = 280;
+        canvas.height = 190;
+        revealCanvas.width = canvas.width;
+        revealCanvas.height = canvas.height;
+
+        let luckyNumber = null;
+        let gameNumbers = [];
+        let gameResult = null;
+        let currentRank = null;
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        const scratchBrushRadius = 22; // 마우스 브러시 크기
+        let scratchedPixels = new Set(); // 긁인 픽셀 추적
+
+        // 당첨금액 정보
+        const rankInfo = {
+            1: { rank: '🏆 1등', prize: 500000000, probability: '1/5,000,000' },
+            2: { rank: '🥈 2등', prize: 20000000, probability: '1/1,000,000' },
+            3: { rank: '🥉 3등', prize: 10000, probability: '약 1/182' },
+            4: { rank: '4등', prize: 5000, probability: '1/40' },
+            5: { rank: '5등', prize: 1000, probability: '약 1/3' },
+            0: { rank: '꽝', prize: 0, probability: '약 67%' }
+        };
+
+        function generateLuckyNumber() {
+            return Math.floor(Math.random() * 9) + 1; // 1~9
+        }
+
+        function generateGameNumbers() {
+            const numbers = [];
+            for (let i = 0; i < 6; i++) {
+                numbers.push(i);
+            }
+            return numbers;
+        }
+
+        function determineRank() {
+            const rand = Math.random();
+
+            // 실제 스피또 확률 적용
+            if (rand < 1 / 5000000) {
+                return 1; // 1등: 1/5,000,000
+            }
+            if (rand < 1 / 5000000 + 1 / 1000000) {
+                return 2; // 2등: 1/1,000,000
+            }
+            if (rand < 1 / 5000000 + 1 / 1000000 + 1 / 181.8) {
+                return 3; // 3등: 약 1/182
+            }
+            if (rand < 1 / 5000000 + 1 / 1000000 + 1 / 181.8 + 1 / 40) {
+                return 4; // 4등: 1/40
+            }
+            if (rand < 1 / 5000000 + 1 / 1000000 + 1 / 181.8 + 1 / 40 + 0.3) {
+                return 5; // 5등: 약 1/3
+            }
+
+            return 0; // 꽝 (나머지 약 67%)
+        }
+
+        function startNewGame() {
+            luckyNumber = generateLuckyNumber();
+            gameNumbers = generateGameNumbers();
+            scratchedPixels.clear();
+            gameResult = null;
+
+            // 등수 결정
+            currentRank = determineRank();
+
+            // 당첨 여부에 따라 데이터 설정
+            if (currentRank >= 1) {
+                // 당첨: 행운숫자 포함
+                const randomIndex = Math.floor(Math.random() * 6);
+                gameNumbers[randomIndex] = luckyNumber;
+
+                // 나머지는 다른 숫자로 채우기
+                for (let i = 0; i < 6; i++) {
+                    if (i !== randomIndex) {
+                        let num;
+                        do {
+                            num = Math.floor(Math.random() * 9) + 1;
+                        } while (num === luckyNumber);
+                        gameNumbers[i] = num;
+                    }
+                }
+            } else {
+                // 꽝: 행운숫자 미포함
+                for (let i = 0; i < 6; i++) {
+                    let num;
+                    do {
+                        num = Math.floor(Math.random() * 9) + 1;
+                    } while (num === luckyNumber);
+                    gameNumbers[i] = num;
+                }
+            }
+
+            document.getElementById('result').classList.remove('show');
+            document.getElementById('luckyNumber').textContent = luckyNumber;
+
+            // 긁기 전에는 당첨 금액 미표시
+            document.getElementById('prizeAmount').textContent = '?';
+
+            drawScratchCard();
+            drawRevealedNumbers();
+            updateStats();
+        }
+
+        function drawScratchCard() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 배경 (스크래치 인쇄면 색)
+            ctx.fillStyle = '#D3D3D3';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 스크래치 텍스처
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            for (let i = 0; i < canvas.width; i += 4) {
+                ctx.fillRect(i, 0, 2, canvas.height);
+            }
+
+            // 2x3 격자에 PRIZE 텍스트 그리기
+            const cols = 3;
+            const rows = 2;
+            const cellWidth = canvas.width / cols;
+            const cellHeight = canvas.height / rows;
+
+            for (let i = 0; i < 6; i++) {
+                const row = Math.floor(i / cols);
+                const col = i % cols;
+                const x = col * cellWidth + cellWidth / 2;
+                const y = row * cellHeight + cellHeight / 2;
+
+                // 칸 테두리
+                ctx.strokeStyle = '#999';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
+
+                // PRIZE 텍스트
+                ctx.fillStyle = '#999';
+                ctx.font = 'bold 14px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('PRIZE', x, y - 15);
+
+                // ? 텍스트 (숫자 위치)
+                ctx.fillStyle = '#CCCCCC';
+                ctx.font = 'bold 28px Arial';
+                ctx.fillText('?', x, y - 5);
+
+                // ? 텍스트 (금액 위치)
+                ctx.fillStyle = '#CCCCCC';
+                ctx.font = 'bold 10px Arial';
+                ctx.fillText('?', x, y + 20);
+            }
+        }
+
+        function drawRevealedNumbers() {
+            // 숫자들이 보이는 상태를 별도 캔버스에 미리 그리기
+            revealCtx.clearRect(0, 0, revealCanvas.width, revealCanvas.height);
+
+            const cols = 3;
+            const rows = 2;
+            const cellWidth = revealCanvas.width / cols;
+            const cellHeight = revealCanvas.height / rows;
+
+            // 당첨금액
+            const prizeAmount = rankInfo[currentRank].prize;
+            const prizeText = prizeAmount > 0 ? prizeAmount.toLocaleString() + '원' : '꽝';
+
+            for (let i = 0; i < 6; i++) {
+                const row = Math.floor(i / cols);
+                const col = i % cols;
+                const cellX = col * cellWidth;
+                const cellY = row * cellHeight;
+
+                const number = gameNumbers[i];
+                const isLucky = number === luckyNumber;
+
+                // 배경
+                revealCtx.fillStyle = isLucky ? '#FFD700' : '#F0F0F0';
+                revealCtx.fillRect(cellX, cellY, cellWidth, cellHeight);
+
+                // 테두리
+                revealCtx.strokeStyle = isLucky ? '#FF6B6B' : '#999';
+                revealCtx.lineWidth = isLucky ? 3 : 1;
+                revealCtx.strokeRect(cellX, cellY, cellWidth, cellHeight);
+
+                // 숫자
+                revealCtx.fillStyle = isLucky ? '#FF6B6B' : '#333';
+                revealCtx.font = isLucky ? 'bold 40px Arial' : 'bold 36px Arial';
+                revealCtx.textAlign = 'center';
+                revealCtx.textBaseline = 'middle';
+                revealCtx.fillText(number, col * cellWidth + cellWidth / 2, row * cellHeight + cellHeight / 2 - 20);
+
+                // 금액 표시
+                revealCtx.fillStyle = '#FF6F00';
+                revealCtx.font = 'bold 10px Arial';
+                revealCtx.fillText(prizeText, col * cellWidth + cellWidth / 2, row * cellHeight + cellHeight / 2 + 25);
+
+                if (isLucky) {
+                    // 당첨 숫자에 별 표시
+                    revealCtx.fillStyle = '#FF6B6B';
+                    revealCtx.font = 'bold 18px Arial';
+                    revealCtx.fillText('★', col * cellWidth + cellWidth / 2 - 25, row * cellHeight + cellHeight / 2 - 40);
+                    revealCtx.fillText('★', col * cellWidth + cellWidth / 2 + 25, row * cellHeight + cellHeight / 2 - 40);
+                }
+            }
+        }
+
+        function updateStats() {
+            // 긁인 픽셀 비율 계산
+            const totalPixels = canvas.width * canvas.height;
+            const scratchPercent = Math.round((scratchedPixels.size / totalPixels) * 100);
+
+            document.getElementById('scratchPercent').textContent = scratchPercent + '%';
+            document.getElementById('winProbability').textContent = rankInfo[currentRank].probability;
+
+            // 70% 이상 긁혔을 때 결과 표시
+            if (scratchPercent >= 70 && !gameResult) {
+                showResult();
+            }
+        }
+
+        function triggerJackpotAnimation() {
+            // 1등 당첨 시 화려한 애니메이션
+            const flash = document.getElementById('jackpotFlash');
+            const confettiContainer = document.getElementById('confettiContainer');
+
+            flash.style.display = 'block';
+            confettiContainer.style.display = 'block';
+
+            // 컨페티 생성
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.delay = Math.random() * 0.5 + 's';
+                confetti.style.backgroundColor = ['#FFD700', '#FF6B6B', '#FF1744', '#FFA500', '#FFE55C'][Math.floor(Math.random() * 5)];
+                confettiContainer.appendChild(confetti);
+            }
+
+            // 3초 후 초기화
+            setTimeout(() => {
+                flash.style.display = 'none';
+                confettiContainer.style.display = 'none';
+                confettiContainer.innerHTML = '';
+            }, 3000);
+        }
+
+        function showResult() {
+            gameResult = currentRank;
+
+            const info = rankInfo[currentRank];
+
+            // 당첨 금액 표시
+            document.getElementById('prizeAmount').textContent =
+                currentRank === 0 ? '0' : (info.prize.toLocaleString());
+
+            if (currentRank >= 1) {
+                document.getElementById('resultTitle').textContent = '🎉 축하합니다! 🎉';
+                document.getElementById('resultTitle').style.color = '#FFD700';
+                document.getElementById('resultRank').textContent = info.rank;
+                document.getElementById('resultRank').style.color = '#FF1744';
+                document.getElementById('resultPrize').textContent = info.prize.toLocaleString() + '원';
+                document.getElementById('resultMessage').textContent =
+                    `당첨확률: ${info.probability}`;
+
+                // 1등일 때 화려한 애니메이션
+                if (currentRank === 1) {
+                    triggerJackpotAnimation();
+                }
+            } else {
+                document.getElementById('resultTitle').textContent = '아쉽습니다 💔';
+                document.getElementById('resultTitle').style.color = '#FF6B6B';
+                document.getElementById('resultRank').textContent = '꽝';
+                document.getElementById('resultRank').style.color = '#999';
+                document.getElementById('resultPrize').textContent = '0원';
+                document.getElementById('resultMessage').textContent =
+                    `다시 도전하세요! (당첨확률: ${info.probability})`;
+            }
+
+            document.getElementById('result').classList.add('show');
+        }
+
+        function resetScratch() {
+            scratchedPixels.clear();
+            gameResult = null;
+            document.getElementById('result').classList.remove('show');
+            document.getElementById('prizeAmount').textContent = '?';
+            drawScratchCard();
+            updateStats();
+        }
+
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+
+            return {
+                x: (e.clientX - rect.left) * scaleX,
+                y: (e.clientY - rect.top) * scaleY
+            };
+        }
+
+        function getTouchPos(touch) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+
+            return {
+                x: (touch.clientX - rect.left) * scaleX,
+                y: (touch.clientY - rect.top) * scaleY
+            };
+        }
+
+        // 마우스 이벤트
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            const pos = getMousePos(e);
+            scratch(pos.x, pos.y);
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            const pos = getMousePos(e);
+            scratch(pos.x, pos.y);
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+            lastX = 0;
+            lastY = 0;
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            isDrawing = false;
+            lastX = 0;
+            lastY = 0;
+        });
+
+        // 터치 이벤트
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            isDrawing = true;
+            const touch = e.touches[0];
+            const pos = getTouchPos(touch);
+            scratch(pos.x, pos.y);
+        });
+
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (!isDrawing) return;
+            const touch = e.touches[0];
+            const pos = getTouchPos(touch);
+            scratch(pos.x, pos.y);
+        });
+
+        canvas.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            isDrawing = false;
+            lastX = 0;
+            lastY = 0;
+        });
+
+        function scratch(x, y) {
+            // 부드러운 선 긋기 (더 촘촘하게)
+            if (lastX !== 0 && lastY !== 0) {
+                const distance = Math.sqrt(Math.pow(x - lastX, 2) + Math.pow(y - lastY, 2));
+                const steps = Math.ceil(distance / 3); // 3px마다 처리 (성능 개선)
+
+                for (let i = 0; i <= steps; i++) {
+                    const currentX = lastX + (x - lastX) * (i / steps);
+                    const currentY = lastY + (y - lastY) * (i / steps);
+                    scratchBrush(currentX, currentY);
+                }
+            } else {
+                scratchBrush(x, y);
+            }
+
+            lastX = x;
+            lastY = y;
+        }
+
+        function scratchBrush(brushX, brushY) {
+            const brushRadius = scratchBrushRadius;
+            const x = Math.round(brushX);
+            const y = Math.round(brushY);
+
+            // 브러시 범위 계산
+            const minX = Math.max(0, x - brushRadius);
+            const maxX = Math.min(canvas.width, x + brushRadius);
+            const minY = Math.max(0, y - brushRadius);
+            const maxY = Math.min(canvas.height, y + brushRadius);
+            const w = maxX - minX;
+            const h = maxY - minY;
+
+            // revealCanvas의 해당 부분을 메인 캔버스에 복사
+            if (w > 0 && h > 0) {
+                ctx.drawImage(revealCanvas, minX, minY, w, h, minX, minY, w, h);
+
+                // 원형 범위 내 픽셀만 추적
+                for (let px = minX; px < maxX; px++) {
+                    for (let py = minY; py < maxY; py++) {
+                        const dx = px - x;
+                        const dy = py - y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance <= brushRadius) {
+                            scratchedPixels.add(py * canvas.width + px);
+                        }
+                    }
+                }
+
+                updateStats();
+            }
+        }
+
+        // 게임 시작
+        startNewGame();
+    </script>
+</body>
+</html>

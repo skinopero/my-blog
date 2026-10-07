@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% if include.archive %}전체 기록 · {% elsif include.quizlist %}퀴즈 · {% elsif include.mistakelist %}오답노트 · {% elsif include.category %}{{ include.category }} · {% endif %}개발 오이데~ &#127925; {{ site.title }}</title>
+<title>{% if include.archive %}전체 기록 · {% elsif include.quizlist %}퀴즈 · {% elsif include.mistakelist %}오답노트 · {% elsif include.gamelist %}바이브코딩 게임 · {% elsif include.category %}{{ include.category }} · {% endif %}개발 오이데~ &#127925; {{ site.title }}</title>
 <meta name="description" content="독학 개발자의 반짝반짝 성장기. Git, 배포, React 공부 일기.">
 <meta name="theme-color" content="#FF2E88">
 <meta name="color-scheme" content="light only">
@@ -1090,6 +1090,33 @@ footer .fine {
           </a>
 {% endif %}
         </div>
+{% elsif include.gamelist %}
+        <div class="sign">바이브코딩 게임(with.서연)<small>ALL {{ site.games | size }}</small></div>
+
+        <div class="posts">
+{% if site.games.size > 0 %}
+{% for game in site.games %}
+          <a class="post{% if forloop.first %} top{% endif %}" href="{{ game.url | relative_url }}">
+            <span class="tape leopard-sm" aria-hidden="true"></span>
+            <div class="meta">
+              <span class="tag{% cycle 'tagcolor': '', ' gold', ' aqua', ' lime' %}">GAME</span>
+              <span class="date">{{ game.date | date: "%Y.%m.%d" }}</span>
+            </div>
+            <h3>{{ game.title | escape }}</h3>
+            <p>{{ game.excerpt | strip_html | strip_newlines | truncate: 110 }}</p>
+            <span class="more">자세히 보기 →</span>
+            <span class="dc st" aria-hidden="true"><svg class="ic" viewBox="0 0 100 100"><use href="#{% cycle 'sticker': 's-gy-blonde', 's-star', 's-heart', 's-polish', 's-kiss' %}"/></svg></span>
+          </a>
+{% endfor %}
+{% else %}
+          <a class="post top" href="#">
+            <span class="tape leopard-sm" aria-hidden="true"></span>
+            <div class="meta"><span class="tag">SOON</span></div>
+            <h3>아직 게임이 없어요</h3>
+            <p>_games 폴더에 글을 올리면 여기에 자동으로 나타납니다.</p>
+          </a>
+{% endif %}
+        </div>
 {% else %}
 {% if include.category %}
 {% assign shown_posts = site.categories[include.category] %}
@@ -1147,11 +1174,12 @@ footer .fine {
           <div class="cap"><b>★</b> CATEGORY <svg class="ic" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-bow"/></svg></div>
           <div class="in">
             <ul class="cat">
-              <li{% if include.category == nil and include.archive == nil and include.quizlist == nil and include.mistakelist == nil %} class="active"{% endif %}><a href="{{ '/' | relative_url }}"><span class="sp"></span> 전체 <span class="n">{{ site.posts | size }}</span></a></li>
+              <li{% if include.category == nil and include.archive == nil and include.quizlist == nil and include.mistakelist == nil and include.gamelist == nil %} class="active"{% endif %}><a href="{{ '/' | relative_url }}"><span class="sp"></span> 전체 <span class="n">{{ site.posts | size }}</span></a></li>
               <li{% if include.category == "개념" %} class="active"{% endif %}><a href="{{ '/concept/' | relative_url }}"><span class="sp"></span> 개념 <span class="n">{{ site.categories["개념"] | size }}</span></a></li>
               <li{% if include.category == "프로젝트" %} class="active"{% endif %}><a href="{{ '/project/' | relative_url }}"><span class="sp"></span> 프로젝트 <span class="n">{{ site.categories["프로젝트"] | size }}</span></a></li>
               <li{% if include.quizlist %} class="active"{% endif %}><a href="{{ '/quiz/' | relative_url }}"><span class="sp"></span> 퀴즈 <span class="n">{{ site.quizzes | size }}</span></a></li>
               <li{% if include.mistakelist %} class="active"{% endif %}><a href="{{ '/mistakes/' | relative_url }}"><span class="sp"></span> 오답노트 <span class="n">{{ site.mistakes | size }}</span></a></li>
+              <li{% if include.gamelist %} class="active"{% endif %}><a href="{{ '/games/' | relative_url }}"><span class="sp"></span> 바이브코딩 게임(with.서연) <span class="n">{{ site.games | size }}</span></a></li>
               <li{% if include.archive %} class="active"{% endif %}><a href="{{ '/archive/' | relative_url }}"><span class="sp"></span> 전체 기록(날짜순) <span class="n">{{ site.posts | size }}</span></a></li>
             </ul>
           </div>

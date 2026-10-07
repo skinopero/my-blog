@@ -9,6 +9,9 @@ collections:
   mistakes:
     output: true
     permalink: /mistakes/:path/
+  games:
+    output: true
+    permalink: /games/:path/
 
 plugins:
   - jekyll-remote-theme
