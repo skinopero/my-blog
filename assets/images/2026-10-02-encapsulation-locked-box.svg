@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 380" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="820" height="380" fill="#fbfbfb"/>
+  <text x="410" y="36" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">캡슐화 — 자물쇠를 채운 상자</text>
+
+  <!-- box -->
+  <rect x="280" y="90" width="260" height="160" rx="14" fill="#edf2f7" stroke="#2d3748" stroke-width="3"/>
+  <text x="410" y="140" text-anchor="middle" font-size="14" fill="#4a5568">private String kinds;</text>
+  <text x="410" y="165" text-anchor="middle" font-size="14" fill="#4a5568">private int hp;</text>
+  <text x="410" y="215" text-anchor="middle" font-size="12" fill="#a0aec0">(Monster 내부)</text>
+
+  <!-- lock -->
+  <g transform="translate(395,70)">
+    <rect x="0" y="14" width="30" height="24" rx="4" fill="#dd6b20" stroke="#2d3748" stroke-width="2"/>
+    <path d="M4 14 V4 a11 11 0 0 1 22 0 V14" fill="none" stroke="#2d3748" stroke-width="4"/>
+  </g>
+
+  <!-- blocked direct access -->
+  <g transform="translate(60,290)">
+    <text x="0" y="0" font-size="13" fill="#c53030">monster.hp = -5500;</text>
+    <line x1="0" y1="-10" x2="190" y2="-10" stroke="#c53030" stroke-width="3"/>
+    <text x="95" y="-16" text-anchor="middle" font-size="18" fill="#c53030">✕</text>
+  </g>
+
+  <!-- allowed via method -->
+  <g transform="translate(470,290)">
+    <text x="0" y="0" font-size="13" fill="#2b6cb0">monster.setHp(-5500);</text>
+    <path d="M-10 -14 L210 -14" stroke="#2b6cb0" stroke-width="3" fill="none"/>
+    <polygon points="200,-20 220,-14 200,-8" fill="#2b6cb0"/>
+  </g>
+
+  <text x="410" y="345" text-anchor="middle" font-size="12" fill="#a0aec0">외부에서는 필드에 직접 손댈 수 없고, 정해진 문(메소드)으로만 드나들 수 있다</text>
+</svg>

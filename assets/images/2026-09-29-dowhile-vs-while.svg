@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 340" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="820" height="340" fill="#fbfbfb"/>
+
+  <!-- LEFT: while -->
+  <text x="200" y="40" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">while — 먼저 물어보고 들어간다</text>
+  <rect x="80" y="70" width="240" height="56" rx="10" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="200" y="104" text-anchor="middle" font-size="14" fill="#2d3748">조건 확인</text>
+  <path d="M200 126 L200 160" stroke="#718096" stroke-width="3" fill="none"/>
+  <polygon points="190,152 200,172 210,152" fill="#718096"/>
+  <text x="240" y="150" font-size="12" fill="#c53030">거짓이면 →</text>
+  <rect x="80" y="180" width="240" height="56" rx="10" fill="#fff5f5" stroke="#c53030" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="200" y="214" text-anchor="middle" font-size="13" fill="#c53030">실행 코드 (한 번도 못 들어감)</text>
+
+  <!-- RIGHT: do-while -->
+  <text x="620" y="40" text-anchor="middle" font-size="16" font-weight="bold" fill="#dd6b20">do-while — 일단 한 번 하고 물어본다</text>
+  <rect x="500" y="70" width="240" height="56" rx="10" fill="#fff5e6" stroke="#dd6b20" stroke-width="2"/>
+  <text x="620" y="104" text-anchor="middle" font-size="13" fill="#dd6b20">실행 코드 (무조건 1회)</text>
+  <path d="M620 126 L620 160" stroke="#718096" stroke-width="3" fill="none"/>
+  <polygon points="610,152 620,172 630,152" fill="#718096"/>
+  <rect x="500" y="180" width="240" height="56" rx="10" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="620" y="214" text-anchor="middle" font-size="14" fill="#2d3748">그다음에 조건 확인</text>
+
+  <text x="410" y="300" text-anchor="middle" font-size="12" fill="#a0aec0">조건이 처음부터 거짓이어도, do-while은 몸통을 먼저 한 번 실행한다</text>
+</svg>

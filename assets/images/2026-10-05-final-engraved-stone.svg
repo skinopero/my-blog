@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 340" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="820" height="340" fill="#fbfbfb"/>
+
+  <!-- LEFT: normal variable - whiteboard -->
+  <text x="200" y="40" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">보통 변수 — 화이트보드</text>
+  <rect x="80" y="70" width="240" height="140" rx="10" fill="#ffffff" stroke="#2d3748" stroke-width="3"/>
+  <text x="200" y="130" text-anchor="middle" font-size="18" fill="#2b6cb0">num = 1</text>
+  <text x="200" y="160" text-anchor="middle" font-size="12" fill="#a0aec0">(지우고 다시 쓸 수 있음)</text>
+  <text x="200" y="235" text-anchor="middle" font-size="13" fill="#4a5568">num = 2; ← 언제든 가능</text>
+
+  <!-- RIGHT: final variable - engraved stone -->
+  <text x="620" y="40" text-anchor="middle" font-size="16" font-weight="bold" fill="#dd6b20">final 변수 — 돌에 새긴 글씨</text>
+  <rect x="500" y="70" width="240" height="140" rx="6" fill="#f0e6d2" stroke="#8a5a2e" stroke-width="4"/>
+  <text x="620" y="130" text-anchor="middle" font-size="18" font-weight="bold" fill="#8a5a2e">NUM = 1</text>
+  <text x="620" y="160" text-anchor="middle" font-size="12" fill="#a0774e">(한 번 새기면 못 지움)</text>
+  <text x="620" y="235" text-anchor="middle" font-size="13" fill="#c53030">num = 2; ← 컴파일 에러 ✕</text>
+
+  <text x="410" y="300" text-anchor="middle" font-size="12" fill="#a0aec0">final은 선언과 동시에, 또는 생성자에서 딱 한 번만 "새길" 수 있다</text>
+</svg>

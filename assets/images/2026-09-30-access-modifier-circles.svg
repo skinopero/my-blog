@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="700" height="440" fill="#fbfbfb"/>
+  <text x="350" y="36" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">접근제어자는 문이 몇 겹인지의 차이다</text>
+
+  <circle cx="350" cy="250" r="170" fill="#e6f3ff" stroke="#2b6cb0" stroke-width="2.5"/>
+  <text x="350" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#2b6cb0">public — 모든 클래스에서 접근 가능</text>
+
+  <circle cx="350" cy="250" r="125" fill="#fff5e6" stroke="#dd6b20" stroke-width="2.5"/>
+  <text x="350" y="143" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#dd6b20">protected — 패키지 또는 자식 클래스</text>
+
+  <circle cx="350" cy="250" r="80" fill="#f0f0f0" stroke="#4a5568" stroke-width="2.5"/>
+  <text x="350" y="187" text-anchor="middle" font-size="12" font-weight="bold" fill="#4a5568">default — 같은 패키지만</text>
+
+  <circle cx="350" cy="250" r="38" fill="#fff5f5" stroke="#c53030" stroke-width="2.5"/>
+  <text x="350" y="254" text-anchor="middle" font-size="12" font-weight="bold" fill="#c53030">private</text>
+  <text x="350" y="270" text-anchor="middle" font-size="10.5" fill="#c53030">같은 클래스만</text>
+
+  <text x="350" y="410" text-anchor="middle" font-size="12" fill="#a0aec0">안쪽으로 갈수록 더 적은 범위만 들어올 수 있다</text>
+</svg>

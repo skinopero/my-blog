@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="700" height="420" fill="#fbfbfb"/>
+  <text x="350" y="36" text-anchor="middle" font-size="16" font-weight="bold" fill="#2d3748">상속 — 부모 걸 물려받고, 다른 것만 새로 쓴다</text>
+
+  <!-- parent -->
+  <rect x="210" y="60" width="280" height="110" rx="12" fill="#edf2f7" stroke="#2d3748" stroke-width="3"/>
+  <text x="350" y="90" text-anchor="middle" font-size="15" font-weight="bold" fill="#2d3748">Car (부모)</text>
+  <text x="350" y="115" text-anchor="middle" font-size="12.5" fill="#4a5568">run() · soundHorn() · stop()</text>
+  <text x="350" y="135" text-anchor="middle" font-size="12.5" fill="#4a5568">isRunning()</text>
+
+  <!-- arrow -->
+  <line x1="350" y1="170" x2="350" y2="215" stroke="#718096" stroke-width="3"/>
+  <polygon points="338,205 350,228 362,205" fill="#718096"/>
+  <text x="430" y="200" font-size="12" fill="#718096">extends</text>
+
+  <!-- child -->
+  <rect x="190" y="230" width="320" height="150" rx="12" fill="#fff5e6" stroke="#dd6b20" stroke-width="3"/>
+  <text x="350" y="260" text-anchor="middle" font-size="15" font-weight="bold" fill="#dd6b20">CapsCar (자식 = 경찰차)</text>
+  <text x="350" y="288" text-anchor="middle" font-size="12.5" fill="#975a16">run() — 다시 씀 (삐용삐용 달리기)</text>
+  <text x="350" y="310" text-anchor="middle" font-size="12.5" fill="#975a16">soundHorn() — super 호출 + 추가</text>
+  <text x="350" y="332" text-anchor="middle" font-size="12.5" fill="#975a16">stop() — 그대로 물려받음 (안 바꿈)</text>
+  <text x="350" y="358" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c05621">무전하기() — 자식만의 새 기능</text>
+
+  <text x="350" y="405" text-anchor="middle" font-size="12" fill="#a0aec0">다르게 동작해야 하는 것만 @Override, 나머지는 그대로 물려받는다</text>
+</svg>

@@ -32,6 +32,10 @@ public int testMethod(int a, String s, boolean b, char c) {
 | (작성하지 않음, default) | 같은 패키지 내에서만 접근 가능 |
 | `private` | 같은 클래스 내부에서만 접근 가능 |
 
+다섯 살 아이에게 설명한다면: "`public`은 누구나 들어올 수 있는 놀이터고, `private`은 내 방문을 잠가서 나만 들어갈 수 있는 거야. `protected`랑 `default`는 그 중간, 같은 동네 친구까지만 들여보내주는 정도지."
+
+![public에서 private으로 갈수록 점점 좁아지는 동심원 그림]({{ site.baseurl }}/assets/images/2026-09-30-access-modifier-circles.svg)
+
 ## 2. 다른 클래스의 메소드도 불러 쓸 수 있다
 
 지금까지는 전부 "내 클래스 안의 메소드"만 호출했는데, 오늘은 아예 다른 클래스에 있는 메소드를 불러 쓰는 코드를 봤다.
