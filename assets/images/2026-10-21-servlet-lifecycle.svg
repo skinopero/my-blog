@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 280" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="740" height="280" fill="#fbfbfb"/>
+
+  <text x="370" y="28" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">서블릿 인스턴스는 딱 1개 — 같은 직원이 모든 손님을 받는다</text>
+
+  <!-- servlet instance box -->
+  <rect x="290" y="90" width="160" height="90" rx="10" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2.5"/>
+  <text x="370" y="125" font-size="14" font-weight="bold" fill="#2b6cb0" text-anchor="middle">LifeCycleServlet</text>
+  <text x="370" y="145" font-size="11.5" fill="#2d3748" text-anchor="middle">인스턴스 1개</text>
+  <text x="370" y="162" font-size="11.5" fill="#718096" text-anchor="middle">(기본생성자 1번 호출)</text>
+
+  <!-- init -->
+  <rect x="300" y="30" width="140" height="34" rx="6" fill="#fff" stroke="#dd6b20" stroke-width="2"/>
+  <text x="370" y="52" font-size="12" text-anchor="middle" fill="#dd6b20">init() — 딱 1번</text>
+  <path d="M370,64 V88" stroke="#dd6b20" stroke-width="2" marker-end="url(#svarr)"/>
+
+  <!-- requests -->
+  <g font-size="11.5" fill="#2d3748">
+    <text x="60" y="210" text-anchor="middle">요청 1</text>
+    <path d="M60,220 C60,250 290,250 290,150" fill="none" stroke="#2b6cb0" stroke-width="1.5" marker-end="url(#svarr)"/>
+    <text x="150" y="245" fill="#718096" text-anchor="middle">service()</text>
+
+    <text x="370" y="210" text-anchor="middle">요청 2</text>
+    <path d="M370,220 V182" fill="none" stroke="#2b6cb0" stroke-width="1.5" marker-end="url(#svarr)"/>
+    <text x="400" y="200" fill="#718096" text-anchor="middle">service()</text>
+
+    <text x="680" y="210" text-anchor="middle">요청 3</text>
+    <path d="M680,220 C680,250 450,250 450,150" fill="none" stroke="#2b6cb0" stroke-width="1.5" marker-end="url(#svarr)"/>
+    <text x="590" y="245" fill="#718096" text-anchor="middle">service()</text>
+  </g>
+
+  <!-- destroy -->
+  <rect x="300" y="236" width="140" height="0" fill="none"/>
+  <text x="370" y="270" font-size="12" fill="#c53030" text-anchor="middle">서버가 종료될 때 destroy() — 딱 1번</text>
+
+  <defs>
+    <marker id="svarr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2d3748"/>
+    </marker>
+  </defs>
+</svg>

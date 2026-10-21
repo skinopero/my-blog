@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="720" height="260" fill="#fbfbfb"/>
+
+  <!-- Java app -->
+  <rect x="30" y="80" width="190" height="100" rx="10" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="125" y="115" font-size="15" font-weight="bold" fill="#2b6cb0" text-anchor="middle">Java 애플리케이션</text>
+  <text x="125" y="140" font-size="11.5" fill="#2d3748" text-anchor="middle">"회원 이름으로</text>
+  <text x="125" y="156" font-size="11.5" fill="#2d3748" text-anchor="middle">조회해줘" (객체·메소드)</text>
+
+  <!-- JDBC driver -->
+  <rect x="265" y="70" width="190" height="120" rx="10" fill="#fffaf0" stroke="#dd6b20" stroke-width="2"/>
+  <text x="360" y="100" font-size="15" font-weight="bold" fill="#dd6b20" text-anchor="middle">JDBC Driver</text>
+  <text x="360" y="120" font-size="11" fill="#7b341e" text-anchor="middle">(mysql-connector-j)</text>
+  <text x="360" y="144" font-size="11.5" fill="#2d3748" text-anchor="middle">java.sql 패키지의</text>
+  <text x="360" y="160" font-size="11.5" fill="#2d3748" text-anchor="middle">약속(interface)을</text>
+  <text x="360" y="176" font-size="11.5" fill="#2d3748" text-anchor="middle">MySQL 프로토콜로 통역</text>
+
+  <!-- MySQL -->
+  <rect x="500" y="80" width="190" height="100" rx="10" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="595" y="115" font-size="15" font-weight="bold" fill="#2b6cb0" text-anchor="middle">MySQL 서버</text>
+  <text x="595" y="140" font-size="11.5" fill="#2d3748" text-anchor="middle">"SELECT * FROM</text>
+  <text x="595" y="156" font-size="11.5" fill="#2d3748" text-anchor="middle">member WHERE ..."</text>
+
+  <!-- arrows -->
+  <path d="M220,130 H263" stroke="#2d3748" stroke-width="2" marker-end="url(#jarr)"/>
+  <path d="M457,130 H498" stroke="#2d3748" stroke-width="2" marker-end="url(#jarr)"/>
+
+  <text x="241" y="118" font-size="11" fill="#718096" text-anchor="middle">DriverManager</text>
+  <text x="478" y="118" font-size="11" fill="#718096" text-anchor="middle">TCP</text>
+
+  <text x="360" y="230" font-size="12.5" fill="#2d3748" text-anchor="middle">Java 코드는 DBMS가 바뀌어도 그대로 — 드라이버만 바뀐다</text>
+
+  <defs>
+    <marker id="jarr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2d3748"/>
+    </marker>
+  </defs>
+</svg>

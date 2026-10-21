@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="760" height="320" fill="#fbfbfb"/>
+
+  <!-- 열람실 책상 (JVM 메모리) -->
+  <rect x="40" y="60" width="280" height="200" rx="12" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="180" y="94" font-size="20" text-anchor="middle">📖</text>
+  <text x="180" y="120" font-size="14" font-weight="bold" fill="#2b6cb0" text-anchor="middle">열람실 책상</text>
+  <text x="180" y="140" font-size="12" fill="#2d3748" text-anchor="middle">JVM 메모리 (Stack · Heap · Method Area)</text>
+
+  <rect x="62" y="156" width="110" height="34" rx="6" fill="#fff" stroke="#2d3748" stroke-width="1.25"/>
+  <text x="117" y="177" font-size="11" text-anchor="middle" fill="#2d3748">지역변수 (Stack)</text>
+  <rect x="188" y="156" width="110" height="34" rx="6" fill="#fff" stroke="#2d3748" stroke-width="1.25"/>
+  <text x="243" y="177" font-size="11" text-anchor="middle" fill="#2d3748">객체 (Heap)</text>
+  <rect x="62" y="198" width="236" height="34" rx="6" fill="#fff" stroke="#2d3748" stroke-width="1.25"/>
+  <text x="180" y="219" font-size="11" text-anchor="middle" fill="#2d3748">static 변수 (Method Area)</text>
+
+  <text x="180" y="248" font-size="12" fill="#dd6b20" text-anchor="middle">문 닫을 시간(JVM 종료)이 되면 전부 치워진다</text>
+
+  <!-- 서고 (DB) -->
+  <rect x="440" y="60" width="280" height="200" rx="12" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="580" y="94" font-size="20" text-anchor="middle">🗄️</text>
+  <text x="580" y="120" font-size="14" font-weight="bold" fill="#2b6cb0" text-anchor="middle">서고</text>
+  <text x="580" y="140" font-size="12" fill="#2d3748" text-anchor="middle">데이터베이스 (디스크에 저장)</text>
+
+  <rect x="462" y="156" width="236" height="76" rx="6" fill="#fff" stroke="#2d3748" stroke-width="1.25"/>
+  <text x="580" y="178" font-size="11" text-anchor="middle" fill="#2d3748">member 테이블</text>
+  <line x1="462" y1="190" x2="698" y2="190" stroke="#e2e8f0"/>
+  <text x="580" y="208" font-size="11" text-anchor="middle" fill="#718096">id · name · age (행 = 객체 하나하나)</text>
+
+  <text x="580" y="248" font-size="12" fill="#2b6cb0" text-anchor="middle">규칙대로 오래 보관되고, 사서(DBMS)가 찾아준다</text>
+
+  <!-- bridge -->
+  <path d="M320 160 H440" stroke="#2d3748" stroke-width="2" marker-end="url(#arr1)" marker-start="url(#arr2)"/>
+  <text x="380" y="148" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="middle">JDBC</text>
+  <text x="380" y="180" font-size="10.5" fill="#718096" text-anchor="middle">SQL 신청서</text>
+
+  <defs>
+    <marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2d3748"/>
+    </marker>
+    <marker id="arr2" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2d3748"/>
+    </marker>
+  </defs>
+</svg>

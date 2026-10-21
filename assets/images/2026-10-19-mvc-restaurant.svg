@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 320" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="860" height="320" fill="#fbfbfb"/>
+
+  <!-- 손님 -->
+  <circle cx="60" cy="110" r="34" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="60" y="117" font-size="28" text-anchor="middle">🙋</text>
+  <text x="60" y="166" font-size="13" fill="#2d3748" text-anchor="middle">손님</text>
+
+  <!-- View -->
+  <rect x="150" y="76" width="130" height="68" rx="10" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="215" y="106" font-size="22" text-anchor="middle">📋 🍽️</text>
+  <text x="215" y="128" font-size="13" fill="#2b6cb0" font-weight="bold" text-anchor="middle">View</text>
+  <text x="215" y="166" font-size="12" fill="#2d3748" text-anchor="middle">view.input / output</text>
+
+  <!-- Controller -->
+  <rect x="330" y="76" width="130" height="68" rx="10" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="395" y="106" font-size="22" text-anchor="middle">🧑‍💼</text>
+  <text x="395" y="128" font-size="13" fill="#2d3748" font-weight="bold" text-anchor="middle">Controller</text>
+  <text x="395" y="166" font-size="12" fill="#2d3748" text-anchor="middle">흐름 지휘</text>
+
+  <!-- Service -->
+  <rect x="510" y="76" width="130" height="68" rx="10" fill="#edf2f7" stroke="#dd6b20" stroke-width="2"/>
+  <text x="575" y="106" font-size="22" text-anchor="middle">👨‍🍳</text>
+  <text x="575" y="128" font-size="13" fill="#dd6b20" font-weight="bold" text-anchor="middle">Service</text>
+  <text x="575" y="166" font-size="12" fill="#2d3748" text-anchor="middle">판단 (Model)</text>
+
+  <!-- DAO -->
+  <rect x="690" y="76" width="90" height="68" rx="10" fill="#edf2f7" stroke="#dd6b20" stroke-width="2"/>
+  <text x="735" y="106" font-size="22" text-anchor="middle">🔑</text>
+  <text x="735" y="128" font-size="13" fill="#dd6b20" font-weight="bold" text-anchor="middle">DAO</text>
+  <text x="735" y="166" font-size="12" fill="#2d3748" text-anchor="middle">재료 꺼내기</text>
+
+  <!-- DB (below DAO) -->
+  <rect x="690" y="210" width="90" height="56" rx="10" fill="#fbfbfb" stroke="#2d3748" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="735" y="240" font-size="20" text-anchor="middle">🧊</text>
+  <text x="735" y="256" font-size="11" fill="#2d3748" text-anchor="middle">MySQL</text>
+
+  <!-- forward arrows -->
+  <path d="M96 100 L148 100" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M282 100 L328 100" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M462 100 L508 100" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M642 100 L688 100" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M735 146 L735 208" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- return arrow (dashed, below the row) -->
+  <path d="M735 268 C 735 300, 215 300, 215 146" fill="none" stroke="#2b6cb0" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+  <text x="475" y="300" font-size="12" fill="#2b6cb0" text-anchor="middle">응답은 DTO(주문서·접시)에 담겨 거꾸로 돌아온다</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2d3748"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2b6cb0"/>
+    </marker>
+  </defs>
+</svg>

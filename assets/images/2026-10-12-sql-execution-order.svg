@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="640" height="360" fill="#fbfbfb"/>
+
+  <text x="140" y="24" font-size="13" font-weight="bold" fill="#2d3748" text-anchor="middle">작성 순서</text>
+  <text x="500" y="24" font-size="13" font-weight="bold" fill="#2d3748" text-anchor="middle">실행 순서</text>
+
+  <!-- connecting lines (drawn first, under dots) -->
+  <!-- SELECT: left 0 (y40) -> right 4 (y208), highlighted -->
+  <path d="M140,46 C320,46 320,208 500,208" fill="none" stroke="#dd6b20" stroke-width="2.5"/>
+  <!-- FROM: left1(82) -> right0(40) -->
+  <path d="M140,82 C320,82 320,40 500,40" fill="none" stroke="#a0aec0" stroke-width="1.5"/>
+  <!-- WHERE: left2(124) -> right1(82) -->
+  <path d="M140,124 C320,124 320,82 500,82" fill="none" stroke="#a0aec0" stroke-width="1.5"/>
+  <!-- GROUP BY: left3(166) -> right2(124) -->
+  <path d="M140,166 C320,166 320,124 500,124" fill="none" stroke="#a0aec0" stroke-width="1.5"/>
+  <!-- HAVING: left4(208) -> right3(166) -->
+  <path d="M140,208 C320,208 320,166 500,166" fill="none" stroke="#a0aec0" stroke-width="1.5"/>
+  <!-- ORDER BY: left5(250) -> right5(250), flat -->
+  <path d="M140,250 L500,250" fill="none" stroke="#a0aec0" stroke-width="1.5"/>
+  <!-- LIMIT: left6(292) -> right6(292), flat -->
+  <path d="M140,292 L500,292" fill="none" stroke="#a0aec0" stroke-width="1.5"/>
+
+  <!-- left dots + labels -->
+  <g font-size="12.5" fill="#2d3748">
+    <circle cx="140" cy="40" r="4" fill="#dd6b20"/><text x="128" y="44" text-anchor="end">① SELECT</text>
+    <circle cx="140" cy="82" r="4" fill="#2b6cb0"/><text x="128" y="86" text-anchor="end">② FROM</text>
+    <circle cx="140" cy="124" r="4" fill="#2b6cb0"/><text x="128" y="128" text-anchor="end">③ WHERE</text>
+    <circle cx="140" cy="166" r="4" fill="#2b6cb0"/><text x="128" y="170" text-anchor="end">④ GROUP BY</text>
+    <circle cx="140" cy="208" r="4" fill="#2b6cb0"/><text x="128" y="212" text-anchor="end">⑤ HAVING</text>
+    <circle cx="140" cy="250" r="4" fill="#718096"/><text x="128" y="254" text-anchor="end">⑥ ORDER BY</text>
+    <circle cx="140" cy="292" r="4" fill="#718096"/><text x="128" y="296" text-anchor="end">⑦ LIMIT</text>
+  </g>
+
+  <!-- right dots + labels -->
+  <g font-size="12.5" fill="#2d3748">
+    <circle cx="500" cy="40" r="4" fill="#2b6cb0"/><text x="512" y="44">① FROM</text>
+    <circle cx="500" cy="82" r="4" fill="#2b6cb0"/><text x="512" y="86">② WHERE</text>
+    <circle cx="500" cy="124" r="4" fill="#2b6cb0"/><text x="512" y="128">③ GROUP BY</text>
+    <circle cx="500" cy="166" r="4" fill="#2b6cb0"/><text x="512" y="170">④ HAVING</text>
+    <circle cx="500" cy="208" r="4" fill="#dd6b20"/><text x="512" y="212" font-weight="bold">⑤ SELECT</text>
+    <circle cx="500" cy="250" r="4" fill="#718096"/><text x="512" y="254">⑥ ORDER BY</text>
+    <circle cx="500" cy="292" r="4" fill="#718096"/><text x="512" y="296">⑦ LIMIT</text>
+  </g>
+
+  <text x="320" y="330" font-size="12" fill="#dd6b20" text-anchor="middle">SELECT만 1번에서 5번으로 가장 멀리 이동한다</text>
+</svg>
