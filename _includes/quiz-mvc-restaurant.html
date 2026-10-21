@@ -1,0 +1,135 @@
+<div id="mvcr-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">식당 비유에서 "주문 받는 직원"에 해당하는 패키지는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">view.input</button>
+<button class="qz-opt">view.output</button>
+<button class="qz-opt">controller</button>
+<button class="qz-opt">model.service</button>
+</div>
+<div class="qz-explain">주문 받는 직원은 손님의 요청을 받아 적기만 하는 역할이라, view.input에 해당해.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">홀 매니저(Controller)가 절대 하면 안 되는 일은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">View에게 입력을 받아 오게 시키기</button>
+<button class="qz-opt" data-correct="true">재고·가격 같은 업무 규칙을 직접 판단하거나 JDBC로 DB에 직접 접근하기</button>
+<button class="qz-opt">받은 DTO를 Service에 넘기기</button>
+<button class="qz-opt">사용자 선택에 따라 흐름을 정하기</button>
+</div>
+<div class="qz-explain">Controller는 흐름만 지휘해야 해. 판단용 if문과 SQL이 쌓이면 수백 줄짜리 "만능 매니저"가 되어버려.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">제육볶음(품절 메뉴) 주문이 들어왔을 때, 거절 여부를 판단하는 계층은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">view.input</button>
+<button class="qz-opt">controller</button>
+<button class="qz-opt" data-correct="true">model.service (주방장)</button>
+<button class="qz-opt">model.dao (냉장고 담당)</button>
+</div>
+<div class="qz-explain">재고 확인 같은 업무 규칙 판단은 주방장(Service)의 일이야. DAO는 판단 없이 재료만 확인·조회할 뿐이야.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">움직이는 🧾 종이와 접시, 즉 <code>model.dto</code>의 역할은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">업무 규칙을 판단한다</button>
+<button class="qz-opt">DB에 직접 접근한다</button>
+<button class="qz-opt" data-correct="true">계층 사이로 데이터를 담아 나르는 그릇이다</button>
+<button class="qz-opt">화면 출력을 담당한다</button>
+</div>
+<div class="qz-explain">DTO는 판단이나 접근 없이, 계층 사이에서 데이터만 담아 전달하는 그릇 역할을 해.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text"><code>Scanner sc = new Scanner(System.in); String menuName = sc.nextLine();</code> 이 코드는 어느 패키지에 있어야 할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">view.input (주문 받는 직원)</button>
+<button class="qz-opt">view.output (서빙 직원)</button>
+<button class="qz-opt">controller (홀 매니저)</button>
+<button class="qz-opt">model.dto (주문서와 접시)</button>
+</div>
+<div class="qz-explain">사용자로부터 "입력을 받는" 순수한 행위이기 때문에, 판단도 출력도 아닌 view.input의 몫이야.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text"><code>Application</code>의 <code>main()</code>에서 하는 일은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">메뉴 목록을 직접 조회한다</button>
+<button class="qz-opt" data-correct="true">가게 문을 열고 홀 매니저(OrderController)에게 영업을 맡긴다</button>
+<button class="qz-opt">DB 연결을 직접 관리한다</button>
+<button class="qz-opt">화면 출력 문구를 전부 담당한다</button>
+</div>
+<div class="qz-explain"><code>main()</code>은 <code>new OrderController().run();</code>으로 지휘를 넘기고, 그 다음 흐름은 전부 Controller가 지휘해.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">냉장고 담당(DAO)이 절대 하면 안 되는 일은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">DB에서 재료(데이터)를 꺼내오기</button>
+<button class="qz-opt" data-correct="true">재고가 있는지 보고 거절 여부를 직접 판단하기</button>
+<button class="qz-opt">SQL을 실행하기</button>
+<button class="qz-opt">조회 결과를 반환하기</button>
+</div>
+<div class="qz-explain">DAO는 데이터를 꺼내오는 역할만 하고, "거절할지 말지"의 업무 판단은 Service의 몫이야.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">Controller에 판단용 if문과 SQL이 계속 쌓이면 어떻게 될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">자동으로 Service로 분리된다</button>
+<button class="qz-opt" data-correct="true">수백 줄짜리 "만능 매니저"가 되어 아무도 손대기 싫은 코드가 된다</button>
+<button class="qz-opt">컴파일 에러가 난다</button>
+<button class="qz-opt">성능이 더 좋아진다</button>
+</div>
+<div class="qz-explain">역할 분리가 무너지면, Controller 하나가 모든 책임을 떠안는 "만능 매니저" 코드가 되어 유지보수가 어려워져.</div>
+</div>
+<button class="qz-reset" id="mvcr-reset-btn">다시 풀기</button>
+</div>
+<style>
+#mvcr-quiz{margin:1.5rem 0;font-family:inherit}
+#mvcr-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#mvcr-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#mvcr-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#mvcr-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#mvcr-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#mvcr-quiz .qz-opt:hover{border-color:#FF2E88}
+#mvcr-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#mvcr-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#mvcr-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#mvcr-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#mvcr-quiz .qz-q.answered .qz-explain{display:block}
+#mvcr-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#mvcr-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('mvcr-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('mvcr-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

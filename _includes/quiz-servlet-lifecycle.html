@@ -1,0 +1,135 @@
+<div id="svlc-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">서블릿 인스턴스는 요청이 올 때마다 새로 생성될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">그렇다, 요청마다 새 인스턴스를 만든다</button>
+<button class="qz-opt" data-correct="true">아니다, 컨테이너가 인스턴스 하나만 만들어 재사용한다</button>
+<button class="qz-opt">요청 10개마다 하나씩 새로 만든다</button>
+<button class="qz-opt">서버를 재시작할 때만 새로 만든다</button>
+</div>
+<div class="qz-explain">기본생성자와 init()이 첫 요청에서 딱 한 번만 호출되는 걸로 확인했듯, 서블릿 컨테이너는 인스턴스 하나를 만들어 모든 요청에 재사용해.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>init()</code>은 언제 호출될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">요청마다</button>
+<button class="qz-opt" data-correct="true">인스턴스가 만들어진 뒤 딱 한 번</button>
+<button class="qz-opt">서버 종료 시</button>
+<button class="qz-opt">호출되지 않는다</button>
+</div>
+<div class="qz-explain">init()은 서블릿이 처음 만들어질 때 딱 한 번만 호출돼.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">요청을 여러 번 보내면 콘솔에 매번 찍히는 메소드는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">기본생성자</button>
+<button class="qz-opt">init()</button>
+<button class="qz-opt" data-correct="true">service()</button>
+<button class="qz-opt">destroy()</button>
+</div>
+<div class="qz-explain">service()만 요청이 올 때마다 반복 호출돼. 기본생성자와 init()은 첫 요청에서 한 번뿐이야.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text"><code>destroy()</code>는 언제 호출될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">요청이 끝날 때마다</button>
+<button class="qz-opt">하루에 한 번 자동으로</button>
+<button class="qz-opt" data-correct="true">서버(컨테이너)가 종료될 때 한 번</button>
+<button class="qz-opt">호출되지 않는다</button>
+</div>
+<div class="qz-explain">destroy()는 서버를 내릴 때, 그 서블릿 인스턴스가 소멸되기 직전에 한 번만 호출돼.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text"><code>&lt;a href="/request-service"&gt;</code> 링크를 클릭하면 어느 메소드가 호출될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">doGet()</button>
+<button class="qz-opt">doPost()</button>
+<button class="qz-opt">init()</button>
+<button class="qz-opt">destroy()</button>
+</div>
+<div class="qz-explain">a 태그의 href로 URL이 바뀌는 방식의 요청은 전부 GET이라서, doGet()이 호출돼.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">GET과 POST 중, 데이터가 URL(쿼리스트링)에 그대로 노출되는 쪽은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">GET</button>
+<button class="qz-opt">POST</button>
+<button class="qz-opt">둘 다 노출된다</button>
+<button class="qz-opt">둘 다 노출되지 않는다</button>
+</div>
+<div class="qz-explain">GET은 URL에 데이터가 노출되고 크기도 제한적이야. POST는 Payload(body)에 담겨 전달돼서 상대적으로 눈에 직접 보이지 않아.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>req.getParameter("age")</code>의 반환 타입은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">int</button>
+<button class="qz-opt" data-correct="true">String (항상 문자열)</button>
+<button class="qz-opt">Object</button>
+<button class="qz-opt">요청에 따라 다르다</button>
+</div>
+<div class="qz-explain">URL이나 폼으로 들어온 모든 파라미터는 항상 String으로 반환돼서, 숫자가 필요하면 Integer.parseInt() 같은 변환이 필요해.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">체크박스처럼 같은 이름(<code>hobbies</code>)으로 값이 여러 개 넘어올 수 있는 파라미터를 제대로 받으려면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>getParameter("hobbies")</code>로 충분하다</button>
+<button class="qz-opt" data-correct="true"><code>getParameterValues("hobbies")</code>로 배열(String[])을 받아야 한다</button>
+<button class="qz-opt">체크박스 값은 받을 수 없다</button>
+<button class="qz-opt"><code>getParameterMap()</code>만 써야 한다</button>
+</div>
+<div class="qz-explain"><code>getParameter()</code>는 값이 여러 개여도 첫 번째 값 하나만 돌려줘. 여러 값을 전부 받으려면 <code>getParameterValues()</code>로 배열을 받아야 해.</div>
+</div>
+<button class="qz-reset" id="svlc-reset-btn">다시 풀기</button>
+</div>
+<style>
+#svlc-quiz{margin:1.5rem 0;font-family:inherit}
+#svlc-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#svlc-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#svlc-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#svlc-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#svlc-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#svlc-quiz .qz-opt:hover{border-color:#FF2E88}
+#svlc-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#svlc-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#svlc-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#svlc-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#svlc-quiz .qz-q.answered .qz-explain{display:block}
+#svlc-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#svlc-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('svlc-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('svlc-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

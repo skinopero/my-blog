@@ -1,0 +1,135 @@
+<div id="dbd1-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">설계 4단계 중 "무엇이 존재하고 어떻게 연결되는가"를 다루는 단계는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">요구사항 분석</button>
+<button class="qz-opt" data-correct="true">개념적 모델링</button>
+<button class="qz-opt">논리적 모델링</button>
+<button class="qz-opt">물리적 모델링</button>
+</div>
+<div class="qz-explain">요구사항 분석이 "어떤 데이터를 관리해야 하는가"라면, 개념적 모델링은 그 데이터를 엔티티로 뽑아 서로 어떻게 연결되는지(ERD)를 다뤄.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">회원 테이블에 없는 회원번호가 주문 테이블에 등장한다면, 어떤 위반일까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">도메인 무결성 위반</button>
+<button class="qz-opt" data-correct="true">참조 무결성(정합성) 위반</button>
+<button class="qz-opt">제1정규형 위반</button>
+<button class="qz-opt">명명 규칙 위반</button>
+</div>
+<div class="qz-explain">정합성은 "모든 테이블 간 데이터가 논리적으로 일치"해야 한다는 규칙이고, 존재하지 않는 회원을 참조하는 건 참조 무결성 위반이야.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">성별 필드에 '남', '여' 외의 값이 들어간다면 어떤 위반일까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">참조 무결성 위반</button>
+<button class="qz-opt" data-correct="true">도메인 무결성(일관성) 위반</button>
+<button class="qz-opt">카디널리티 위반</button>
+<button class="qz-opt">엔티티 분류 위반</button>
+</div>
+<div class="qz-explain">일관성(Integrity)은 "입력되는 데이터가 미리 정한 규칙을 만족"해야 한다는 것이고, 허용되지 않은 값이 들어가는 건 도메인 무결성 위반이야.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">주문 1건에 메뉴 3개를 담아야 하는데, <code>tbl_order</code>에 <code>menu_code</code> 칸 하나만 두면 생기는 문제는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">아무 문제 없다</button>
+<button class="qz-opt" data-correct="true">주문 1건이 여러 행으로 쪼개지고, 주문일자·총금액이 중복 저장된다</button>
+<button class="qz-opt">메뉴 가격이 자동으로 합산된다</button>
+<button class="qz-opt">카테고리 테이블이 사라진다</button>
+</div>
+<div class="qz-explain">N:M 관계(주문↔메뉴)를 그대로 두면 order_code가 반복되어 기본키로 쓸 수 없고, 메뉴 수만큼 다른 컬럼값이 중복 저장돼. 그래서 tbl_order_menu 같은 교차 엔티티로 풀어내야 해.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">카테고리 1..1 — 메뉴 0..N 관계에서, 메뉴 쪽의 최소값이 1이라는 건 무슨 뜻일까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">카테고리가 메뉴를 0개 가질 수 있다는 뜻</button>
+<button class="qz-opt" data-correct="true">메뉴는 반드시 카테고리 1개에 속해야 한다는 뜻(필수 관계, FK는 NOT NULL)</button>
+<button class="qz-opt">메뉴가 카테고리 없이도 존재할 수 있다는 뜻</button>
+<button class="qz-opt">카테고리가 메뉴 여러 개를 가질 수 없다는 뜻</button>
+</div>
+<div class="qz-explain">카디널리티의 최소값은 필수성을 나타내. 메뉴 쪽의 최소값이 1이면 "메뉴는 카테고리 없이 존재할 수 없다"는 필수 관계이고, 그래서 tbl_menu.category_code는 NOT NULL 외래키가 돼.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">주문, 결제처럼 주요 거래·사건의 중심이 되는 엔티티 분류는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">기본 엔티티(Master)</button>
+<button class="qz-opt" data-correct="true">중심 엔티티(Core)</button>
+<button class="qz-opt">행위 엔티티(Transaction)</button>
+<button class="qz-opt">참조 엔티티</button>
+</div>
+<div class="qz-explain">기본 엔티티는 카테고리·메뉴처럼 다른 데이터의 기준이 되는 고정적 객체이고, 중심 엔티티는 주문·결제처럼 주요 거래의 중심, 행위 엔티티는 주문상세·결제연결처럼 중심 엔티티 간의 관계를 표현해.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">속성을 엔티티 박스 안에 적고, 관계선 끝의 까마귀 발 모양으로 N을 표시하는 실무 표기법은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">피터첸(Peter Chen) 표기법</button>
+<button class="qz-opt" data-correct="true">IE(Information Engineering, Crow's Foot) 표기법</button>
+<button class="qz-opt">UML 클래스 다이어그램</button>
+<button class="qz-opt">순서도</button>
+</div>
+<div class="qz-explain">피터첸은 시험·이론 설명에 주로 쓰이고, 실무 도구(ERDCloud, ERwin, dbdiagram.io 등)에서는 속성을 박스 안에 적고 Crow's Foot으로 범위를 표시하는 IE 표기법을 널리 써.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">ERD 품질 검토 체크리스트에서 "모든 엔티티가 고유 식별자를 가지는가"를 확인하는 항목은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">관계의 필수성</button>
+<button class="qz-opt" data-correct="true">엔티티의 명확성</button>
+<button class="qz-opt">명명 규칙</button>
+<button class="qz-opt">비즈니스 룰 반영</button>
+</div>
+<div class="qz-explain">엔티티의 명확성 항목이 "모든 엔티티가 고유 식별자를 가지고 있는가"를 확인하는 체크포인트야. 속성의 완전성, 관계의 정합성 등과 함께 ERD를 다음 단계로 넘기기 전에 꼭 거쳐야 하는 검토 항목이지.</div>
+</div>
+<button class="qz-reset" id="dbd1-reset-btn">다시 풀기</button>
+</div>
+<style>
+#dbd1-quiz{margin:1.5rem 0;font-family:inherit}
+#dbd1-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#dbd1-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#dbd1-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#dbd1-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#dbd1-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#dbd1-quiz .qz-opt:hover{border-color:#FF2E88}
+#dbd1-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#dbd1-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#dbd1-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#dbd1-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#dbd1-quiz .qz-q.answered .qz-explain{display:block}
+#dbd1-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#dbd1-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('dbd1-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('dbd1-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

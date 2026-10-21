@@ -1,0 +1,135 @@
+<div id="dbneed-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">JVM 메모리 세 구역 중 <code>static</code> 변수가 머무는 곳은? (입문 단계 기준)</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Stack</button>
+<button class="qz-opt">Heap</button>
+<button class="qz-opt" data-correct="true">Method Area</button>
+<button class="qz-opt">RAM 바깥 디스크</button>
+</div>
+<div class="qz-explain">Method Area에는 클래스 정보와 static 변수가 저장돼. (JDK 8+ HotSpot에서는 내부적으로 Heap 쪽으로 옮겨졌지만, 입문 단계에서는 Method Area로 묶어서 설명해.)</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">메서드 안에서 선언한 지역변수는 언제 사라질까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">메서드 실행이 끝날 때</button>
+<button class="qz-opt">GC가 실행될 때</button>
+<button class="qz-opt">JVM이 종료될 때</button>
+<button class="qz-opt">사라지지 않는다</button>
+</div>
+<div class="qz-explain">지역변수는 Stack에 쌓였다가, 그 메서드 호출이 끝나는 순간 함께 사라져.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">회원 목록을 <code>List&lt;Member&gt;</code>(Heap)에만 저장하고 서버를 재시작하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">그대로 유지된다</button>
+<button class="qz-opt" data-correct="true">전부 사라진다 — JVM이 꺼지면 Heap도 함께 사라진다</button>
+<button class="qz-opt">자동으로 파일에 백업된다</button>
+<button class="qz-opt">static 변수로 옮겨진다</button>
+</div>
+<div class="qz-explain">RAM은 전원이 꺼지면 내용이 지워지는 휘발성 메모리라서, JVM 프로세스가 끝나면 Heap에 있던 모든 객체가 함께 사라져.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">회원을 파일(members.txt)에 저장해도 여전히 해결되지 않는 문제는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">서버 재시작 후 데이터가 사라지는 문제</button>
+<button class="qz-opt" data-correct="true">재고 1개를 두 명이 동시에 주문하는 것 같은 동시 수정 문제</button>
+<button class="qz-opt">파일을 읽는 속도 문제</button>
+<button class="qz-opt">한글 인코딩 문제</button>
+</div>
+<div class="qz-explain">파일은 영속성(꺼져도 안 사라짐)만 해결해줄 뿐, "읽고-판단하고-쓰는" 사이에 다른 요청이 끼어드는 동시성 문제는 막지 못해.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">계좌이체 도중 서버가 멈춰도 "전부 성공 아니면 전부 취소"를 보장하는 DB 기능은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">인덱스(Index)</button>
+<button class="qz-opt" data-correct="true">트랜잭션(Transaction)</button>
+<button class="qz-opt">정렬(ORDER BY)</button>
+<button class="qz-opt">반복문(for)</button>
+</div>
+<div class="qz-explain">트랜잭션은 START TRANSACTION ~ COMMIT/ROLLBACK으로 여러 작업을 하나의 단위로 묶어서, 중간에 실패하면 전부 되돌려.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">SQL을 쓸 때는 1번째인데, 실제 처리 순서는 5번째인 절은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">FROM</button>
+<button class="qz-opt">WHERE</button>
+<button class="qz-opt" data-correct="true">SELECT</button>
+<button class="qz-opt">ORDER BY</button>
+</div>
+<div class="qz-explain">작성 순서는 SELECT가 1번이지만, 실제 실행 순서는 FROM(1)-WHERE(2)-GROUP BY(3)-HAVING(4)-SELECT(5)-ORDER BY(6)-LIMIT(7)이라 SELECT가 가장 멀리 이동해.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>SELECT score*1.1 AS bonus FROM scores WHERE bonus &gt;= 90</code>이 에러인 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">bonus라는 이름이 예약어라서</button>
+<button class="qz-opt" data-correct="true">WHERE가 SELECT보다 먼저 실행되어 bonus라는 별칭을 아직 모른다</button>
+<button class="qz-opt">AS 문법이 틀려서</button>
+<button class="qz-opt">score 컬럼이 없어서</button>
+</div>
+<div class="qz-explain">WHERE(2번)가 처리되는 시점엔 SELECT(5번)가 아직 실행되지 않아서, SELECT에서 만든 별칭 bonus를 WHERE가 알 수 없어.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text"><code>ORDER BY avg_score DESC</code>처럼 ORDER BY에서는 SELECT 별칭을 써도 되는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">ORDER BY는 별칭을 금지하지 않는 특별한 절이라서</button>
+<button class="qz-opt" data-correct="true">ORDER BY(6번)는 SELECT(5번)보다 나중에 실행되어 이미 만들어진 별칭을 쓸 수 있다</button>
+<button class="qz-opt">MySQL에서만 되고 표준은 아니다</button>
+<button class="qz-opt">실제로는 안 되고 예시가 잘못됐다</button>
+</div>
+<div class="qz-explain">실행 순서상 ORDER BY는 SELECT 뒤에 처리되기 때문에, SELECT가 만든 별칭이 이미 존재하는 상태라 그대로 쓸 수 있어.</div>
+</div>
+<button class="qz-reset" id="dbneed-reset-btn">다시 풀기</button>
+</div>
+<style>
+#dbneed-quiz{margin:1.5rem 0;font-family:inherit}
+#dbneed-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#dbneed-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#dbneed-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#dbneed-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#dbneed-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#dbneed-quiz .qz-opt:hover{border-color:#FF2E88}
+#dbneed-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#dbneed-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#dbneed-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#dbneed-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#dbneed-quiz .qz-q.answered .qz-explain{display:block}
+#dbneed-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#dbneed-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('dbneed-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('dbneed-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

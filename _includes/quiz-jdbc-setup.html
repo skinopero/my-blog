@@ -1,0 +1,135 @@
+<div id="jdbc-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">JDBC(Java DataBase Connectivity)란?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">MySQL 전용 프로그래밍 언어</button>
+<button class="qz-opt" data-correct="true">Java에서 DataBase에 접근 가능하도록 하는 프로그래밍 API</button>
+<button class="qz-opt">DB 데이터를 백업하는 도구</button>
+<button class="qz-opt">IntelliJ의 내장 데이터베이스 뷰어</button>
+</div>
+<div class="qz-explain">JDBC는 Java 코드가 DB에 접근할 수 있게 해주는 표준 프로그래밍 API야.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>java.sql</code> 패키지 자체가 정의하는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">MySQL과 통신하는 실제 구현 코드</button>
+<button class="qz-opt" data-correct="true">"무엇을 할 수 있는지"만 정의한 인터페이스 모음</button>
+<button class="qz-opt">IntelliJ 플러그인</button>
+<button class="qz-opt">SQL 문법 자체</button>
+</div>
+<div class="qz-explain">java.sql은 DriverManager, Connection, Statement, ResultSet 같은 인터페이스(약속)만 정의하고, 실제 통신 구현은 DBMS별 드라이버가 맡아.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">DBMS를 MySQL에서 Oracle로 바꾼다면, Java 코드는 어떻게 될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">전부 새로 작성해야 한다</button>
+<button class="qz-opt" data-correct="true">거의 그대로 두고 드라이버(라이브러리)만 교체하면 된다</button>
+<button class="qz-opt">java.sql 패키지를 다시 설치해야 한다</button>
+<button class="qz-opt">IntelliJ를 재설치해야 한다</button>
+</div>
+<div class="qz-explain">java.sql 인터페이스는 표준이고, 실제 번역(통신)은 드라이버가 담당하기 때문에 DBMS가 바뀌어도 Java 코드는 거의 그대로 두고 드라이버만 바꾸면 돼.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">IntelliJ에서 한글이 깨지지 않도록 가장 먼저 설정한 항목은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Theme을 Dark로 변경</button>
+<button class="qz-opt" data-correct="true"><code>Settings &gt; Editor &gt; File Encoding</code>을 UTF-8로 설정</button>
+<button class="qz-opt">폰트 크기 조정</button>
+<button class="qz-opt">플러그인 재설치</button>
+</div>
+<div class="qz-explain">한글 데이터를 다루므로 인코딩이 맞지 않으면 조회·저장 시 글자가 깨질 수 있어서, 프로젝트 시작 시 UTF-8로 맞춰둬.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">오늘 mvnrepository에서 찾아 사용한 MySQL Connector/J 버전은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">5.1.49</button>
+<button class="qz-opt">8.0.28</button>
+<button class="qz-opt" data-correct="true">8.4.0</button>
+<button class="qz-opt">9.1.0</button>
+</div>
+<div class="qz-explain">오늘 설치한 MySQL Connector/J는 8.4.0 버전이야.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">mvnrepository에서 복사한 Gradle 의존성 코드를 추가하는 파일은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>settings.gradle</code></button>
+<button class="qz-opt" data-correct="true"><code>build.gradle</code>의 <code>dependencies</code></button>
+<button class="qz-opt"><code>gradle.properties</code></button>
+<button class="qz-opt"><code>Application.java</code></button>
+</div>
+<div class="qz-explain">build.gradle의 dependencies 블록에 추가하고 Gradle Sync를 한 번 더 해줘야 실제로 라이브러리가 받아져.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">IntelliJ Database 툴에서 접속 정보를 입력한 뒤 연결을 확인하는 버튼은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Run</button>
+<button class="qz-opt" data-correct="true">Test Connection</button>
+<button class="qz-opt">Build</button>
+<button class="qz-opt">Sync Now</button>
+</div>
+<div class="qz-explain">Host, Port, User, Password를 입력한 뒤 Test Connection으로 연결이 되는지 확인하고, 성공하면 OK로 저장해.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">Test Connection이 실패했을 때 가장 먼저 확인해야 할 것이 아닌 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">로컬 DB가 실제로 실행 중인지</button>
+<button class="qz-opt">로그인 유저의 존재 여부와 권한</button>
+<button class="qz-opt">데이터베이스 주소와 포트 번호</button>
+<button class="qz-opt" data-correct="true">IntelliJ 테마 색상</button>
+</div>
+<div class="qz-explain">연결 테스트 실패는 보통 DB 실행 여부, 계정 권한, 주소·포트 설정 문제야. 테마 색상과는 관련이 없어.</div>
+</div>
+<button class="qz-reset" id="jdbc-reset-btn">다시 풀기</button>
+</div>
+<style>
+#jdbc-quiz{margin:1.5rem 0;font-family:inherit}
+#jdbc-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#jdbc-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#jdbc-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#jdbc-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#jdbc-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#jdbc-quiz .qz-opt:hover{border-color:#FF2E88}
+#jdbc-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#jdbc-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#jdbc-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#jdbc-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#jdbc-quiz .qz-q.answered .qz-explain{display:block}
+#jdbc-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#jdbc-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('jdbc-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('jdbc-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

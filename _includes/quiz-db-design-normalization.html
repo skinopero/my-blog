@@ -1,0 +1,135 @@
+<div id="dbd2-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">주소(시/구/동)처럼 두 개 이상의 하위 속성으로 나눌 수 있는 속성은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">단일 속성</button>
+<button class="qz-opt" data-correct="true">복합 속성</button>
+<button class="qz-opt">다가 속성</button>
+<button class="qz-opt">추출 속성</button>
+</div>
+<div class="qz-explain">복합 속성은 두 개 이상의 하위 속성으로 나눌 수 있는 속성이야. 제1정규형에 따라 한 칸에는 값이 하나만 들어가야 하므로, 복합 속성은 필요에 따라 하위 속성으로 쪼개.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">후보키 중 기본키로 선택되지 않고 남은 키는 어떻게 관리할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">외래키로 바꾼다</button>
+<button class="qz-opt" data-correct="true">대체키로 두고 UNIQUE 제약을 건다</button>
+<button class="qz-opt">삭제한다</button>
+<button class="qz-opt">NULL을 허용한다</button>
+</div>
+<div class="qz-explain">대체키(Alternate Key)는 기본키로 선택되지 않은 나머지 후보키이고, UNIQUE 제약조건으로 유일성만 관리해.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">회원 이메일이 유일한데도 기본키로 부적절한 가장 큰 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">문자열이라 느려서</button>
+<button class="qz-opt" data-correct="true">값이 바뀔 수 있고(불변성 위반) 개인정보라서</button>
+<button class="qz-opt">NULL이 될 수 없어서</button>
+<button class="qz-opt">후보키가 아니라서</button>
+</div>
+<div class="qz-explain">기본키 선정 기준 중 불변성(Stability) — 한 번 정해진 값은 시간이 지나도 바뀌지 않아야 한다 — 을 이메일이 어긴다는 게 핵심이야. 게다가 개인정보라 보호 문제도 있어서, 대체키로만 UNIQUE 관리해.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">학생·학과·과목·수강이 한 표에 섞여 있는데, 학과 전화번호가 바뀌어서 일부 행만 고치면 생기는 문제는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">삽입 이상</button>
+<button class="qz-opt">삭제 이상</button>
+<button class="qz-opt" data-correct="true">갱신 이상</button>
+<button class="qz-opt">참조 무결성 위반</button>
+</div>
+<div class="qz-explain">같은 사실(학과 전화번호)이 여러 행에 중복돼 있어서, 일부만 고치면 서로 모순되는 게 갱신 이상(Update Anomaly)이야.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">수강생이 한 명도 없는 새 과목을 등록하고 싶은데, 수강신청 표에는 학생 정보가 없으면 행을 만들 수 없다. 이건 어떤 이상 현상?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">삽입 이상</button>
+<button class="qz-opt">갱신 이상</button>
+<button class="qz-opt">삭제 이상</button>
+<button class="qz-opt">도메인 무결성 위반</button>
+</div>
+<div class="qz-explain">넣고 싶은 정보(새 과목)가 있는데, 관계없는 정보(수강생)가 없어서 넣을 수 없는 게 삽입 이상(Insertion Anomaly)이야.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">2040년에 끝나는 구독 만료 일시를 저장하기에 적절한 컬럼 타입은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">TIMESTAMP</button>
+<button class="qz-opt" data-correct="true">DATETIME</button>
+<button class="qz-opt">VARCHAR(19)</button>
+<button class="qz-opt">INT</button>
+</div>
+<div class="qz-explain">TIMESTAMP는 1970~2038-01-19까지만 표현 가능해서 2040년 값은 저장 자체가 거부돼. DATETIME은 1000~9999년까지 표현할 수 있어서 미래 날짜에 안전해.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">외래키에 <code>ON DELETE SET NULL</code>을 쓰려면 그 외래키 컬럼은 어떻게 정의해야 할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">NOT NULL</button>
+<button class="qz-opt" data-correct="true">NULL 허용</button>
+<button class="qz-opt">UNIQUE</button>
+<button class="qz-opt">DEFAULT 0</button>
+</div>
+<div class="qz-explain">SET NULL은 부모가 삭제/변경되면 자식의 외래키를 NULL로 바꾸는 옵션이라서, 그 컬럼이 NOT NULL이면 테이블 생성 자체가 실패해.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">MySQL InnoDB에서 표준 SQL의 <code>SET DEFAULT</code> 참조 무결성 옵션을 쓰면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">정상적으로 동작한다</button>
+<button class="qz-opt" data-correct="true">지원하지 않아 테이블 생성이 거부된다</button>
+<button class="qz-opt">RESTRICT와 동일하게 동작한다</button>
+<button class="qz-opt">CASCADE로 자동 변환된다</button>
+</div>
+<div class="qz-explain">InnoDB는 SET DEFAULT를 지원하지 않아서, 문법은 파싱되더라도 테이블 생성 자체가 거부돼. CASCADE/SET NULL/RESTRICT 세 가지만 실제로 쓸 수 있어.</div>
+</div>
+<button class="qz-reset" id="dbd2-reset-btn">다시 풀기</button>
+</div>
+<style>
+#dbd2-quiz{margin:1.5rem 0;font-family:inherit}
+#dbd2-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#dbd2-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#dbd2-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#dbd2-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#dbd2-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#dbd2-quiz .qz-opt:hover{border-color:#FF2E88}
+#dbd2-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#dbd2-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#dbd2-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#dbd2-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#dbd2-quiz .qz-q.answered .qz-explain{display:block}
+#dbd2-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#dbd2-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('dbd2-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('dbd2-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>
