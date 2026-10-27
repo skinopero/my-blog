@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 360" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="700" height="360" fill="#fbfbfb"/>
+
+  <text x="350" y="28" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">Aspect는 핵심 로직을 양파처럼 감싸서 실행된다</text>
+
+  <!-- outer: PerformanceAspect -->
+  <rect x="40" y="50" width="620" height="270" rx="16" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="60" y="76" font-size="13" font-weight="bold" fill="#1a365d">⏱ PerformanceAspect — @Around</text>
+  <text x="60" y="94" font-size="11" fill="#2b6cb0">시작시간 기록 → (내부 실행) → 종료시간 기록·로그</text>
+
+  <!-- middle: LoggingAspect -->
+  <rect x="80" y="110" width="540" height="180" rx="14" fill="#fffaf0" stroke="#dd6b20" stroke-width="2"/>
+  <text x="100" y="134" font-size="13" font-weight="bold" fill="#7b341e">📝 LoggingAspect — @Before</text>
+  <text x="100" y="152" font-size="11" fill="#7b341e">"[Before 로그] 메서드 실행 시작됨"</text>
+
+  <!-- core -->
+  <rect x="160" y="166" width="380" height="80" rx="12" fill="#fff" stroke="#2d3748" stroke-width="2.5"/>
+  <text x="350" y="196" font-size="13" font-weight="bold" text-anchor="middle" fill="#2d3748">MemberService.registerMember()</text>
+  <text x="350" y="216" font-size="11" text-anchor="middle" fill="#718096">핵심 비즈니스 로직만</text>
+  <text x="350" y="232" font-size="10.5" text-anchor="middle" fill="#718096">(유효성 검증 · 회원 저장)</text>
+
+  <text x="100" y="268" font-size="13" font-weight="bold" fill="#7b341e">📝 LoggingAspect — @After / @AfterReturning / @AfterThrowing</text>
+
+  <text x="60" y="305" font-size="10.5" fill="#1a365d">※ @Around는 joinPoint.proceed()를 직접 호출해야 안쪽 레이어(Logging → 핵심 로직)가 실행된다</text>
+
+  <text x="350" y="340" font-size="12" fill="#2d3748" text-anchor="middle">요리사(핵심 로직)는 요리만 하고, 타이머·기록은 보조(Aspect)가 바깥에서 알아서 해준다</text>
+</svg>
