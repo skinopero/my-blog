@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="760" height="300" fill="#fbfbfb"/>
+
+  <text x="24" y="28" font-size="14" font-weight="bold" fill="#2d3748">PreparedStatement는 SQL 틀을 먼저 고정하고, 입력값은 "데이터"로만 끼운다</text>
+
+  <rect x="24" y="48" width="420" height="40" rx="6" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="34" y="72" font-size="11.5" fill="#1a365d">① 틀 먼저 컴파일: SELECT ... WHERE MENU_NAME = ?</text>
+
+  <path d="M234 88 V116" stroke="#2b6cb0" stroke-width="1.5" marker-end="url(#pa)"/>
+
+  <rect x="24" y="118" width="420" height="40" rx="6" fill="#fff5f5" stroke="#dd6b20" stroke-width="1.5"/>
+  <text x="34" y="142" font-size="11.5" fill="#7b341e">② 악의적 입력도 그대로: pstmt.setString(1, "x' OR '1'='1")</text>
+
+  <path d="M234 158 V186" stroke="#2d3748" stroke-width="1.5" marker-end="url(#pa)"/>
+
+  <rect x="24" y="188" width="700" height="40" rx="6" fill="#dff5e6" stroke="#188a5e" stroke-width="2"/>
+  <text x="34" y="212" font-size="11.5" fill="#15513c">③ 실행: MENU_NAME 값이 정확히 "x' OR '1'='1" 문자열 그 자체로만 비교된다 — 결과 없음(안전)</text>
+
+  <text x="380" y="260" font-size="12" fill="#2d3748" text-anchor="middle">SQL 문법은 ①에서 이미 확정되었기 때문에, ②의 값이 아무리 따옴표를 포함해도</text>
+  <text x="380" y="278" font-size="12" fill="#2d3748" text-anchor="middle">문법을 바꿀 수 없다 — 그래서 SQL Injection이 통하지 않는다</text>
+
+  <defs>
+    <marker id="pa" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2d3748"/></marker>
+  </defs>
+</svg>
