@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="700" height="220" fill="#fbfbfb"/>
+  <text x="350" y="24" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">UPDATE에 WHERE를 빠뜨리면 전체 행이 바뀐다</text>
+
+  <rect x="30" y="50" width="300" height="130" rx="10" fill="#fff5f5" stroke="#c53030" stroke-width="2"/>
+  <text x="180" y="74" font-size="12" font-weight="bold" fill="#742a2a" text-anchor="middle">update users set name='이공두';</text>
+  <text x="180" y="100" font-size="11" fill="#742a2a" text-anchor="middle">WHERE 없음</text>
+  <text x="180" y="124" font-size="11" fill="#742a2a" text-anchor="middle">→ 테이블의 모든 행의</text>
+  <text x="180" y="140" font-size="11" fill="#742a2a" text-anchor="middle">name이 '이공두'로 바뀐다!</text>
+  <text x="180" y="160" font-size="10.5" fill="#9b2c2c" text-anchor="middle">😱 되돌리려면 백업이 필요</text>
+
+  <rect x="370" y="50" width="300" height="130" rx="10" fill="#dff5e6" stroke="#188a5e" stroke-width="2"/>
+  <text x="520" y="74" font-size="12" font-weight="bold" fill="#15513c" text-anchor="middle">update users set name='조평순'</text>
+  <text x="520" y="92" font-size="12" font-weight="bold" fill="#15513c" text-anchor="middle">where user_id = 1;</text>
+  <text x="520" y="118" font-size="11" fill="#15513c" text-anchor="middle">PK·UNIQUE처럼 행 하나를</text>
+  <text x="520" y="134" font-size="11" fill="#15513c" text-anchor="middle">정확히 식별하는 조건</text>
+  <text x="520" y="158" font-size="10.5" fill="#15513c" text-anchor="middle">✅ 의도한 1행만 수정</text>
+
+  <text x="350" y="205" font-size="11" fill="#2d3748" text-anchor="middle">UPDATE·DELETE 전에는 먼저 같은 조건으로 SELECT를 해보는 습관이 안전하다</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 240" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="700" height="240" fill="#fbfbfb"/>
+  <text x="350" y="24" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">justify-content는 주축, align-items는 교차축</text>
+
+  <rect x="60" y="50" width="580" height="140" rx="10" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="70" y="68" font-size="11" fill="#1a365d">.card-list { display: flex; }</text>
+
+  <rect x="90" y="90" width="90" height="70" rx="6" fill="#fff" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="135" y="130" font-size="11" text-anchor="middle" fill="#2d3748">카드1</text>
+
+  <rect x="300" y="90" width="90" height="100" rx="6" fill="#fff" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="345" y="135" font-size="11" text-anchor="middle" fill="#2d3748">카드2</text>
+  <text x="345" y="150" font-size="9.5" text-anchor="middle" fill="#718096">(설명 길어서</text>
+  <text x="345" y="162" font-size="9.5" text-anchor="middle" fill="#718096">더 높음)</text>
+
+  <rect x="510" y="90" width="90" height="70" rx="6" fill="#fff" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="555" y="130" font-size="11" text-anchor="middle" fill="#2d3748">카드3</text>
+
+  <path d="M90 200 H600" stroke="#2b6cb0" stroke-width="1.5" marker-end="url(#fx)"/>
+  <text x="345" y="214" font-size="11" fill="#2b6cb0" text-anchor="middle">주축(main-axis) → justify-content: space-between</text>
+
+  <path d="M650 90 V190" stroke="#dd6b20" stroke-width="1.5" marker-end="url(#fx2)"/>
+  <text x="693" y="140" font-size="11" fill="#dd6b20" text-anchor="middle" transform="rotate(90 693 140)">교차축 ↕</text>
+  <text x="400" y="235" font-size="11" fill="#2d3748" text-anchor="middle">align-items: flex-start → 카드를 억지로 늘리지 않고 내용만큼만 높이를 둔다</text>
+
+  <defs>
+    <marker id="fx" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2b6cb0"/></marker>
+    <marker id="fx2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#dd6b20"/></marker>
+  </defs>
+</svg>

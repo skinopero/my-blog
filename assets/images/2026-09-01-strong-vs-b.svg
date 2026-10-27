@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="700" height="220" fill="#fbfbfb"/>
+  <text x="350" y="28" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">모양은 같아 보여도, 뜻하는 바가 다르다</text>
+
+  <rect x="40" y="56" width="280" height="130" rx="10" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="180" y="82" font-size="13" font-weight="bold" fill="#1a365d" text-anchor="middle">&lt;strong&gt; / &lt;em&gt;</text>
+  <text x="180" y="106" font-size="12" text-anchor="middle" fill="#2d3748">"여기 정말 중요해요!"</text>
+  <text x="180" y="124" font-size="12" text-anchor="middle" fill="#2d3748">라는 의미를 전달한다</text>
+  <text x="180" y="150" font-size="11" text-anchor="middle" fill="#718096">화면 읽기 프로그램도</text>
+  <text x="180" y="166" font-size="11" text-anchor="middle" fill="#718096">"강조됨"이라고 읽어준다</text>
+
+  <rect x="380" y="56" width="280" height="130" rx="10" fill="#fff5f5" stroke="#dd6b20" stroke-width="2"/>
+  <text x="520" y="82" font-size="13" font-weight="bold" fill="#7b341e" text-anchor="middle">&lt;b&gt; / &lt;i&gt;</text>
+  <text x="520" y="106" font-size="12" text-anchor="middle" fill="#2d3748">그냥 "굵게" "기울임"</text>
+  <text x="520" y="124" font-size="12" text-anchor="middle" fill="#2d3748">모양만 바꿀 뿐이다</text>
+  <text x="520" y="150" font-size="11" text-anchor="middle" fill="#718096">화면 읽기 프로그램은</text>
+  <text x="520" y="166" font-size="11" text-anchor="middle" fill="#718096">아무 의미도 못 읽어준다</text>
+
+  <text x="350" y="205" font-size="11.5" fill="#2d3748" text-anchor="middle">브라우저 화면에서는 똑같이 굵게 보이지만, 의미를 전달하려면 strong/em을 써야 한다</text>
+</svg>
