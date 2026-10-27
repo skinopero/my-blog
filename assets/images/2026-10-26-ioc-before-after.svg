@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="760" height="420" fill="#fbfbfb"/>
+
+  <!-- Before -->
+  <text x="24" y="28" font-size="13" font-weight="bold" fill="#dd6b20">BEFORE — 개발자가 직접 new로 조립</text>
+  <rect x="40" y="46" width="140" height="48" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="110" y="75" font-size="13" text-anchor="middle" fill="#2d3748">PaymentService</text>
+  <path d="M110 94 V116" stroke="#2d3748" stroke-width="1.5" marker-end="url(#a1)"/>
+  <text x="128" y="110" font-size="11" fill="#718096">new</text>
+  <rect x="40" y="118" width="140" height="48" rx="8" fill="#fff5f5" stroke="#dd6b20" stroke-width="1.5"/>
+  <text x="110" y="147" font-size="13" text-anchor="middle" fill="#7b341e">KakaoPayGateway</text>
+  <text x="220" y="100" font-size="11.5" fill="#718096">직접 연결(강한 결합) —</text>
+  <text x="220" y="116" font-size="11.5" fill="#718096">구현체를 바꾸려면</text>
+  <text x="220" y="132" font-size="11.5" fill="#718096">PaymentService 코드를 고쳐야 한다</text>
+
+  <line x1="0" y1="190" x2="760" y2="190" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- After -->
+  <text x="24" y="218" font-size="13" font-weight="bold" fill="#2b6cb0">AFTER — IoC 컨테이너가 미리 조립해서 꺼내준다</text>
+
+  <rect x="40" y="236" width="150" height="46" rx="8" fill="#edf2f7" stroke="#2b6cb0" stroke-width="1.5"/>
+  <text x="115" y="264" font-size="12.5" text-anchor="middle" fill="#2d3748">AppConfig (@Bean)</text>
+  <path d="M190 259 H228" stroke="#2d3748" stroke-width="1.5" marker-end="url(#a1)"/>
+
+  <rect x="230" y="222" width="280" height="130" rx="10" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="370" y="244" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#1a365d">IoC 컨테이너 (ApplicationContext)</text>
+  <rect x="246" y="256" width="110" height="36" rx="6" fill="#fff" stroke="#2d3748" stroke-width="1.25"/>
+  <text x="301" y="278" font-size="11" text-anchor="middle" fill="#2d3748">PaymentService</text>
+  <rect x="366" y="256" width="130" height="36" rx="6" fill="#fff" stroke="#2d3748" stroke-width="1.25"/>
+  <text x="431" y="278" font-size="10.5" text-anchor="middle" fill="#2d3748">NaverPayGateway</text>
+  <rect x="246" y="300" width="110" height="36" rx="6" fill="#fff" stroke="#2d3748" stroke-width="1.25"/>
+  <text x="301" y="322" font-size="10.5" text-anchor="middle" fill="#2d3748">KakaoPayGateway</text>
+  <text x="431" y="322" font-size="10.5" fill="#718096" text-anchor="middle">… Bean 100개여도 OK</text>
+
+  <path d="M510 287 H548" stroke="#2d3748" stroke-width="1.5" marker-end="url(#a1)"/>
+  <text x="529" y="278" font-size="10.5" fill="#718096" text-anchor="middle">getBean()</text>
+
+  <rect x="550" y="263" width="150" height="46" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="625" y="291" font-size="12.5" text-anchor="middle" fill="#2d3748">Application</text>
+
+  <text x="370" y="390" font-size="12" fill="#2b6cb0" text-anchor="middle">객체를 만들고 연결하는 제어권이 개발자 → 컨테이너로 넘어간다 (Inversion of Control)</text>
+
+  <defs>
+    <marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2d3748"/>
+    </marker>
+  </defs>
+</svg>
