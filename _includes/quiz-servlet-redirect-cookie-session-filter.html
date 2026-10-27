@@ -1,0 +1,135 @@
+<div id="rcsf-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text"><code>resp.sendRedirect("/redirect")</code>를 호출하면 브라우저는 어떻게 반응할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">아무 일도 일어나지 않는다</button>
+<button class="qz-opt" data-correct="true">"/redirect"로 새 요청(GET)을 다시 보낸다</button>
+<button class="qz-opt">서버 내부에서만 처리되고 끝난다</button>
+<button class="qz-opt">쿠키가 자동으로 삭제된다</button>
+</div>
+<div class="qz-explain">redirect는 브라우저에게 "이 주소로 다시 요청해"라고 응답하는 것이고, URL이 바뀌는 방식이라 GET 요청이 된다.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">회원가입(INSERT) 처리 후 redirect를 사용하는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">속도가 더 빨라서</button>
+<button class="qz-opt" data-correct="true">새로고침해도 INSERT가 중복 실행되지 않도록 하기 위해(PRG 패턴)</button>
+<button class="qz-opt">세션을 자동으로 만들어주기 때문에</button>
+<button class="qz-opt">쿠키를 자동으로 저장하기 때문에</button>
+</div>
+<div class="qz-explain">redirect 후에는 마지막 GET 요청만 반복되므로, 새로고침해도 회원가입 INSERT가 다시 실행되지 않는다.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">쿠키(Cookie)는 어디에 저장될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">서버의 메모리</button>
+<button class="qz-opt">서버의 데이터베이스</button>
+<button class="qz-opt" data-correct="true">클라이언트(브라우저)</button>
+<button class="qz-opt">서블릿 컨테이너 설정 파일</button>
+</div>
+<div class="qz-explain">쿠키는 서버가 <code>resp.addCookie()</code>로 실어 보내면, 브라우저가 저장해뒀다가 이후 요청마다 자동으로 동봉해서 다시 보낸다.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text"><code>req.getSession(false)</code>를 호출했는데 세션이 없으면 어떻게 될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">새 세션을 자동으로 만들어준다</button>
+<button class="qz-opt" data-correct="true"><code>null</code>을 반환한다</button>
+<button class="qz-opt">예외를 던진다</button>
+<button class="qz-opt">쿠키에서 대신 값을 찾아준다</button>
+</div>
+<div class="qz-explain"><code>getSession(false)</code>는 세션이 없으면 새로 만들지 않고 <code>null</code>을 반환한다. 반면 <code>getSession(true)</code>는 없으면 새로 만든다.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text"><code>session.setMaxInactiveInterval(30)</code>의 의미는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">세션이 30개까지만 만들어진다</button>
+<button class="qz-opt" data-correct="true">30초 동안 요청이 없으면 세션이 자동으로 만료된다</button>
+<button class="qz-opt">30번 요청하면 세션이 삭제된다</button>
+<button class="qz-opt">쿠키 유효기간이 30초가 된다</button>
+</div>
+<div class="qz-explain">세션의 유효 시간을 초 단위로 지정하는 메서드로, 그 시간 동안 요청이 없으면 세션이 자동 만료된다.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">로그아웃 처리를 위해 세션을 완전히 없애는 메서드는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>session.removeAttribute()</code></button>
+<button class="qz-opt" data-correct="true"><code>session.invalidate()</code></button>
+<button class="qz-opt"><code>session.close()</code></button>
+<button class="qz-opt"><code>session.delete()</code></button>
+</div>
+<div class="qz-explain"><code>invalidate()</code>는 세션 자체를 무효화해서, 그 안에 담긴 모든 정보를 함께 없앤다.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">필터가 요청을 다음 필터나 서블릿으로 통과시키기 위해 호출하는 메서드는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>resp.sendRedirect()</code></button>
+<button class="qz-opt" data-correct="true"><code>chain.doFilter(request, response)</code></button>
+<button class="qz-opt"><code>req.forward()</code></button>
+<button class="qz-opt"><code>filter.next()</code></button>
+</div>
+<div class="qz-explain"><code>chain.doFilter()</code>를 호출하지 않으면 요청은 다음 단계(서블릿)까지 도달하지 못한다.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">필터를 등록하는 두 가지 방법은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">@Service, @Repository</button>
+<button class="qz-opt" data-correct="true">@WebFilter 어노테이션, web.xml의 &lt;filter&gt;/&lt;filter-mapping&gt;</button>
+<button class="qz-opt">@Controller, @RestController</button>
+<button class="qz-opt">생성자 주입, setter 주입</button>
+</div>
+<div class="qz-explain">어노테이션(@WebFilter)이 더 간단하지만, init-param처럼 외부 값을 주입해야 할 땐 web.xml 방식을 쓰기도 한다.</div>
+</div>
+<button class="qz-reset" id="rcsf-reset-btn">다시 풀기</button>
+</div>
+<style>
+#rcsf-quiz{margin:1.5rem 0;font-family:inherit}
+#rcsf-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#rcsf-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#rcsf-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#rcsf-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#rcsf-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#rcsf-quiz .qz-opt:hover{border-color:#FF2E88}
+#rcsf-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#rcsf-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#rcsf-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#rcsf-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#rcsf-quiz .qz-q.answered .qz-explain{display:block}
+#rcsf-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#rcsf-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('rcsf-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('rcsf-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

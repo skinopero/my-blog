@@ -1,0 +1,135 @@
+<div id="npeq-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">NullPointerException은 언제 발생할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">배열의 크기가 음수일 때</button>
+<button class="qz-opt" data-correct="true">null인 참조변수의 메서드나 필드에 접근하려고 할 때</button>
+<button class="qz-opt">정수를 0으로 나눌 때</button>
+<button class="qz-opt">문자열을 숫자로 변환할 수 없을 때</button>
+</div>
+<div class="qz-explain">참조 변수가 가리키는 대상이 없는(null) 상태에서 그 변수를 통해 뭔가를 하려고 할 때 발생하는 런타임 예외야.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>session.getAttribute("loggedInUser")</code>의 반환 타입은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">String</button>
+<button class="qz-opt" data-correct="true">Object (그래서 꺼내 쓰려면 명시적 형변환이 필요하다)</button>
+<button class="qz-opt">boolean</button>
+<button class="qz-opt">HttpSession</button>
+</div>
+<div class="qz-explain">어떤 타입이든 담을 수 있도록 Object로 반환하기 때문에, 실제 타입을 안다면 <code>(String)</code>처럼 명시적으로 형변환해서 꺼내 써야 해.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">서블릿 코드 안에서 처리되지 않은 예외가 그대로 터지면, 컨테이너는 보통 어떤 상태 코드로 응답할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">404</button>
+<button class="qz-opt" data-correct="true">500</button>
+<button class="qz-opt">200</button>
+<button class="qz-opt">302</button>
+</div>
+<div class="qz-explain">처리되지 않은 예외는 서버 쪽 문제로 간주되어 500 Internal Server Error로 변환돼.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text"><code>req.getSession(false)</code>의 의미는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">세션이 없으면 새로 만든다</button>
+<button class="qz-opt" data-correct="true">세션이 없으면 새로 만들지 않고 null을 반환한다</button>
+<button class="qz-opt">항상 새 세션을 만든다</button>
+<button class="qz-opt">세션을 즉시 삭제한다</button>
+</div>
+<div class="qz-explain"><code>getSession(false)</code>는 기존 세션이 없으면 <code>null</code>을 돌려줘. 이걸 모르고 바로 <code>.getAttribute()</code>를 호출하면 NPE가 날 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">세션이 없는 상태로 <code>/auth</code>에 요청이 왔을 때, <code>LoginFilter</code>가 하는 일은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">그냥 통과시킨다</button>
+<button class="qz-opt" data-correct="true">로그인 페이지로 redirect시켜서 AuthServlet까지 도달하지 못하게 막는다</button>
+<button class="qz-opt">서버를 재시작시킨다</button>
+<button class="qz-opt">쿠키를 강제로 삭제한다</button>
+</div>
+<div class="qz-explain">LoginFilter가 세션·로그인 정보를 먼저 확인해서, 없으면 아예 서블릿까지 가지 못하게 걸러줘 — 이게 AuthServlet의 NPE를 실제로 막아주는 안전장치야.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">필터는 서블릿보다 먼저 실행될까, 나중에 실행될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">먼저 실행된다 (요청이 서블릿에 도달하기 전에 가로챈다)</button>
+<button class="qz-opt">나중에 실행된다</button>
+<button class="qz-opt">동시에 실행된다</button>
+<button class="qz-opt">순서는 랜덤이다</button>
+</div>
+<div class="qz-explain">필터는 HTTP 요청이 서블릿에 도달하기 전에 동작하도록 설계된 컴포넌트야.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">폼을 POST로 제출해 <code>/cookie</code>에 요청하면 <code>doPost()</code>가 호출되는데, 그 안에서 화면을 보여주기 위해 재사용하는 메서드는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">doPut()</button>
+<button class="qz-opt" data-correct="true">doGet() — doPost() 안에서 직접 호출</button>
+<button class="qz-opt">doDelete()</button>
+<button class="qz-opt">service()</button>
+</div>
+<div class="qz-explain">doPost()가 쿠키를 설정한 뒤 doGet(req, resp)를 직접 호출해서, 쿠키를 보여주는 화면 로직을 재사용해.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">서블릿 컨테이너가 <code>doGet()</code>과 <code>doPost()</code> 중 무엇을 호출할지 결정하는 기준은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">서블릿 클래스 이름</button>
+<button class="qz-opt" data-correct="true">HTTP 요청 메소드(GET인지 POST인지)</button>
+<button class="qz-opt">요청 파라미터의 개수</button>
+<button class="qz-opt">세션 존재 여부</button>
+</div>
+<div class="qz-explain"><code>service()</code>가 요청의 HTTP 메소드를 보고 자동으로 doGet 또는 doPost를 호출해줘.</div>
+</div>
+<button class="qz-reset" id="npeq-reset-btn">다시 풀기</button>
+</div>
+<style>
+#npeq-quiz{margin:1.5rem 0;font-family:inherit}
+#npeq-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#npeq-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#npeq-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#npeq-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#npeq-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#npeq-quiz .qz-opt:hover{border-color:#FF2E88}
+#npeq-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#npeq-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#npeq-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#npeq-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#npeq-quiz .qz-q.answered .qz-explain{display:block}
+#npeq-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#npeq-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('npeq-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('npeq-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

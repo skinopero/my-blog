@@ -1,0 +1,135 @@
+<div id="iocdi-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">IoC 컨테이너의 동의어가 <b>아닌</b> 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">ApplicationContext</button>
+<button class="qz-opt">BeanFactory</button>
+<button class="qz-opt" data-correct="true">DispatcherServlet</button>
+<button class="qz-opt">IoC Container</button>
+</div>
+<div class="qz-explain">IoC Container, ApplicationContext, BeanFactory는 전부 같은 것을 가리키는 동의어야. DispatcherServlet은 Spring MVC에서 요청을 분배하는 별개의 개념이야.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>PaymentService</code>가 생성자에서 <code>new KakaoPayGateway()</code>를 직접 호출하는 방식의 문제는 SOLID 중 어떤 원칙을 위반할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">단일 책임 원칙(SRP)</button>
+<button class="qz-opt" data-correct="true">개방-폐쇄 원칙(OCP)</button>
+<button class="qz-opt">리스코프 치환 원칙(LSP)</button>
+<button class="qz-opt">인터페이스 분리 원칙(ISP)</button>
+</div>
+<div class="qz-explain">구현체를 바꾸려면 PaymentService 코드 자체를 고쳐야 하므로, "확장에는 열려있고 변경에는 닫혀있어야 한다"는 개방-폐쇄 원칙을 위반해.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">Spring Bean의 기본 Scope는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">prototype</button>
+<button class="qz-opt" data-correct="true">singleton</button>
+<button class="qz-opt">request</button>
+<button class="qz-opt">session</button>
+</div>
+<div class="qz-explain">별도로 @Scope를 지정하지 않으면 Bean은 기본적으로 singleton으로 등록돼 — 컨테이너 안에 동일한 인스턴스가 하나만 존재해.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text"><code>@Scope("prototype")</code>으로 등록된 Bean의 특징은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">항상 같은 인스턴스를 반환한다</button>
+<button class="qz-opt" data-correct="true"><code>getBean()</code>을 호출할 때마다 새 인스턴스를 생성한다</button>
+<button class="qz-opt">서버가 꺼질 때까지 하나도 생성되지 않는다</button>
+<button class="qz-opt">인터페이스로만 등록할 수 있다</button>
+</div>
+<div class="qz-explain">prototype은 요청마다 매번 새 인스턴스를 만들어 반환해. singleton과 정반대야.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">Bean이 상태(필드값)를 가지면 왜 위험할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">메모리를 너무 많이 써서</button>
+<button class="qz-opt" data-correct="true">기본적으로 싱글톤이라, 모든 요청이 그 필드값을 공유하게 되기 때문</button>
+<button class="qz-opt">컴파일 에러가 나기 때문</button>
+<button class="qz-opt">Spring이 아예 실행을 막기 때문</button>
+</div>
+<div class="qz-explain">Bean은 하나의 인스턴스를 여러 요청이 공유하기 때문에, 요청별로 달라지는 데이터를 필드에 저장하면 서로 덮어쓰게 돼. 요청별 데이터는 DTO로 주고받아야 해.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text"><code>@ComponentScan</code>이 하는 일은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">DB 테이블을 자동으로 스캔한다</button>
+<button class="qz-opt" data-correct="true">지정된 패키지에서 @Component 계열 어노테이션이 붙은 클래스를 찾아 자동으로 Bean으로 등록한다</button>
+<button class="qz-opt">서블릿을 자동으로 등록한다</button>
+<button class="qz-opt">쿠키와 세션을 자동으로 관리한다</button>
+</div>
+<div class="qz-explain">AppConfig에 @Bean 메소드를 일일이 적지 않아도, @Component/@Service 등이 붙은 클래스를 컨테이너가 알아서 찾아 등록해줘.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">Spring이 공식적으로 권장하는 의존성 주입 방식은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">필드 주입</button>
+<button class="qz-opt">setter 주입</button>
+<button class="qz-opt" data-correct="true">생성자 주입</button>
+<button class="qz-opt">셋 다 동등하게 권장된다</button>
+</div>
+<div class="qz-explain">생성자 주입은 final로 불변성을 보장하고 필수 의존성을 생성 시점에 강제화할 수 있어서 공식 권장 방식이야.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">필드 주입(<code>@Autowired private PaymentInterface p;</code>)의 단점이 아닌 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>final</code> 키워드를 사용할 수 없다</button>
+<button class="qz-opt">필드에 직접 새 객체를 대입해도 컴파일 에러가 나지 않는다</button>
+<button class="qz-opt" data-correct="true">선택적 의존관계를 가질 수 없다</button>
+<button class="qz-opt">생성자 주입보다 불변성 보장이 약하다</button>
+</div>
+<div class="qz-explain">"선택적 의존관계를 가질 수 있다"는 오히려 setter 주입의 장점이야. 필드 주입의 단점은 final 불가, 그리고 의도치 않게 필드를 재대입해도 컴파일러가 막아주지 못한다는 것.</div>
+</div>
+<button class="qz-reset" id="iocdi-reset-btn">다시 풀기</button>
+</div>
+<style>
+#iocdi-quiz{margin:1.5rem 0;font-family:inherit}
+#iocdi-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#iocdi-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#iocdi-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#iocdi-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#iocdi-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#iocdi-quiz .qz-opt:hover{border-color:#FF2E88}
+#iocdi-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#iocdi-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#iocdi-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#iocdi-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#iocdi-quiz .qz-q.answered .qz-explain{display:block}
+#iocdi-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#iocdi-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('iocdi-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('iocdi-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

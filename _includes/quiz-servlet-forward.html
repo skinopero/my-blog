@@ -1,0 +1,135 @@
+<div id="fwd-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">서블릿이 브라우저에 HTML 응답을 써서 보낼 때 사용하는 객체는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">HttpServletRequest</button>
+<button class="qz-opt" data-correct="true">HttpServletResponse (getWriter()로 PrintWriter를 얻음)</button>
+<button class="qz-opt">FilterChain</button>
+<button class="qz-opt">ServletConfig</button>
+</div>
+<div class="qz-explain"><code>resp.getWriter()</code>로 <code>PrintWriter</code>를 얻어서 HTML 문자열을 그대로 써서 내려보낼 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>web.xml</code>에서 404·500 에러가 발생했을 때 지정한 서블릿으로 보내는 설정은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>&lt;filter-mapping&gt;</code></button>
+<button class="qz-opt" data-correct="true"><code>&lt;error-page&gt;</code></button>
+<button class="qz-opt"><code>&lt;servlet-mapping&gt;</code></button>
+<button class="qz-opt"><code>&lt;welcome-file&gt;</code></button>
+</div>
+<div class="qz-explain"><code>&lt;error-page&gt;</code>에 에러 코드와 location을 지정해두면, 해당 에러 발생 시 그 서블릿으로 요청이 넘어가.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text"><code>resp.sendError(404, ...)</code>를 호출하면 내부적으로 어떤 방식으로 에러 페이지에 도달할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">redirect</button>
+<button class="qz-opt" data-correct="true">forward</button>
+<button class="qz-opt">쿠키 전달</button>
+<button class="qz-opt">세션 전달</button>
+</div>
+<div class="qz-explain">컨테이너가 <code>web.xml</code>의 <code>&lt;error-page&gt;</code> 설정을 보고, 원래 서블릿이 응답한 것처럼 내부적으로 forward 방식으로 에러 처리 서블릿에 넘겨.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text"><code>req.getAttribute("jakarta.servlet.error.status_code")</code>로 가져오는 값은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">요청 URL</button>
+<button class="qz-opt" data-correct="true">발생한 에러의 HTTP 상태 코드</button>
+<button class="qz-opt">세션 ID</button>
+<button class="qz-opt">쿠키 값</button>
+</div>
+<div class="qz-explain">에러 처리용 서블릿은 이 속성으로 몇 번 에러가 발생했는지(404, 500 등) 알 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">forward 방식에서 원래 서블릿과 위임받은 서블릿의 관계는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">서로 다른 req, resp 객체를 각자 만든다</button>
+<button class="qz-opt" data-correct="true">같은 req, resp 객체를 공유한다</button>
+<button class="qz-opt">세션으로만 데이터를 주고받는다</button>
+<button class="qz-opt">쿠키로만 데이터를 주고받는다</button>
+</div>
+<div class="qz-explain">forward는 req·resp 객체를 그대로 공유해서, <code>req.setAttribute()</code>로 넘긴 값을 다음 서블릿이 <code>req.getAttribute()</code>로 바로 받을 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">forward가 일어난 뒤, 클라이언트 브라우저의 주소창 URL은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">위임받은 서블릿의 URL로 바뀐다</button>
+<button class="qz-opt" data-correct="true">바뀌지 않는다 (클라이언트는 forward를 모른다)</button>
+<button class="qz-opt">빈 화면이 된다</button>
+<button class="qz-opt">항상 '/'로 바뀐다</button>
+</div>
+<div class="qz-explain">forward는 서버 내부에서만 일어나는 일이라, 클라이언트는 URL 변화 없이 그냥 응답만 받게 돼.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">forward 방식을 INSERT·UPDATE·DELETE 처리에 쓰면 안 되는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">forward는 데이터베이스에 접근할 수 없어서</button>
+<button class="qz-opt" data-correct="true">새로고침 시 같은 요청이 반복되어 DML이 중복 실행될 수 있어서</button>
+<button class="qz-opt">forward는 POST 요청을 지원하지 않아서</button>
+<button class="qz-opt">forward는 속도가 너무 느려서</button>
+</div>
+<div class="qz-explain">forward는 URL이 바뀌지 않기 때문에, 사용자가 결과 화면에서 새로고침하면 동일한 요청(INSERT 등)이 그대로 다시 실행될 위험이 있어.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">다른 서블릿으로 forward하기 위해 객체를 얻는 메서드는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>resp.sendRedirect()</code></button>
+<button class="qz-opt" data-correct="true"><code>req.getRequestDispatcher("/경로")</code></button>
+<button class="qz-opt"><code>req.getSession()</code></button>
+<button class="qz-opt"><code>resp.addCookie()</code></button>
+</div>
+<div class="qz-explain"><code>RequestDispatcher rd = req.getRequestDispatcher("/print"); rd.forward(req, resp);</code>처럼 사용해.</div>
+</div>
+<button class="qz-reset" id="fwd-reset-btn">다시 풀기</button>
+</div>
+<style>
+#fwd-quiz{margin:1.5rem 0;font-family:inherit}
+#fwd-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#fwd-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#fwd-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#fwd-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#fwd-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#fwd-quiz .qz-opt:hover{border-color:#FF2E88}
+#fwd-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#fwd-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#fwd-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#fwd-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#fwd-quiz .qz-q.answered .qz-explain{display:block}
+#fwd-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#fwd-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('fwd-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('fwd-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>
