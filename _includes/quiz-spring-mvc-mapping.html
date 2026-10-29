@@ -1,0 +1,135 @@
+<div id="mvcm-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">클래스에 <code>@RequestMapping("/order/*")</code>, 메서드에 <code>@GetMapping("/regist")</code>를 붙이면 최종 경로는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">/regist</button>
+<button class="qz-opt">/order</button>
+<button class="qz-opt" data-correct="true">/order/regist (두 경로가 합쳐짐)</button>
+<button class="qz-opt">둘 중 하나만 적용됨</button>
+</div>
+<div class="qz-explain">클래스 레벨 매핑과 메서드 레벨 매핑은 합쳐져서 최종 요청 경로를 완성해.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>/order/detail/{orderNo}</code>에서 <code>@PathVariable</code>로 꺼내는 값은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">쿼리스트링 값</button>
+<button class="qz-opt" data-correct="true">URL 경로 자체에 포함된 값 (예: /order/detail/3의 3)</button>
+<button class="qz-opt">폼 데이터 값</button>
+<button class="qz-opt">세션에 저장된 값</button>
+</div>
+<div class="qz-explain">PathVariable은 URL 경로 중간에 끼워진 값을 그대로 꺼내 쓰는 것이야.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text"><code>@GetMapping("/regist")</code>은 사실 무엇의 축약형일까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">@Controller</button>
+<button class="qz-opt" data-correct="true">@RequestMapping(value = "/regist", method = RequestMethod.GET)</button>
+<button class="qz-opt">@PathVariable</button>
+<button class="qz-opt">@ModelAttribute</button>
+</div>
+<div class="qz-explain">@GetMapping/@PostMapping은 @RequestMapping에 HTTP 메소드를 지정한 것을 짧게 줄인 표현이야.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text"><code>@RequestParam</code>을 쓸 때 가장 조심해야 할 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">항상 String 타입만 받을 수 있다</button>
+<button class="qz-opt" data-correct="true">View의 input name 속성과 변수명이 다르면 400 Bad Request가 난다</button>
+<button class="qz-opt">POST 요청에서만 쓸 수 있다</button>
+<button class="qz-opt">세션이 있어야만 동작한다</button>
+</div>
+<div class="qz-explain">@RequestParam은 요청 파라미터 이름과 변수명(또는 지정한 이름)이 정확히 일치해야 값을 받아올 수 있어.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text"><code>@ModelAttribute MenuDTO menu</code>처럼 쓰면 어떤 일이 일어날까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">menu 파라미터 하나만 받는다</button>
+<button class="qz-opt" data-correct="true">여러 입력값을 MenuDTO 객체 하나로 자동으로 묶어서 받는다</button>
+<button class="qz-opt">DB에서 메뉴를 자동 조회한다</button>
+<button class="qz-opt">세션에 메뉴 정보를 저장한다</button>
+</div>
+<div class="qz-explain">@ModelAttribute는 클래스 자료형을 활용해서 여러 입력값을 객체 하나로 묶어주는 어노테이션이야.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">핸들러 메서드가 <code>return "result";</code>를 하면 실제로 찾는 파일은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">result (확장자 없이)</button>
+<button class="qz-opt" data-correct="true">resources/templates/result.html</button>
+<button class="qz-opt">result.java</button>
+<button class="qz-opt">아무 파일도 찾지 않는다</button>
+</div>
+<div class="qz-explain">ViewResolver가 반환된 문자열에 resources/templates/ 접두사와 .html 접미사를 자동으로 붙여줘.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">문자열 앞에 <code>redirect:</code>를 안 붙이면 Spring의 기본 View 반환 방식은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">redirect</button>
+<button class="qz-opt" data-correct="true">forward</button>
+<button class="qz-opt">둘 다 아님, 에러가 난다</button>
+<button class="qz-opt">항상 JSON 응답</button>
+</div>
+<div class="qz-explain">Spring에서 View를 반환하는 기본 방식은 forward야. redirect가 필요하면 명시적으로 "redirect:" 접두사를 붙여야 해.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">redirect 후에도 메시지를 딱 한 번만 전달하고 싶을 때 쓰는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">model.addAttribute()</button>
+<button class="qz-opt" data-correct="true">RedirectAttributes.addFlashAttribute()</button>
+<button class="qz-opt">request.setAttribute()</button>
+<button class="qz-opt">@RequestParam</button>
+</div>
+<div class="qz-explain">redirect는 새 요청이라 Model 값이 사라지는데, addFlashAttribute()는 세션을 활용해 딱 한 번만 유효한 값을 넘겨줘.</div>
+</div>
+<button class="qz-reset" id="mvcm-reset-btn">다시 풀기</button>
+</div>
+<style>
+#mvcm-quiz{margin:1.5rem 0;font-family:inherit}
+#mvcm-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#mvcm-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#mvcm-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#mvcm-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#mvcm-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#mvcm-quiz .qz-opt:hover{border-color:#FF2E88}
+#mvcm-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#mvcm-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#mvcm-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#mvcm-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#mvcm-quiz .qz-q.answered .qz-explain{display:block}
+#mvcm-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#mvcm-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('mvcm-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('mvcm-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 260" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="740" height="260" fill="#fbfbfb"/>
+  <text x="370" y="24" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">redirect는 새 요청이라 Model 값이 사라진다</text>
+
+  <rect x="30" y="50" width="200" height="50" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="130" y="80" font-size="12" text-anchor="middle" fill="#2d3748">registMember() 요청①</text>
+
+  <path d="M230 75 H330" stroke="#dd6b20" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#fl)"/>
+  <text x="280" y="65" font-size="10" fill="#dd6b20" text-anchor="middle">redirect</text>
+
+  <rect x="330" y="50" width="200" height="50" rx="8" fill="#edf2f7" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="430" y="80" font-size="12" text-anchor="middle" fill="#2d3748">"/" 요청② (완전히 새 요청)</text>
+
+  <text x="430" y="118" font-size="11" fill="#c53030" text-anchor="middle">model.addAttribute()로 담은 값은 요청①에서 끝 — 요청②는 모른다</text>
+
+  <rect x="280" y="140" width="280" height="90" rx="10" fill="#dff5e6" stroke="#188a5e" stroke-width="2"/>
+  <text x="420" y="162" font-size="12" font-weight="bold" fill="#15513c" text-anchor="middle">rttr.addFlashAttribute(...)</text>
+  <text x="420" y="184" font-size="11" fill="#15513c" text-anchor="middle">세션에 잠깐 맡겨뒀다가,</text>
+  <text x="420" y="200" font-size="11" fill="#15513c" text-anchor="middle">요청②가 한 번 읽으면</text>
+  <text x="420" y="216" font-size="11" fill="#15513c" text-anchor="middle">바로 사라지는 1회용 쪽지</text>
+
+  <text x="370" y="250" font-size="11" fill="#2d3748" text-anchor="middle">Servlet의 session 개념을 Spring이 "딱 한 번만 유효한 값"으로 포장해준 것이 Flash Attribute다</text>
+
+  <defs><marker id="fl" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#dd6b20"/></marker></defs>
+</svg>

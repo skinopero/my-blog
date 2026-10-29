@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 260" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="740" height="260" fill="#fbfbfb"/>
+  <text x="370" y="24" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">@ExceptionHandler는 그 컨트롤러 안에서만 보인다</text>
+
+  <rect x="40" y="50" width="260" height="110" rx="10" fill="#dff5e6" stroke="#188a5e" stroke-width="2"/>
+  <text x="170" y="72" font-size="12" font-weight="bold" fill="#15513c" text-anchor="middle">ExceptionTestController</text>
+  <text x="170" y="94" font-size="10.5" fill="#15513c" text-anchor="middle">nullPointer() 에서 NPE 발생</text>
+  <text x="170" y="112" font-size="10.5" fill="#15513c" text-anchor="middle">@ExceptionHandler(NPE.class)</text>
+  <text x="170" y="130" font-size="10.5" font-weight="bold" fill="#15513c" text-anchor="middle">✅ 같은 클래스 안이라 잡힘</text>
+
+  <rect x="440" y="50" width="260" height="110" rx="10" fill="#fff5f5" stroke="#c53030" stroke-width="2"/>
+  <text x="570" y="72" font-size="12" font-weight="bold" fill="#742a2a" text-anchor="middle">GlobalTestController</text>
+  <text x="570" y="94" font-size="10.5" fill="#742a2a" text-anchor="middle">globalNull() 에서 NPE 발생</text>
+  <text x="570" y="112" font-size="10.5" fill="#742a2a" text-anchor="middle">(자기 클래스엔 핸들러 없음)</text>
+  <text x="570" y="130" font-size="10.5" font-weight="bold" fill="#742a2a" text-anchor="middle">❌ 다른 클래스 핸들러는 못 봄 → 500</text>
+
+  <rect x="220" y="190" width="300" height="50" rx="10" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="370" y="213" font-size="12" font-weight="bold" fill="#1a365d" text-anchor="middle">@ControllerAdvice</text>
+  <text x="370" y="230" font-size="10.5" fill="#1a365d" text-anchor="middle">모든 컨트롤러를 감시하는 경비실</text>
+
+  <path d="M300 160 L300 190" stroke="#2b6cb0" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#eh5)"/>
+  <path d="M520 160 L440 190" stroke="#2b6cb0" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#eh5)"/>
+
+  <defs><marker id="eh5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2b6cb0"/></marker></defs>
+</svg>
