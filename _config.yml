@@ -12,6 +12,9 @@ collections:
   games:
     output: true
     permalink: /games/:path/
+  picturebooks:
+    output: true
+    permalink: /picturebooks/:path/
 
 plugins:
   - jekyll-remote-theme
