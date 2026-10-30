@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="800" height="430" fill="#fbfbfb"/>
+
+  <text x="200" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#2d3748">th:replace</text>
+  <text x="600" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#2d3748">th:insert</text>
+
+  <!-- th:replace before -->
+  <text x="200" y="68" text-anchor="middle" font-size="13" fill="#2d3748">Before (fragment.html)</text>
+  <rect x="80" y="80" width="240" height="70" rx="10" fill="none" stroke="#2b6cb0" stroke-width="3" stroke-dasharray="6,4"/>
+  <text x="200" y="110" text-anchor="middle" font-size="13" fill="#2d3748">&lt;header&gt;</text>
+  <text x="200" y="132" text-anchor="middle" font-size="13" fill="#2d3748">나는 header</text>
+
+  <!-- arrow -->
+  <line x1="200" y1="160" x2="200" y2="200" stroke="#2d3748" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- th:replace after -->
+  <text x="200" y="228" text-anchor="middle" font-size="13" fill="#2d3748">After</text>
+  <rect x="60" y="240" width="280" height="80" rx="10" fill="#dd6b20" opacity="0.15" stroke="#dd6b20" stroke-width="3"/>
+  <text x="200" y="272" text-anchor="middle" font-size="13" fill="#2d3748">&lt;header class="header"&gt;</text>
+  <text x="200" y="294" text-anchor="middle" font-size="13" fill="#2d3748">header.html 조각 전체</text>
+
+  <text x="200" y="350" text-anchor="middle" font-size="13" fill="#2d3748">태그 자체가 통째로 바뀐다</text>
+  <text x="200" y="372" text-anchor="middle" font-size="13" fill="#2d3748">(이삿짐 트럭처럼 상자째 교체)</text>
+
+  <!-- divider -->
+  <line x1="400" y1="60" x2="400" y2="400" stroke="#edf2f7" stroke-width="3"/>
+
+  <!-- th:insert before -->
+  <text x="600" y="68" text-anchor="middle" font-size="13" fill="#2d3748">Before (fragment.html)</text>
+  <rect x="480" y="80" width="240" height="90" rx="10" fill="none" stroke="#2b6cb0" stroke-width="3"/>
+  <text x="600" y="100" text-anchor="middle" font-size="13" fill="#2d3748">&lt;footer&gt;</text>
+  <rect x="505" y="110" width="190" height="40" rx="6" fill="none" stroke="#2b6cb0" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="600" y="134" text-anchor="middle" font-size="13" fill="#2d3748">나는 footer</text>
+
+  <!-- arrow -->
+  <line x1="600" y1="180" x2="600" y2="200" stroke="#2d3748" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- th:insert after -->
+  <text x="600" y="228" text-anchor="middle" font-size="13" fill="#2d3748">After</text>
+  <rect x="470" y="240" width="260" height="100" rx="10" fill="none" stroke="#2b6cb0" stroke-width="3"/>
+  <text x="600" y="262" text-anchor="middle" font-size="13" fill="#2d3748">&lt;footer&gt; (그대로 유지)</text>
+  <rect x="495" y="272" width="210" height="50" rx="6" fill="#dd6b20" opacity="0.15" stroke="#dd6b20" stroke-width="3"/>
+  <text x="600" y="294" text-anchor="middle" font-size="12" fill="#2d3748">&lt;footer class="footer"&gt;</text>
+  <text x="600" y="312" text-anchor="middle" font-size="12" fill="#2d3748">footer.html 조각</text>
+
+  <text x="600" y="368" text-anchor="middle" font-size="13" fill="#2d3748">바깥 상자는 두고</text>
+  <text x="600" y="390" text-anchor="middle" font-size="13" fill="#2d3748">안에 내용물만 바뀐다 (액자 속 그림 교체)</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2d3748"/>
+    </marker>
+  </defs>
+</svg>
