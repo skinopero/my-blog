@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="800" height="380" fill="#fbfbfb"/>
+
+  <text x="400" y="34" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">변경 감지(Dirty Checking)가 UPDATE를 만드는 과정</text>
+
+  <!-- step 1: find -->
+  <rect x="40" y="60" width="220" height="90" rx="10" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="150" y="86" text-anchor="middle" font-size="13" fill="#2d3748">① manager.find(Menu.class, 3)</text>
+  <text x="150" y="110" text-anchor="middle" font-size="13" fill="#2d3748">조회 시점 스냅샷 저장</text>
+  <text x="150" y="132" text-anchor="middle" font-size="13" fill="#2b6cb0">menuName = "파스타"</text>
+
+  <line x1="260" y1="105" x2="320" y2="105" stroke="#2d3748" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- step 2: setter -->
+  <rect x="330" y="60" width="220" height="90" rx="10" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="440" y="86" text-anchor="middle" font-size="13" fill="#2d3748">② foundMenu.setMenuName(</text>
+  <text x="440" y="106" text-anchor="middle" font-size="13" fill="#2d3748">"테스트!")</text>
+  <text x="440" y="130" text-anchor="middle" font-size="13" fill="#dd6b20">자바 객체 값만 변경</text>
+
+  <line x1="550" y1="105" x2="610" y2="105" stroke="#2d3748" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- step 3: commit -->
+  <rect x="620" y="60" width="150" height="90" rx="10" fill="#dd6b20" opacity="0.15" stroke="#dd6b20" stroke-width="2"/>
+  <text x="695" y="90" text-anchor="middle" font-size="13" fill="#2d3748">③ transaction</text>
+  <text x="695" y="112" text-anchor="middle" font-size="13" fill="#2d3748">.commit()</text>
+  <text x="695" y="134" text-anchor="middle" font-size="12" fill="#2d3748">호출!</text>
+
+  <line x1="400" y1="150" x2="400" y2="190" stroke="#2d3748" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- compare box -->
+  <rect x="200" y="200" width="400" height="80" rx="10" fill="none" stroke="#2b6cb0" stroke-width="3" stroke-dasharray="6,4"/>
+  <text x="400" y="228" text-anchor="middle" font-size="14" font-weight="bold" fill="#2d3748">스냅샷("파스타") vs 지금 값("테스트!") 비교</text>
+  <text x="400" y="252" text-anchor="middle" font-size="13" fill="#2d3748">다른 점을 찾으면 UPDATE 문을 자동으로 만든다</text>
+  <text x="400" y="270" text-anchor="middle" font-size="12" fill="#5B6884">개발자는 update() 메서드를 호출한 적이 없다</text>
+
+  <line x1="400" y1="280" x2="400" y2="320" stroke="#2d3748" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <rect x="230" y="330" width="340" height="40" rx="8" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="400" y="355" text-anchor="middle" font-size="13" fill="#2b6cb0" font-family="'JetBrains Mono',monospace">UPDATE tbl_menu SET menu_name=...</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2d3748"/>
+    </marker>
+  </defs>
+</svg>

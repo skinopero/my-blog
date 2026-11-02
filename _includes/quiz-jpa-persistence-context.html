@@ -1,0 +1,135 @@
+<div id="jpapc-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">JDBC로 같은 메뉴를 두 번 조회(<code>findMenuByMenuCode</code>)하면 <code>menu1 == menu2</code>는 왜 <code>false</code>일까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">메뉴 코드가 서로 다르게 전달돼서</button>
+<button class="qz-opt" data-correct="true">조회할 때마다 ResultSet을 새 객체에 옮겨 담아서 서로 다른 객체가 만들어지므로</button>
+<button class="qz-opt">DB 커넥션이 두 개라서</button>
+<button class="qz-opt">menu1이 null이라서</button>
+</div>
+<div class="qz-explain">JDBC를 직접 쓰면 조회할 때마다 새 객체를 만들어 담기 때문에, 같은 행을 조회해도 서로 다른 객체(동일성 보장 안 됨)가 된다.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">JPA(Java Persistence API)는 한마디로 무엇일까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">SQL을 더 빠르게 실행해주는 커넥션 풀</button>
+<button class="qz-opt" data-correct="true">자바 객체와 DB 테이블을 자동으로 매핑해주는 ORM 기술 표준</button>
+<button class="qz-opt">서블릿 생명주기를 관리하는 컨테이너</button>
+<button class="qz-opt">Thymeleaf 같은 템플릿 엔진</button>
+</div>
+<div class="qz-explain">JPA는 Object Relational Mapping(ORM) 기술 표준으로, 자바 객체(Entity)와 DB 테이블을 자동으로 연결해준다.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text"><code>@ManyToOne</code>의 기본 페치(fetch) 전략은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">LAZY (지연 로딩) — 필요할 때만 조회</button>
+<button class="qz-opt" data-correct="true">EAGER (즉시 로딩) — 연관된 엔티티까지 함께 조회</button>
+<button class="qz-opt">둘 다 아님 — 수동으로 조회해야 함</button>
+<button class="qz-opt">NONE — 연관관계를 아예 조회하지 않음</button>
+</div>
+<div class="qz-explain">@ManyToOne의 기본값은 EAGER(즉시 로딩)라서, 메뉴를 조회하면 연관된 Category까지 자동으로 함께 로딩된다.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">같은 트랜잭션 안에서 같은 PK로 <code>manager.find()</code>를 두 번 호출하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">매번 DB에 새로 조회해서 서로 다른 객체를 반환한다</button>
+<button class="qz-opt" data-correct="true">영속성 컨텍스트(1차 캐시)에 저장된 같은 객체를 그대로 반환한다</button>
+<button class="qz-opt">두 번째 호출은 에러가 난다</button>
+<button class="qz-opt">첫 번째 결과를 자동으로 삭제한다</button>
+</div>
+<div class="qz-explain">영속성 컨텍스트는 한 번 조회한 엔티티를 기억해두고(1차 캐시), 같은 트랜잭션 안에서 또 조회하면 DB에 가지 않고 그 객체를 그대로 돌려준다 — 그래서 동일성이 보장된다.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text"><code>manager.persist(menu)</code>를 호출한 직후, DB에는 언제 실제로 INSERT가 반영될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">persist() 호출 즉시 바로 반영된다</button>
+<button class="qz-opt" data-correct="true">쓰기 지연 SQL 저장소에 쌓였다가 commit() 시점에 flush되어 반영된다</button>
+<button class="qz-opt">애플리케이션을 종료할 때 반영된다</button>
+<button class="qz-opt">반영되지 않고 메모리에만 남는다</button>
+</div>
+<div class="qz-explain">엔티티 매니저는 CUD 작업을 바로 DB에 보내지 않고 쓰기 지연 SQL 저장소에 모아둔다. transaction.commit()이 호출되면 flush가 자동 실행되어 쌓인 SQL이 한 번에 전송된다.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">EntityManager에 <code>update()</code> 메서드가 따로 없는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">JPA에서는 수정 기능 자체를 지원하지 않아서</button>
+<button class="qz-opt" data-correct="true">조회 시점 스냅샷과 commit 시점을 비교해 변경 감지(Dirty Checking)로 자동 UPDATE를 생성해서</button>
+<button class="qz-opt">삭제 후 다시 등록하는 방식만 지원해서</button>
+<button class="qz-opt">개발자가 직접 SQL을 작성해야 해서</button>
+</div>
+<div class="qz-explain">영속성 컨텍스트는 조회 시점의 스냅샷을 보관해두고, commit 시점에 현재 엔티티 상태와 비교(변경 감지)해서 달라진 점이 있으면 자동으로 UPDATE 쿼리를 만든다. 그래서 setter로 값만 바꾸면 된다.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>manager.remove(menu)</code>를 호출한 직후 바로 같은 메뉴를 조회해보면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">항상 null이다 — 이미 삭제됐으니까</button>
+<button class="qz-opt" data-correct="true">commit() 전이라면 DB에는 아직 남아있을 수 있다</button>
+<button class="qz-opt">remove()를 호출하면 바로 예외가 발생한다</button>
+<button class="qz-opt">remove()는 조회 기능도 겸한다</button>
+</div>
+<div class="qz-explain">삭제도 등록과 마찬가지로 commit() 시점에 실제 DELETE 쿼리가 DB로 전송되므로, commit 전이라면 DB에는 아직 데이터가 남아있을 수 있다.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text"><code>application.yaml</code>에서 <code>hibernate.ddl-auto: none</code>은 무슨 뜻일까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">앱 실행 시마다 테이블을 새로 생성한다</button>
+<button class="qz-opt">앱 종료 시 테이블을 자동으로 삭제한다</button>
+<button class="qz-opt" data-correct="true">테이블을 자동으로 생성·수정하지 않고, 미리 준비된 DDL 스크립트로만 관리한다</button>
+<button class="qz-opt">SQL 로그를 전부 꺼버린다</button>
+</div>
+<div class="qz-explain">ddl-auto는 create(새로 생성), create-drop(생성 후 종료시 삭제), update(변경사항 반영), none(자동 반영 없음, DDL 스크립트로만 관리) 중 하나로 설정한다.</div>
+</div>
+<button class="qz-reset" id="jpapc-reset-btn">다시 풀기</button>
+</div>
+<style>
+#jpapc-quiz{margin:1.5rem 0;font-family:inherit}
+#jpapc-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#jpapc-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#jpapc-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#jpapc-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#jpapc-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#jpapc-quiz .qz-opt:hover{border-color:#FF2E88}
+#jpapc-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#jpapc-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#jpapc-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#jpapc-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#jpapc-quiz .qz-q.answered .qz-explain{display:block}
+#jpapc-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#jpapc-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('jpapc-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('jpapc-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>
