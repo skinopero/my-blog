@@ -1,0 +1,125 @@
+<div id="entmap-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text"><code>@GeneratedValue(strategy = GenerationType.IDENTITY)</code>를 쓰면 <code>persist()</code> 직후 어떤 일이 벌어질까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">쓰기 지연 SQL 저장소에 쌓였다가 commit 때 INSERT된다</button>
+<button class="qz-opt" data-correct="true">DB가 PK를 만들어줘야만 PK를 알 수 있어서, 즉시 INSERT가 실행된다</button>
+<button class="qz-opt">애플리케이션 종료 시 INSERT된다</button>
+<button class="qz-opt">PK가 null로 저장된다</button>
+</div>
+<div class="qz-explain">IDENTITY는 PK 생성을 DB의 AUTO_INCREMENT에 위임하므로, INSERT를 실행해야만 PK 값을 알 수 있다. 그래서 persist() 즉시 INSERT가 나가고 쓰기 지연이 적용되지 않는다.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>SEQUENCE</code> 전략은 <code>IDENTITY</code>와 무엇이 다를까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">PK를 아예 자동 생성하지 않는다</button>
+<button class="qz-opt" data-correct="true">persist() 시점에 시퀀스에서 PK만 먼저 받아오고, 실제 INSERT는 flush(commit) 시점에 실행된다</button>
+<button class="qz-opt">MySQL에서만 사용할 수 있다</button>
+<button class="qz-opt">키 생성 전용 테이블을 항상 함께 만든다</button>
+</div>
+<div class="qz-explain">SEQUENCE는 DB의 시퀀스 객체(Oracle, PostgreSQL 등)에서 PK 값만 먼저 받아올 수 있어서, 실제 INSERT는 쓰기 지연 SQL 저장소에 쌓였다가 commit 시점에 반영된다.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text"><code>@Column</code>의 <code>nullable</code>, <code>unique</code>, <code>length</code> 같은 속성은 언제 사용될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">런타임에 값을 검증할 때</button>
+<button class="qz-opt" data-correct="true">JPA가 테이블을 생성(DDL)할 때</button>
+<button class="qz-opt">화면에서 입력값을 검증할 때</button>
+<button class="qz-opt">엔티티를 삭제할 때</button>
+</div>
+<div class="qz-explain">@Column의 속성들은 JPA가 테이블을 생성(DDL)할 때 사용되는 설정이다. 애플리케이션 실행 중 값 검증과는 별개다.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">enum을 <code>@Enumerated(EnumType.STRING)</code> 대신 <code>ORDINAL</code>로 매핑하면 생길 수 있는 문제는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">저장 용량이 훨씬 커진다</button>
+<button class="qz-opt" data-correct="true">enum 필드 순서가 바뀌면 이미 저장된 숫자가 가리키는 값이 달라질 수 있다</button>
+<button class="qz-opt">enum 자체를 저장할 수 없다</button>
+<button class="qz-opt">컬럼을 NOT NULL로 만들 수 없다</button>
+</div>
+<div class="qz-explain">ORDINAL은 enum의 필드 순서(0, 1, 2...)를 그대로 저장하기 때문에, 나중에 enum 선언 순서가 바뀌거나 중간에 값이 추가되면 기존에 저장된 숫자의 의미가 틀어진다. 그래서 실무에서는 이름을 그대로 저장하는 STRING을 권장한다.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">JDBC 시절의 "DAO"는 Spring + JPA 환경에서 보통 뭐라고 부를까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Controller</button>
+<button class="qz-opt">Service</button>
+<button class="qz-opt" data-correct="true">Repository</button>
+<button class="qz-opt">EntityManagerFactory</button>
+</div>
+<div class="qz-explain">JDBC에서 DB 접근 객체를 DAO라고 불렀다면, Spring + JPA 환경에서는 같은 역할의 계층을 Repository로 부른다. DAO == Repository로 인식하면 된다.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text"><code>MemberRepository</code>는 내부에서 어떤 방식으로 데이터베이스에 접근할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">JDBC의 Connection을 직접 열어서</button>
+<button class="qz-opt" data-correct="true"><code>@PersistenceContext</code>로 주입받은 <code>EntityManager</code>의 persist()/find()를 호출해서</button>
+<button class="qz-opt">MyBatis의 Mapper를 호출해서</button>
+<button class="qz-opt">RestTemplate으로 다른 서버에 요청해서</button>
+</div>
+<div class="qz-explain">MemberRepository는 @PersistenceContext로 주입받은 EntityManager 필드를 직접 사용해서 manager.persist(member), manager.find(Member.class, memberNo)를 호출한다.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">조회 전용 메서드에 <code>@Transactional(readOnly = true)</code>를 붙이면 좋은 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">조회 속도가 무조건 2배 빨라져서</button>
+<button class="qz-opt" data-correct="true">값이 바뀔 일이 없으므로 불필요한 변경 감지(Dirty Checking)를 생략할 수 있어서</button>
+<button class="qz-opt">트랜잭션이 아예 시작되지 않아서</button>
+<button class="qz-opt">INSERT와 DELETE를 동시에 실행할 수 있어서</button>
+</div>
+<div class="qz-explain">영속성 컨텍스트는 조회 시점의 스냅샷을 찍어두고 commit 시점에 변경 여부를 비교하는 변경 감지를 수행한다. 조회만 하고 끝낼 메서드라면 이 비교 작업 자체가 불필요한 비용이므로, readOnly=true로 생략할 수 있다.</div>
+</div>
+<button class="qz-reset" id="entmap-reset-btn">다시 풀기</button>
+</div>
+<style>
+#entmap-quiz{margin:1.5rem 0;font-family:inherit}
+#entmap-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#entmap-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#entmap-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#entmap-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#entmap-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#entmap-quiz .qz-opt:hover{border-color:#FF2E88}
+#entmap-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#entmap-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#entmap-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#entmap-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#entmap-quiz .qz-q.answered .qz-explain{display:block}
+#entmap-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#entmap-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('entmap-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('entmap-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

@@ -1,0 +1,135 @@
+<div id="jparepo-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text"><code>interface MenuRepository extends JpaRepository&lt;Menu, Integer&gt;</code>처럼 선언만 하면 어떤 일이 일어날까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">컴파일 에러가 난다 — 메서드 몸체를 반드시 구현해야 한다</button>
+<button class="qz-opt" data-correct="true">Spring Data JPA가 영속성 컨텍스트/엔티티 매니저를 사용하는 구현체를 대신 만들어준다</button>
+<button class="qz-opt">아무 기능도 없는 빈 인터페이스가 된다</button>
+<button class="qz-opt">Menu 엔티티의 모든 필드에 setter가 자동 생성된다</button>
+</div>
+<div class="qz-explain">JpaRepository&lt;관리할 엔티티, @Id 타입&gt;을 상속하면, 그 구현체(SimpleJpaRepository 등)를 Spring Data JPA가 런타임에 만들어 등록해준다. 11/2~11/3까지 직접 작성하던 Repository 클래스를 인터페이스 선언 한 줄로 대체할 수 있다.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>findByMenuPriceGreaterThanOrderByMenuPrice(int menuPrice)</code> 같은 메서드를 무엇이라고 부를까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Native Query</button>
+<button class="qz-opt" data-correct="true">쿼리 메서드(Query Method)</button>
+<button class="qz-opt">JPQL</button>
+<button class="qz-opt">트랜잭션 메서드</button>
+</div>
+<div class="qz-explain">메서드 이름의 조건식·정렬 규칙(GreaterThan, OrderBy 등)만으로 Spring Data JPA가 쿼리를 자동 생성해주는 기능을 쿼리 메서드라고 한다.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">쿼리 메서드의 단점으로 가장 알맞은 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">항상 SQL보다 느리게 동작한다</button>
+<button class="qz-opt">트랜잭션을 지원하지 않는다</button>
+<button class="qz-opt" data-correct="true">조건이 많아지거나 JOIN이 끼면 메서드 이름이 과도하게 길어져 가독성이 떨어진다</button>
+<button class="qz-opt">반환 타입으로 List를 쓸 수 없다</button>
+</div>
+<div class="qz-explain">조건이 적을 땐 메서드 이름 하나로 편리하지만, 조건이 많아지거나 JOIN이 필요해지면 메서드 이름이 길어지고 정확한 의도를 파악하기 어려워진다.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text"><code>@Query(value = "...", nativeQuery = true)</code>에서 <code>nativeQuery</code>를 생략하면 기본값은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">자동으로 Native Query로 처리된다</button>
+<button class="qz-opt" data-correct="true">JPQL로 처리된다 — 엔티티와 엔티티의 필드를 대상으로 작성한다</button>
+<button class="qz-opt">에러가 발생해서 실행되지 않는다</button>
+<button class="qz-opt">쿼리 메서드로 자동 전환된다</button>
+</div>
+<div class="qz-explain">@Query의 기본값은 JPQL이다. 실제 DB 문법 그대로 쓰려면 nativeQuery = true를 명시해야 한다.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text"><code>menurepository.findById(menuCode)</code>의 반환 타입이 <code>Optional&lt;Menu&gt;</code>인 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">여러 개의 메뉴를 한 번에 담기 위해서</button>
+<button class="qz-opt" data-correct="true">조회 결과가 없을 때 곧바로 예외로 서버가 죽는 대신, null 가능성을 안전하게 감싸서 처리하기 위해서</button>
+<button class="qz-opt">트랜잭션 범위를 표현하기 위해서</button>
+<button class="qz-opt">Entity를 DTO로 자동 변환하기 위해서</button>
+</div>
+<div class="qz-explain">findById()는 Spring Data JPA가 미리 구현해둔 메서드로, 반환 타입이 Optional<Entity>이기 때문에 없는 데이터를 조회해도 바로 에러로 끝나지 않고 orElseThrow() 등으로 원하는 예외를 직접 던질 수 있다.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">Menu 엔티티에 setter가 없고 <code>changeMenuName()</code>, <code>stopSelling()</code> 같은 이름 있는 메서드만 있는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Lombok이 setter 생성을 지원하지 않아서</button>
+<button class="qz-opt" data-correct="true">"이미 판매중지된 메뉴는 다시 판매중지할 수 없다"처럼 현재 상태에 따라 허용 여부가 달라지는 도메인 규칙을 Entity 스스로 판단하게 하려고</button>
+<button class="qz-opt">DB 컬럼 수가 많아서</button>
+<button class="qz-opt">JPQL에서 setter를 호출할 수 없어서</button>
+</div>
+<div class="qz-explain">DTO는 화면에서 넘어온 값만 알고 DB에 저장된 현재 상태는 모르기 때문에 @Valid로는 상태 기반 규칙을 검사할 수 없다. 그래서 이런 규칙은 Entity가 이름 있는 메서드로 스스로 판단하도록 설계한다.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">MenuService의 책임 설명 중 맞는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">도메인 규칙과 비즈니스 규칙을 모두 if문으로 직접 판단한다</button>
+<button class="qz-opt" data-correct="true">조회 → 규칙 확인(Policy) → 변경(Entity) → 저장 → DTO 변환의 "순서"만 조립하고, Controller에는 DTO만 돌려준다</button>
+<button class="qz-opt">View 이름과 Model 데이터를 결정한다</button>
+<button class="qz-opt">SQL을 직접 작성해서 Repository에 전달한다</button>
+</div>
+<div class="qz-explain">자기 값만으로 판단 가능한 도메인 규칙은 Entity가, 조회가 필요한 비즈니스 규칙은 Policy가 맡고, Service는 그 순서만 조립한다. Entity는 Service 밖으로 나가지 않고 Controller에는 DTO만 전달된다.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">가격 검색 API에 <code>@RequestParam</code>과 함께 <code>@Min(value = 0)</code>을 붙여 백엔드에서도 검증하는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">프론트엔드 검증은 더 이상 필요 없기 때문에</button>
+<button class="qz-opt" data-correct="true">프론트에서만 검증하면 URL이나 요청 body를 직접 조작해서 검증을 건너뛸 수 있기 때문에</button>
+<button class="qz-opt">@Min이 없으면 애플리케이션이 실행되지 않기 때문에</button>
+<button class="qz-opt">Native Query 성능을 높이기 위해서</button>
+</div>
+<div class="qz-explain">프론트(JS) 유효성 검사는 URL 조작, body 조작 앞에서는 무력하다. 그래서 같은 검증을 백엔드에서도 반드시 다시 해야 한다.</div>
+</div>
+<button class="qz-reset" id="jparepo-reset-btn">다시 풀기</button>
+</div>
+<style>
+#jparepo-quiz{margin:1.5rem 0;font-family:inherit}
+#jparepo-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#jparepo-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#jparepo-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#jparepo-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#jparepo-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#jparepo-quiz .qz-opt:hover{border-color:#FF2E88}
+#jparepo-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#jparepo-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#jparepo-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#jparepo-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#jparepo-quiz .qz-q.answered .qz-explain{display:block}
+#jparepo-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#jparepo-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('jparepo-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('jparepo-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="800" height="300" fill="#fbfbfb"/>
+
+  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">IDENTITY vs SEQUENCE — PK를 언제 받는가</text>
+
+  <!-- IDENTITY row -->
+  <text x="40" y="70" font-size="14" font-weight="bold" fill="#2b6cb0">IDENTITY</text>
+  <rect x="140" y="50" width="160" height="40" rx="8" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="220" y="75" text-anchor="middle" font-size="12" fill="#2d3748">manager.persist(member)</text>
+  <line x1="300" y1="70" x2="360" y2="70" stroke="#2d3748" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="366" y="50" width="200" height="40" rx="8" fill="#dd6b20" opacity="0.15" stroke="#dd6b20" stroke-width="2"/>
+  <text x="466" y="75" text-anchor="middle" font-size="12" fill="#2d3748">즉시 INSERT 실행 (PK 확정)</text>
+  <text x="700" y="75" text-anchor="middle" font-size="12" fill="#5B6884">쓰기 지연 없음</text>
+
+  <!-- SEQUENCE row -->
+  <text x="40" y="150" font-size="14" font-weight="bold" fill="#2b6cb0">SEQUENCE</text>
+  <rect x="140" y="130" width="160" height="40" rx="8" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="220" y="155" text-anchor="middle" font-size="12" fill="#2d3748">manager.persist(member)</text>
+  <line x1="300" y1="150" x2="360" y2="150" stroke="#2d3748" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="366" y="130" width="200" height="40" rx="8" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="466" y="149" text-anchor="middle" font-size="12" fill="#2d3748">시퀀스에서 PK만 먼저</text>
+  <text x="466" y="165" text-anchor="middle" font-size="11" fill="#2d3748">가져옴 (INSERT는 대기)</text>
+  <line x1="566" y1="150" x2="620" y2="150" stroke="#2d3748" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="626" y="130" width="150" height="40" rx="8" fill="#dd6b20" opacity="0.15" stroke="#dd6b20" stroke-width="2"/>
+  <text x="701" y="155" text-anchor="middle" font-size="12" fill="#2d3748">commit() 때 INSERT</text>
+
+  <rect x="40" y="210" width="720" height="60" rx="10" fill="none" stroke="#2b6cb0" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="400" y="235" text-anchor="middle" font-size="13" fill="#2d3748">IDENTITY는 DB가 PK를 만들어줘야만 PK 값을 알 수 있어서, persist() 즉시 INSERT가 나간다.</text>
+  <text x="400" y="257" text-anchor="middle" font-size="13" fill="#2d3748">SEQUENCE는 PK를 미리 받아둘 수 있어서, 다른 쓰기와 함께 쓰기 지연 SQL 저장소에 쌓일 수 있다.</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2d3748"/>
+    </marker>
+  </defs>
+</svg>
