@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="800" height="330" fill="#fbfbfb"/>
+  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">메뉴 등록 요청이 지나가는 세 개의 문</text>
+
+  <!-- request -->
+  <rect x="20" y="130" width="90" height="50" rx="10" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="65" y="153" text-anchor="middle" font-size="13" fill="#2d3748">등록 요청</text>
+  <text x="65" y="170" text-anchor="middle" font-size="11" fill="#5B6884">이름·가격·카테고리</text>
+  <line x1="110" y1="155" x2="160" y2="155" stroke="#2d3748" stroke-width="2.5"/>
+  <polygon points="160,149 172,155 160,161" fill="#2d3748"/>
+
+  <!-- gate 1 -->
+  <rect x="175" y="85" width="130" height="140" rx="12" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="240" y="112" text-anchor="middle" font-size="15" font-weight="bold" fill="#2b6cb0">1번 문 · DTO</text>
+  <text x="240" y="140" text-anchor="middle" font-size="12" fill="#2d3748">입력값만 보면 아는 것</text>
+  <text x="240" y="162" text-anchor="middle" font-size="12" fill="#2d3748">빈 이름? 31자 이상?</text>
+  <text x="240" y="182" text-anchor="middle" font-size="12" fill="#2d3748">가격이 음수?</text>
+  <text x="240" y="210" text-anchor="middle" font-size="11" fill="#5B6884">@Valid</text>
+  <line x1="305" y1="155" x2="345" y2="155" stroke="#2d3748" stroke-width="2.5"/>
+  <polygon points="345,149 357,155 345,161" fill="#2d3748"/>
+
+  <!-- gate 2 -->
+  <rect x="360" y="85" width="130" height="140" rx="12" fill="#edf2f7" stroke="#dd6b20" stroke-width="2"/>
+  <text x="425" y="112" text-anchor="middle" font-size="15" font-weight="bold" fill="#dd6b20">2번 문 · Entity</text>
+  <text x="425" y="140" text-anchor="middle" font-size="12" fill="#2d3748">자기 상태를 보면 아는 것</text>
+  <text x="425" y="162" text-anchor="middle" font-size="12" fill="#2d3748">판매중인 메뉴는</text>
+  <text x="425" y="182" text-anchor="middle" font-size="12" fill="#2d3748">삭제할 수 없다</text>
+  <text x="425" y="210" text-anchor="middle" font-size="11" fill="#5B6884">validateDeletable()</text>
+  <line x1="490" y1="155" x2="530" y2="155" stroke="#2d3748" stroke-width="2.5"/>
+  <polygon points="530,149 542,155 530,161" fill="#2d3748"/>
+
+  <!-- gate 3 -->
+  <rect x="545" y="85" width="130" height="140" rx="12" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="610" y="112" text-anchor="middle" font-size="15" font-weight="bold" fill="#2d3748">3번 문 · Policy</text>
+  <text x="610" y="140" text-anchor="middle" font-size="12" fill="#2d3748">DB나 남의 팀을</text>
+  <text x="610" y="160" text-anchor="middle" font-size="12" fill="#2d3748">물어봐야 아는 것</text>
+  <text x="610" y="182" text-anchor="middle" font-size="12" fill="#2d3748">이름 중복? 주문 이력?</text>
+  <text x="610" y="210" text-anchor="middle" font-size="11" fill="#5B6884">MenuNamePolicy 등</text>
+  <line x1="675" y1="155" x2="715" y2="155" stroke="#2d3748" stroke-width="2.5"/>
+  <polygon points="715,149 727,155 715,161" fill="#2d3748"/>
+
+  <!-- saved -->
+  <rect x="730" y="130" width="55" height="50" rx="10" fill="#2b6cb0" opacity="0.15" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="757" y="160" text-anchor="middle" font-size="13" fill="#2d3748">저장!</text>
+
+  <!-- rejections -->
+  <path d="M240 225 L240 268 L400 268" fill="none" stroke="#dd6b20" stroke-width="2" stroke-dasharray="5 4"/>
+  <path d="M425 225 L425 268" fill="none" stroke="#dd6b20" stroke-width="2" stroke-dasharray="5 4"/>
+  <path d="M610 225 L610 268 L450 268" fill="none" stroke="#dd6b20" stroke-width="2" stroke-dasharray="5 4"/>
+  <rect x="300" y="268" width="250" height="40" rx="10" fill="#dd6b20" opacity="0.15" stroke="#dd6b20" stroke-width="2"/>
+  <text x="425" y="292" text-anchor="middle" font-size="13" fill="#2d3748">GlobalExceptionHandler가 한곳에서 에러 화면으로</text>
+</svg>

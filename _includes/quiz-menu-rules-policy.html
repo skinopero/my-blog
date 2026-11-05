@@ -1,0 +1,135 @@
+<div id="menurules-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">"메뉴 이름은 30자 이하" 규칙은 어디서 검사하는 것이 가장 알맞을까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">MenuNamePolicy — DB를 조회해야 하니까</button>
+<button class="qz-opt">Menu Entity — 자기 상태로 판단하니까</button>
+<button class="qz-opt" data-correct="true">MenuDTO의 <code>@Size(max = 30)</code> — 입력값만 보면 판단할 수 있는 형식 검증이니까</button>
+<button class="qz-opt">GlobalExceptionHandler — 예외를 처리하니까</button>
+</div>
+<div class="qz-explain">빈 값, 길이, 범위처럼 입력값 자체만 보면 아는 규칙은 DTO에 어노테이션으로 선언하고, 컨트롤러의 <code>@Valid</code>가 실행한다. 30자는 <code>tbl_menu.menu_name</code>이 <code>VARCHAR(30)</code>이라서 정해진 값이다.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">"이미 판매중지된 메뉴를 다시 판매중지할 수 없다" 규칙을 <code>@Valid</code>로 막을 수 없는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">@Valid는 문자열만 검사할 수 있어서</button>
+<button class="qz-opt" data-correct="true">DTO는 화면에서 넘어온 값만 알고, DB에 저장된 현재 상태는 모르기 때문에</button>
+<button class="qz-opt">Entity에는 어노테이션을 붙일 수 없어서</button>
+<button class="qz-opt">트랜잭션이 시작되기 전이라서</button>
+</div>
+<div class="qz-explain">현재 상태에 따라 허용 여부가 달라지는 규칙은 도메인 규칙이다. 그래서 Entity가 이름 있는 메서드로 스스로 판단한다. 삭제의 <code>Menu.validateDeletable()</code>이 같은 방식이다.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">"메뉴 이름은 중복될 수 없다"를 Entity가 아니라 Policy가 맡는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Entity는 메서드를 가질 수 없어서</button>
+<button class="qz-opt">Policy가 Controller보다 먼저 실행돼서</button>
+<button class="qz-opt">중복 검사는 프론트에서만 가능해서</button>
+<button class="qz-opt" data-correct="true">다른 메뉴들을 조회해야 판단할 수 있는데, Entity는 Repository를 주입받지 않기 때문에</button>
+</div>
+<div class="qz-explain">자기 값만으로 판단하면 Entity, DB 조회나 다른 도메인이 필요하면 Policy다. <code>MenuNamePolicy</code>는 <code>existsByMenuName()</code>으로 확인하고, 위반 시 <code>BusinessException</code>만 던진다.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text"><code>Category.isSubCategory()</code>를 만들어 두면 얻는 이점은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">refCategoryCode 필드를 int로 바꿀 수 있다</button>
+<button class="qz-opt" data-correct="true">Policy가 <code>getRefCategoryCode() == null</code> 같은 내부 구조를 해석하지 않고 Entity에게 묻기만 하면 된다</button>
+<button class="qz-opt">카테고리 조회 쿼리가 빨라진다</button>
+<button class="qz-opt">하위 카테고리를 자동으로 삭제해준다</button>
+</div>
+<div class="qz-explain">최상위 카테고리는 <code>ref_category_code</code>가 NULL이라 필드 타입이 <code>Integer</code>다. 이 사정을 Category만 알고, 다른 클래스는 "하위 카테고리인가?"라고 질문만 한다.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text"><code>MenuDeletionPolicy</code>가 구현 클래스가 아닌 <code>MenuOrderHistoryChecker</code> 인터페이스를 주입받는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">인터페이스가 구현 클래스보다 실행 속도가 빨라서</button>
+<button class="qz-opt">Spring이 구현 클래스는 주입할 수 없어서</button>
+<button class="qz-opt" data-correct="true">Order 팀의 실제 구현이 나와서 Fake를 지워도 Policy 코드는 한 줄도 바뀌지 않고, Menu가 Order를 직접 의존하는 순환 의존도 피할 수 있어서</button>
+<button class="qz-opt">Fake 클래스에는 @Component를 붙일 수 없어서</button>
+</div>
+<div class="qz-explain">필요한 쪽(Menu 팀)이 인터페이스를 정의하고 정보를 가진 쪽(Order 팀)이 구현한다. 의존 방향이 Order → Menu 한 방향으로 유지되는 의존성 역전 구조다.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text"><code>modifyMenuName()</code>에 <code>save()</code> 호출이 없는데도 UPDATE가 실행되는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">changeMenuName()이 내부에서 SQL을 직접 실행해서</button>
+<button class="qz-opt">findById가 항상 UPDATE를 함께 실행해서</button>
+<button class="qz-opt">@Transactional이 없어도 자동 저장되어서</button>
+<button class="qz-opt" data-correct="true">영속성 컨텍스트가 조회 시 스냅샷을 저장해뒀다가, commit 직전에 비교해서 변경이 있으면 UPDATE를 실행하는 변경 감지(Dirty Checking) 때문에</button>
+</div>
+<div class="qz-explain">조회 → 스냅샷 저장 → 엔티티 값 변경 → commit 직전 비교 → 변경 감지 시 UPDATE. 이 흐름은 <code>@Transactional</code> 메서드 안에서 일어난다.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">숫자 입력 칸에 문자를 넣었을 때 <code>FieldError.isBindingFailure()</code>가 <code>true</code>인 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">@Min 같은 검증 규칙을 어겼기 때문에</button>
+<button class="qz-opt" data-correct="true">검증 규칙 위반이 아니라 값을 필드 타입으로 바인딩하는 것 자체가 실패했기 때문에</button>
+<button class="qz-opt">DB 제약조건을 위반했기 때문에</button>
+<button class="qz-opt">인터셉터가 요청을 막았기 때문에</button>
+</div>
+<div class="qz-explain">그래서 핸들러는 이 경우 <code>getDefaultMessage()</code> 대신 "○○의 형식이 올바르지 않습니다"라는 별도 메시지를 보여준다.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">이름 중복을 Policy로 검사하는데도 DB에 <code>unique</code> 제약을 추가로 거는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Policy는 동작하지 않기 때문에</button>
+<button class="qz-opt">unique 제약이 있으면 Policy를 지워도 같은 메시지가 나와서</button>
+<button class="qz-opt">조회 성능을 높이기 위해서</button>
+<button class="qz-opt" data-correct="true">두 사람이 동시에 같은 이름을 등록하면 조회와 저장 사이의 간격 때문에 둘 다 Policy를 통과할 수 있어서</button>
+</div>
+<div class="qz-explain">Policy는 친절한 메시지를 주는 1차 방어선이고, DB 제약은 마지막 방어선이다. Policy가 못 거른 제약 위반은 <code>DataIntegrityViolationException</code> 핸들러(TODO 5)의 몫이다.</div>
+</div>
+<button class="qz-reset" id="menurules-reset-btn">다시 풀기</button>
+</div>
+<style>
+#menurules-quiz{margin:1.5rem 0;font-family:inherit}
+#menurules-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#menurules-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#menurules-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#menurules-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#menurules-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#menurules-quiz .qz-opt:hover{border-color:#FF2E88}
+#menurules-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#menurules-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#menurules-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#menurules-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#menurules-quiz .qz-q.answered .qz-explain{display:block}
+#menurules-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#menurules-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('menurules-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('menurules-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>
