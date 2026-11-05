@@ -1,0 +1,135 @@
+<div id="mvcreview-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">화면 input의 <code>name</code>과 <code>@RequestParam</code> 변수명이 일치하지 않으면 어떻게 될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">null이 들어간 채로 메서드가 정상 실행된다</button>
+<button class="qz-opt">자동으로 비슷한 이름의 필드에 매핑된다</button>
+<button class="qz-opt" data-correct="true">컨트롤러 메서드가 실행되기 전에 400 Bad Request가 발생한다</button>
+<button class="qz-opt">500 에러가 나면서 서버가 종료된다</button>
+</div>
+<div class="qz-explain">필수 파라미터를 이름으로 찾지 못하면 바인딩 단계에서 실패해 400 Bad Request가 난다. 이름이 다르면 <code>@RequestParam("name")</code>처럼 명시해야 한다.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">여러 input 값을 DTO 객체 하나로 묶어서 받고 싶을 때 쓰는 어노테이션은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">@PathVariable</button>
+<button class="qz-opt" data-correct="true">@ModelAttribute</button>
+<button class="qz-opt">@ResponseBody</button>
+<button class="qz-opt">@RequestHeader</button>
+</div>
+<div class="qz-explain"><code>@ModelAttribute</code>는 input의 name과 일치하는 DTO 필드에 값을 자동으로 묶어 넣어준다. 값을 하나씩 꺼낼 땐 <code>@RequestParam</code>을 쓴다.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">컨트롤러가 접두사 없이 문자열 <code>"result"</code>만 리턴하면 어떻게 동작할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">기본값은 redirect라서 브라우저가 재요청한다</button>
+<button class="qz-opt">에러가 발생한다</button>
+<button class="qz-opt">JSON 문자열이 그대로 응답된다</button>
+<button class="qz-opt" data-correct="true">forward 방식으로 뷰를 찾아 응답한다 — redirect는 <code>redirect:</code> 접두사를 붙여야 한다</button>
+</div>
+<div class="qz-explain">String 반환은 view 경로로 해석되어 forward가 기본이고, 리다이렉트는 <code>"redirect:/"</code>처럼 접두사를 명시해야 한다.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">redirect 후에도 값을 유지하려면 <code>Model</code> 대신 무엇을 써야 할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Model에 값을 한 번 더 담는다</button>
+<button class="qz-opt" data-correct="true"><code>RedirectAttributes.addFlashAttribute()</code></button>
+<button class="qz-opt">@ModelAttribute를 두 번 선언한다</button>
+<button class="qz-opt">forward로 바꾸면 Model이 영구 보존된다</button>
+</div>
+<div class="qz-explain">redirect는 브라우저가 요청을 두 번 보내므로 첫 요청의 Model 값은 두 번째 요청에서 사라진다. FlashAttribute는 리다이렉트된 다음 요청까지 값을 전달해준다.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">"컨트롤러 전에 유효성 에러 발생"이 의미하는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">파라미터 바인딩이 메서드 본문 실행 전에 일어나서, 실패하면 본문은 한 줄도 실행되지 않고 예외가 발생한다</button>
+<button class="qz-opt">컨트롤러 메서드 본문이 끝난 뒤 검증이 실행된다</button>
+<button class="qz-opt">인터셉터가 바인딩을 대신 수행한다</button>
+<button class="qz-opt">톰캣이 기동되기 전에 검증된다</button>
+</div>
+<div class="qz-explain"><code>@RequestParam</code>/<code>@ModelAttribute</code> 바인딩은 핸들러 메서드 호출 전에 처리된다. 타입·이름이 안 맞으면 메서드 코드가 실행되지 않은 채 예외가 던져진다.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">앱 전체의 공통 예외 처리를 한곳에 모으고 싶을 때 쓰는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">컨트롤러마다 @ExceptionHandler 복사</button>
+<button class="qz-opt">HandlerInterceptor.preHandle()</button>
+<button class="qz-opt">@Component</button>
+<button class="qz-opt" data-correct="true">@ControllerAdvice가 붙은 별도 클래스</button>
+</div>
+<div class="qz-explain"><code>@ExceptionHandler</code>는 선언한 컨트롤러에만 적용되고, <code>@ControllerAdvice</code> 클래스 안에 두면 전역으로 적용된다.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>HandlerInterceptor.preHandle()</code>이 <code>false</code>를 반환하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">컨트롤러까지 도달하지 못하고 요청 처리가 중단된다</button>
+<button class="qz-opt">컨트롤러는 실행되지만 postHandle만 건너뛴다</button>
+<button class="qz-opt">예외가 자동으로 발생한다</button>
+<button class="qz-opt">뷰가 두 번 렌더링된다</button>
+</div>
+<div class="qz-explain">preHandle이 true일 때만 다음 단계(컨트롤러)로 진행한다. 권한 체크처럼 요청을 막고 싶을 때 false를 활용한다.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text"><code>long startTime = (long) request.getAttribute("startTime");</code>에서 <code>(long)</code> 형변환이 필요한 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">long이 int보다 빨라서</button>
+<button class="qz-opt" data-correct="true">getAttribute()의 반환 타입이 Object라서 저장해둔 원래 타입으로 명시적 변환이 필요하다</button>
+<button class="qz-opt">인터셉터는 long만 지원해서</button>
+<button class="qz-opt">postHandle의 파라미터가 long이라서</button>
+</div>
+<div class="qz-explain"><code>HttpServletRequest.getAttribute()</code>는 <code>Object</code>를 돌려준다. preHandle에서 저장한 시작 시각을 postHandle에서 꺼낼 땐 원래 타입으로 다운캐스팅해야 한다.</div>
+</div>
+<button class="qz-reset" id="mvcreview-reset-btn">다시 풀기</button>
+</div>
+<style>
+#mvcreview-quiz{margin:1.5rem 0;font-family:inherit}
+#mvcreview-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#mvcreview-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#mvcreview-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#mvcreview-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#mvcreview-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#mvcreview-quiz .qz-opt:hover{border-color:#FF2E88}
+#mvcreview-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#mvcreview-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#mvcreview-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#mvcreview-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#mvcreview-quiz .qz-q.answered .qz-explain{display:block}
+#mvcreview-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#mvcreview-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('mvcreview-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('mvcreview-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>
