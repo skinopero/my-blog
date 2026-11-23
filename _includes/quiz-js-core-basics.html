@@ -1,0 +1,135 @@
+<div id="jscore-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text"><code>const shop = "원티드 식당"; shop = 1;</code>을 실행하면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">타입이 바뀌면서 정상 실행된다</button>
+<button class="qz-opt" data-correct="true">재할당이라서 에러가 난다 — const는 Java의 final처럼 상수의 의미라서</button>
+<button class="qz-opt">undefined가 된다</button>
+<button class="qz-opt">경고만 나오고 실행된다</button>
+</div>
+<div class="qz-explain"><code>const</code>는 재할당이 불가능하다. 값을 다시 바꾸려면 <code>let</code>을 쓴다. <code>let</code>은 <code>test = 1; test = "문자열";</code>처럼 타입이 달라져도 에러가 나지 않는다.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">JavaScript에서 변수의 타입은 언제 정해질까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">변수를 선언하는 시점에 정해진다</button>
+<button class="qz-opt">컴파일할 때 한 번에 정해진다</button>
+<button class="qz-opt" data-correct="true">값을 할당하는 시점에 정해진다 (동적 타입)</button>
+<button class="qz-opt">타입이라는 개념이 없다</button>
+</div>
+<div class="qz-explain">자료형을 신경 쓰지 않고 선언할 수 있는 것이 장점이지만, 값이 언제든 다른 타입으로 바뀔 수 있어서 값을 확인하기 전에는 타입을 확신할 수 없는 것이 단점이다. 현재 타입은 <code>typeof</code>로 확인한다.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text"><code>typeof null</code>과 <code>typeof []</code>의 결과는 각각?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">"null", "array"</button>
+<button class="qz-opt">"undefined", "array"</button>
+<button class="qz-opt">"object", "array"</button>
+<button class="qz-opt" data-correct="true">둘 다 "object"</button>
+</div>
+<div class="qz-explain">실습에서 확인한 결과다. <code>null</code>, <code>{}</code>, <code>[]</code> 모두 <code>"object"</code>로 나오고, 함수만 <code>"function"</code>으로 나온다.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">함수를 선언문보다 앞에서 호출했을 때 정상 동작하는 경우는? (호이스팅)</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true"><code>function cook() {...}</code> 같은 함수 선언문</button>
+<button class="qz-opt"><code>const test1 = function () {...}</code> 같은 함수 표현식</button>
+<button class="qz-opt">둘 다 정상 동작한다</button>
+<button class="qz-opt">둘 다 에러가 난다</button>
+</div>
+<div class="qz-explain">함수 선언문은 런타임 이전에 JS 엔진이 먼저 인식하므로 앞에서 호출할 수 있다. 함수 표현식은 변수에 값이 할당되는 줄에 도달해야 쓸 수 있어서 앞에서 부르면 에러가 난다.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">화살표 함수에서 중괄호와 <code>return</code>을 <b>생략할 수 없는</b> 경우는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">매개변수가 1개일 때</button>
+<button class="qz-opt">매개변수가 없을 때</button>
+<button class="qz-opt">본문이 식 하나일 때</button>
+<button class="qz-opt" data-correct="true">중괄호 블록 안에 코드가 여러 줄 있을 때</button>
+</div>
+<div class="qz-explain">본문이 식 하나면 <code>() =&gt; 값</code>처럼 줄일 수 있지만, 코드가 많으면 생략할 수 없다. 매개변수가 1개일 때는 소괄호도 생략할 수 있다.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text"><code>['제육', '떡볶이', 1, {name:'hi'}, function(){}]</code>처럼 여러 타입을 섞은 배열은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">에러가 난다 — 배열은 같은 자료형만 담을 수 있어서</button>
+<button class="qz-opt" data-correct="true">정상이다 — 배열에 타입을 명시하지 않아서 무엇이든 들어간다</button>
+<button class="qz-opt">문자열만 남고 나머지는 버려진다</button>
+<button class="qz-opt">숫자는 문자열로 자동 변환된다</button>
+</div>
+<div class="qz-explain">Java 배열과 달리 JavaScript 배열은 타입 제한이 없다. 실습 파일 첫 주석은 "같은 자료형만"이라고 적혀 있지만 바로 아래 코드가 보여주는 실제 동작은 반대다.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>map</code>과 <code>filter</code>의 반환값을 맞게 설명한 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">둘 다 반환값이 없다</button>
+<button class="qz-opt">map은 조건이 true인 요소만, filter는 변환한 값으로 새 배열을 만든다</button>
+<button class="qz-opt" data-correct="true">map은 콜백의 반환값으로 새 배열을, filter는 콜백이 true인 요소만 모은 새 배열을 만든다</button>
+<button class="qz-opt">둘 다 원래 배열을 직접 수정한다</button>
+</div>
+<div class="qz-explain"><code>forEach</code>는 반환값이 없고, <code>map</code>은 변환 결과의 새 배열, <code>filter</code>는 조건에 맞는 요소만 모은 새 배열이다. 각 단계가 새 배열을 만들기 때문에 이어서 쓸 수 있다.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text"><code>1 == '1'</code>과 <code>1 === '1'</code>의 결과는 각각?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">false, false</button>
+<button class="qz-opt">true, true</button>
+<button class="qz-opt">false, true</button>
+<button class="qz-opt" data-correct="true">true, false — ==는 타입을 변환해 비교하고 ===는 타입과 값이 모두 일치해야 한다</button>
+</div>
+<div class="qz-explain">동적 타입 언어에서는 <code>==</code>가 예상 밖의 <code>true</code>를 만들 수 있어서 비교는 <code>===</code>를 쓰는 것이 안전하다.</div>
+</div>
+<button class="qz-reset" id="jscore-reset-btn">다시 풀기</button>
+</div>
+<style>
+#jscore-quiz{margin:1.5rem 0;font-family:inherit}
+#jscore-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#jscore-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#jscore-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#jscore-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#jscore-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#jscore-quiz .qz-opt:hover{border-color:#FF2E88}
+#jscore-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#jscore-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#jscore-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#jscore-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#jscore-quiz .qz-q.answered .qz-explain{display:block}
+#jscore-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#jscore-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('jscore-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('jscore-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

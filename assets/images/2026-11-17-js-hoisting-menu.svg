@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="800" height="280" fill="#fbfbfb"/>
+  <text x="400" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">차림표에 미리 인쇄된 요리 vs 주문받고 적는 요리</text>
+
+  <rect x="30" y="50" width="350" height="190" rx="14" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="205" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#2b6cb0">함수 선언문 (호이스팅 O)</text>
+  <rect x="55" y="92" width="300" height="34" rx="8" fill="#fbfbfb" stroke="#cbd5e0" stroke-width="1.5"/>
+  <text x="205" y="114" text-anchor="middle" font-size="12" fill="#2d3748">console.log(cook('떡볶이'))</text>
+  <rect x="55" y="134" width="300" height="34" rx="8" fill="#fbfbfb" stroke="#cbd5e0" stroke-width="1.5"/>
+  <text x="205" y="156" text-anchor="middle" font-size="12" fill="#2d3748">function cook(menuName) { ... }</text>
+  <text x="205" y="196" text-anchor="middle" font-size="12" fill="#2d3748">실행 전에 JS 엔진이 먼저 읽어서</text>
+  <text x="205" y="216" text-anchor="middle" font-size="12" fill="#2d3748">앞에서 불러도 동작해요</text>
+
+  <rect x="420" y="50" width="350" height="190" rx="14" fill="#dd6b20" opacity="0.1" stroke="#dd6b20" stroke-width="2"/>
+  <text x="595" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#dd6b20">함수 표현식 (호이스팅 X)</text>
+  <rect x="445" y="92" width="300" height="34" rx="8" fill="#fbfbfb" stroke="#cbd5e0" stroke-width="1.5"/>
+  <text x="595" y="114" text-anchor="middle" font-size="12" fill="#2d3748">console.log(test1('떡볶이'))</text>
+  <rect x="445" y="134" width="300" height="34" rx="8" fill="#fbfbfb" stroke="#cbd5e0" stroke-width="1.5"/>
+  <text x="595" y="156" text-anchor="middle" font-size="12" fill="#2d3748">const test1 = function (...) { ... }</text>
+  <text x="595" y="196" text-anchor="middle" font-size="12" fill="#2d3748">이 줄에 도착해야 비로소 적혀요</text>
+  <text x="595" y="216" text-anchor="middle" font-size="12" fill="#2d3748">앞에서 부르면 에러가 나요</text>
+</svg>

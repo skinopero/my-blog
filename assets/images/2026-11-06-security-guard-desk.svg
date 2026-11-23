@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#2d3748"/></marker>
+  </defs>
+  <rect x="0" y="0" width="800" height="300" fill="#fbfbfb"/>
+  <text x="400" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">경비실을 지나야 건물(컨트롤러)에 들어가요</text>
+
+  <rect x="20" y="110" width="100" height="60" rx="10" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="70" y="136" text-anchor="middle" font-size="13" fill="#2d3748">방문자</text>
+  <text x="70" y="154" text-anchor="middle" font-size="11" fill="#5B6884">아이디 + 비밀번호</text>
+  <line x1="120" y1="140" x2="168" y2="140" stroke="#2d3748" stroke-width="2.2" marker-end="url(#a)"/>
+
+  <rect x="172" y="70" width="170" height="140" rx="12" fill="#2b6cb0" opacity="0.12" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="257" y="96" text-anchor="middle" font-size="14" font-weight="bold" fill="#2b6cb0">경비실 (Security 필터)</text>
+  <text x="257" y="124" text-anchor="middle" font-size="12" fill="#2d3748">① 명부를 찾아오라고 시켜요</text>
+  <text x="257" y="146" text-anchor="middle" font-size="12" fill="#2d3748">② 비밀번호는 경비가 직접</text>
+  <text x="257" y="166" text-anchor="middle" font-size="12" fill="#2d3748">   대조해요 (BCrypt)</text>
+  <text x="257" y="192" text-anchor="middle" font-size="11" fill="#5B6884">잠긴 계정이면 입장 불가</text>
+
+  <line x1="342" y1="110" x2="400" y2="95" stroke="#2d3748" stroke-width="2.2" marker-end="url(#a)"/>
+  <rect x="404" y="55" width="170" height="60" rx="10" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="489" y="82" text-anchor="middle" font-size="13" fill="#2d3748">명부 조회</text>
+  <text x="489" y="100" text-anchor="middle" font-size="11" fill="#5B6884">UserDetailsService</text>
+
+  <line x1="342" y1="170" x2="400" y2="190" stroke="#2d3748" stroke-width="2.2" marker-end="url(#a)"/>
+  <rect x="404" y="160" width="170" height="60" rx="10" fill="#dd6b20" opacity="0.15" stroke="#dd6b20" stroke-width="2"/>
+  <text x="489" y="187" text-anchor="middle" font-size="13" fill="#2d3748">출입증 발급</text>
+  <text x="489" y="205" text-anchor="middle" font-size="11" fill="#5B6884">세션에 로그인 정보 저장</text>
+
+  <line x1="574" y1="190" x2="640" y2="190" stroke="#2d3748" stroke-width="2.2" marker-end="url(#a)"/>
+  <rect x="644" y="150" width="140" height="80" rx="10" fill="#edf2f7" stroke="#2d3048" stroke-width="2"/>
+  <text x="714" y="180" text-anchor="middle" font-size="13" fill="#2d3748">건물 입장</text>
+  <text x="714" y="200" text-anchor="middle" font-size="11" fill="#5B6884">권한별로 갈 수 있는 층이 달라요</text>
+
+  <text x="400" y="262" text-anchor="middle" font-size="12" fill="#5B6884">다음부터는 출입증(JSESSIONID 쿠키)만 보여주면 돼요. 5번 틀리면 계정이 잠겨요.</text>
+</svg>

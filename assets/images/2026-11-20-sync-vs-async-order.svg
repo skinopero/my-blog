@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <rect x="0" y="0" width="800" height="300" fill="#fbfbfb"/>
+  <text x="400" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">떡볶이 3초를 기다릴까, 그동안 주문을 받을까</text>
+
+  <!-- sync -->
+  <text x="30" y="68" font-size="15" font-weight="bold" fill="#dd6b20">동기</text>
+  <rect x="100" y="48" width="300" height="34" rx="8" fill="#dd6b20" opacity="0.18" stroke="#dd6b20" stroke-width="2"/>
+  <text x="250" y="70" text-anchor="middle" font-size="12" fill="#2d3748">떡볶이 조리 (3초) · 다른 일 못 함</text>
+  <rect x="404" y="48" width="90" height="34" rx="8" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="449" y="70" text-anchor="middle" font-size="12" fill="#2d3748">주문 받기</text>
+  <text x="520" y="70" font-size="12" fill="#5B6884">손님이 3초 동안 멈춰 있어요</text>
+
+  <!-- async -->
+  <text x="30" y="148" font-size="15" font-weight="bold" fill="#2b6cb0">비동기</text>
+  <rect x="100" y="120" width="60" height="34" rx="8" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="130" y="142" text-anchor="middle" font-size="11" fill="#2d3748">조리 맡김</text>
+  <rect x="164" y="120" width="60" height="34" rx="8" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="194" y="142" text-anchor="middle" font-size="11" fill="#2d3748">주문1</text>
+  <rect x="228" y="120" width="60" height="34" rx="8" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="258" y="142" text-anchor="middle" font-size="11" fill="#2d3748">주문2</text>
+  <rect x="292" y="120" width="60" height="34" rx="8" fill="#edf2f7" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="322" y="142" text-anchor="middle" font-size="11" fill="#2d3748">주문3</text>
+  <rect x="356" y="120" width="120" height="34" rx="8" fill="#2b6cb0" opacity="0.18" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="416" y="142" text-anchor="middle" font-size="11" fill="#2d3748">3초 뒤 조리 완료</text>
+  <text x="500" y="142" font-size="12" fill="#5B6884">기다리는 동안 계속 일해요</text>
+
+  <!-- queue / loop -->
+  <rect x="100" y="190" width="250" height="80" rx="12" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="225" y="214" text-anchor="middle" font-size="13" font-weight="bold" fill="#2d3748">태스크 큐</text>
+  <text x="225" y="236" text-anchor="middle" font-size="12" fill="#2d3748">끝난 일의 콜백이 줄 서는 곳</text>
+  <text x="225" y="256" text-anchor="middle" font-size="11" fill="#5B6884">(먼저 온 순서 FIFO)</text>
+  <line x1="352" y1="230" x2="430" y2="230" stroke="#2d3748" stroke-width="2.2"/>
+  <polygon points="430,224 442,230 430,236" fill="#2d3748"/>
+  <rect x="446" y="190" width="250" height="80" rx="12" fill="#dd6b20" opacity="0.12" stroke="#dd6b20" stroke-width="2"/>
+  <text x="571" y="214" text-anchor="middle" font-size="13" font-weight="bold" fill="#2d3748">이벤트 루프</text>
+  <text x="571" y="236" text-anchor="middle" font-size="12" fill="#2d3748">콜 스택이 비면 큐의 첫 줄을 꺼내요</text>
+  <text x="571" y="256" text-anchor="middle" font-size="11" fill="#5B6884">그래서 콜백은 항상 나중에 실행돼요</text>
+</svg>

@@ -1,0 +1,135 @@
+<div id="reactintro-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">React의 가상 DOM(Virtual DOM)을 가장 알맞게 설명한 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">브라우저가 화면에 그리는 진짜 DOM이다</button>
+<button class="qz-opt">서버에 저장되는 HTML 파일이다</button>
+<button class="qz-opt" data-correct="true">메모리 위에 코드로 존재하는 DOM이다</button>
+<button class="qz-opt">CSS를 자동으로 만들어주는 도구이다</button>
+</div>
+<div class="qz-explain">React는 진짜 DOM을 바로 건드리지 않고, 메모리 위에 존재하는 가상 DOM으로 화면을 표현한다. 엘리먼트가 이 가상 DOM을 이루는 조각이다.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>React.createElement('h1', {className:'hi'}, 'helloworld')</code>의 세 인자는 각각 무엇일까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">요소의 타입, 요소의 프로퍼티, 자식 요소</button>
+<button class="qz-opt">자식 요소, 요소의 타입, 요소의 프로퍼티</button>
+<button class="qz-opt">요소의 프로퍼티, 자식 요소, 요소의 타입</button>
+<button class="qz-opt">요소의 id, 요소의 class, 요소의 스타일</button>
+</div>
+<div class="qz-explain">1번째는 만들려는 요소의 타입(h1, div, pre), 2번째는 프로퍼티, 3번째는 자식 요소다.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">엘리먼트와 컴포넌트의 관계로 맞는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">컴포넌트는 엘리먼트의 다른 이름일 뿐이다</button>
+<button class="qz-opt">엘리먼트가 컴포넌트를 반환한다</button>
+<button class="qz-opt" data-correct="true">컴포넌트는 엘리먼트를 반환하는, 화면을 구성하는 조각 단위이다</button>
+<button class="qz-opt">컴포넌트는 반드시 클래스로만 만든다</button>
+</div>
+<div class="qz-explain">엘리먼트는 요소 노드, 어트리뷰트 노드, 텍스트 노드로 구성된 가장 작은 단위이고, 컴포넌트는 그 엘리먼트를 반환하는 개념이다. 오늘 배운 함수형 컴포넌트는 함수로 만든다.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">브라우저는 JSX를 이해하지 못한다. 오늘 실습에서 이 문제를 어떻게 해결했을까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">JSX를 쓰는 script에 type="module"을 붙였다</button>
+<button class="qz-opt" data-correct="true">Babel을 불러오고, JSX script에 type="text/babel"을 붙여 JS로 변환(트랜스파일링)했다</button>
+<button class="qz-opt">JSX 파일의 확장자를 .js로 바꿨다</button>
+<button class="qz-opt">브라우저 설정에서 JSX 지원을 켰다</button>
+</div>
+<div class="qz-explain">Babel이 JSX를 일반 JavaScript로 바꿔준다. head에 Babel 관련 script를 추가하고, JSX를 쓰는 script 태그에 type="text/babel"을 넣는다.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">React에서 HTML의 <code>class</code> 대신 <code>className</code>을 쓰는 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">className이 더 빠르게 동작해서</button>
+<button class="qz-opt">React가 CSS를 따로 관리해서</button>
+<button class="qz-opt">className이 HTML 표준 속성이라서</button>
+<button class="qz-opt" data-correct="true">class가 JavaScript의 예약어이기 때문에</button>
+</div>
+<div class="qz-explain">createElement의 프로퍼티와 JSX는 JavaScript 문법 안에서 쓰이므로 예약어인 class 대신 className을 쓴다.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">컴포넌트 이름을 소문자로 시작해서 <code>&lt;header/&gt;</code>처럼 쓰면 어떻게 될까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">컴포넌트로 정상 동작한다</button>
+<button class="qz-opt" data-correct="true">컴포넌트가 아니라 단순 HTML 요소(header 태그)로 인식된다</button>
+<button class="qz-opt">자동으로 대문자로 바뀐다</button>
+<button class="qz-opt">Babel 변환 단계에서 에러가 난다</button>
+</div>
+<div class="qz-explain">앞글자가 대문자여야 컴포넌트로 인식한다. 대문자 규칙은 단순한 관습이 아니라 React가 컴포넌트와 HTML 태그를 구분하는 기준이다.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>&lt;h1&gt;...&lt;/h1&gt;&lt;h3&gt;...&lt;/h3&gt;</code>처럼 같은 레벨 요소를 연달아 반환하면 문법 에러가 난다. div 대신 Fragment(<code>&lt;&gt; &lt;/&gt;</code>)를 쓰는 이점은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">Fragment를 쓰면 에러 메시지가 사라진다</button>
+<button class="qz-opt">Fragment가 자식 요소에 자동으로 스타일을 준다</button>
+<button class="qz-opt" data-correct="true">묶어주지만 불필요한 div 같은 영역이 DOM에 생기지 않는다</button>
+<button class="qz-opt">Fragment는 최상위 요소를 두 개 이상 둘 수 있게 해준다</button>
+</div>
+<div class="qz-explain">반환할 수 있는 최상위 요소는 하나여야 한다. div로 감싸면 불필요한 div 영역이 생기지만, Fragment는 DOM에 흔적을 남기지 않는다.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text"><code>style={{ border: '1px solid black' }}</code>에서 중괄호가 두 겹인 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">두 겹이어야 CSS가 적용되기 때문이다</button>
+<button class="qz-opt" data-correct="true">바깥 중괄호는 JSX의 JavaScript 표현식 표시, 안쪽 중괄호는 스타일 객체 리터럴이다</button>
+<button class="qz-opt">바깥 중괄호는 스타일 객체, 안쪽 중괄호는 JSX 표현식이다</button>
+<button class="qz-opt">첫 번째는 열기, 두 번째는 닫기 표시이다</button>
+</div>
+<div class="qz-explain">바깥 {}는 "여기부터 JavaScript 표현식"이라는 JSX의 표시이고, 안쪽 {}는 스타일 객체 리터럴 자체다.</div>
+</div>
+<button class="qz-reset" id="reactintro-reset-btn">다시 풀기</button>
+</div>
+<style>
+#reactintro-quiz{margin:1.5rem 0;font-family:inherit}
+#reactintro-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#reactintro-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#reactintro-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#reactintro-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#reactintro-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#reactintro-quiz .qz-opt:hover{border-color:#FF2E88}
+#reactintro-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#reactintro-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#reactintro-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#reactintro-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#reactintro-quiz .qz-q.answered .qz-explain{display:block}
+#reactintro-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#reactintro-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('reactintro-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('reactintro-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>
