@@ -194,9 +194,9 @@ URL 규칙은 컨트롤러보다 **먼저** 검사된다. 미로그인이면 로
 
 ## 아직 비어 있는 곳 (TODO)
 
-프로젝트를 읽다가 눈에 띈 것들이다. 아직 채우지 않았다면 로그인 동작 전에 확인이 필요하다.
+프로젝트를 읽다가 눈에 띈 것들이다.
 
-- `AuthDetails.getPassword()`가 아직 `null`을 반환한다. Security가 이 값을 DB의 암호화된 비밀번호와 비교하므로, 이대로면 올바른 비밀번호로도 로그인이 실패할 것으로 보인다(`loginUserDTO.getPassword()`를 반환해야 한다).
+- `AuthDetails.getPassword()`는 처음에 `null`을 반환하고 있었다. Security가 이 값을 DB의 암호화된 비밀번호와 비교하므로, 그대로면 올바른 비밀번호로도 로그인이 실패할 것으로 보였다. 이 부분은 `loginUserDTO.getPassword()`를 반환하도록 고쳤다. 고친 뒤 로그인을 실행해서 확인하지는 않았다.
 - `AuthDetails`의 `equals()`와 `hashCode()`가 TODO로 남아 있다.
 - `SecurityConfig`의 `@EnableMethodSecurity`와 `IndexController`의 `@PreAuthorize`(`/method/admin`, `/method/user`)가 TODO로 남아 있다.
 - 코드를 실행해서 확인한 결과는 이 글에 없다.
