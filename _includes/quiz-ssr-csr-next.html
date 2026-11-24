@@ -1,0 +1,135 @@
+<div id="ssrcsr-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">SSR과 CSR을 가르는 가장 핵심적인 차이는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">데이터베이스를 쓰는지 여부</button>
+<button class="qz-opt">자바를 쓰는지 JavaScript를 쓰는지</button>
+<button class="qz-opt" data-correct="true">브라우저가 보는 HTML을 서버가 완성하는지, 브라우저가 JavaScript로 만드는지</button>
+<button class="qz-opt">페이지가 몇 개인지</button>
+</div>
+<div class="qz-explain">MDN은 SSR을 "HTML을 서버에서 만드는 것", CSR을 "브라우저가 JavaScript로 마크업을 만드는 것"으로 설명한다. 핵심 질문은 "브라우저가 보는 HTML을 누가 완성하는가"다.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text">Thymeleaf로 화면을 만드는 방식이 SSR인 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">컨트롤러가 데이터를 Model에 담아 뷰를 렌더링하면, 서버가 데이터가 채워진 완성된 HTML을 응답하기 때문에</button>
+<button class="qz-opt">브라우저가 JS로 화면을 그리기 때문에</button>
+<button class="qz-opt">서버가 JSON만 응답하기 때문에</button>
+<button class="qz-opt">index.html 하나만 사용하기 때문에</button>
+</div>
+<div class="qz-explain">Spring MVC 컨트롤러가 뷰 이름을 돌려주면 서버가 HTML을 완성해서 응답한다. 링크를 누르면 서버에 새 HTML을 요청하고 페이지 전체가 바뀐다.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">Vite로 만든 React 프로젝트에 처음 접속하면 서버가 보내주는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">데이터가 모두 채워진 완성된 HTML</button>
+<button class="qz-opt">JSON 데이터만</button>
+<button class="qz-opt">주소마다 서로 다른 HTML 파일</button>
+<button class="qz-opt" data-correct="true"><code>&lt;div id="root"&gt;</code>만 있는 거의 빈 <code>index.html</code>과 JS 번들</button>
+</div>
+<div class="qz-explain">CSR에서는 거의 빈 HTML과 JS를 받고, 브라우저에서 JS가 실행되어 화면(DOM)이 만들어진다. 그래서 처음 화면은 JS를 받아 실행해야 보인다.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text">CSR에서 첫 화면이 그려진 뒤 화면을 갱신할 때 서버에서 받아 오는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">페이지 전체의 새 HTML</button>
+<button class="qz-opt" data-correct="true">필요한 데이터만 API(JSON)로 받아 와서 브라우저가 화면을 갱신한다</button>
+<button class="qz-opt">서버가 화면을 다시 렌더링한 이미지</button>
+<button class="qz-opt">아무것도 받지 않는다</button>
+</div>
+<div class="qz-explain">MDN은 CSR의 장점으로 이후 갱신을 API로 받을 수 있어 앱 안의 이동이 빠르고 서버 부담이 적다는 점을 든다. 11/20에 <code>fetch</code>로 JSON을 받던 코드가 이 부분이다.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">SPA(Single Page Application)의 설명으로 알맞은 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">페이지가 하나뿐이라 주소가 하나만 있는 앱</button>
+<button class="qz-opt">주소마다 서버가 다른 HTML을 보내주는 앱</button>
+<button class="qz-opt" data-correct="true">하나의 HTML 문서만 불러오고, 이후 JavaScript로 내용을 바꿔 끼우는 앱</button>
+<button class="qz-opt">서버 없이 동작하는 앱</button>
+</div>
+<div class="qz-explain">오늘 프로젝트에서는 <code>index.html</code> 하나만 받고, 주소가 바뀌면 <code>Outlet</code> 자리의 컴포넌트만 교체된다. MDN은 단점으로 SEO, 상태 유지와 내비게이션 구현의 수고, 성능 모니터링의 어려움을 든다.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">SPA와 CSR의 관계를 맞게 설명한 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">SPA는 항상 CSR이고, CSR은 항상 SPA다</button>
+<button class="qz-opt">SPA는 항상 SSR이다</button>
+<button class="qz-opt">둘은 서로 아무 관련이 없다</button>
+<button class="qz-opt" data-correct="true">SPA가 반드시 CSR을 쓰는 것은 아니다. React 같은 프레임워크로 SSR 기능을 가진 SPA도 만들 수 있다</button>
+</div>
+<div class="qz-explain">MDN의 설명이다. 오늘 배운 방식(Vite + React)은 "SPA이면서 CSR"인 조합이라고 이해하면 된다.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text">Next에서 첫 방문 시 일어나는 hydration이란?</span></div>
+<div class="qz-opts">
+<button class="qz-opt" data-correct="true">서버가 만든 정적 HTML에 이벤트 핸들러를 붙여 상호작용이 가능하게 만드는 과정</button>
+<button class="qz-opt">서버가 HTML을 다시 만드는 과정</button>
+<button class="qz-opt">빌드할 때 HTML을 미리 저장하는 과정</button>
+<button class="qz-opt">브라우저 캐시를 지우는 과정</button>
+</div>
+<div class="qz-explain">Next 공식 문서 기준으로, 첫 방문에서는 서버가 만든 HTML을 브라우저가 바로 보여주고, 이어서 클라이언트 컴포넌트를 hydration한다. 이후 이동은 클라이언트에서 처리한다.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">Next의 정적 렌더링과 동적 렌더링을 맞게 짝지은 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">정적은 요청마다, 동적은 빌드 시점에 렌더링한다</button>
+<button class="qz-opt" data-correct="true">정적은 빌드 시점에 미리, 동적은 요청이 올 때마다 렌더링한다</button>
+<button class="qz-opt">둘 다 브라우저에서만 렌더링한다</button>
+<button class="qz-opt">둘 다 빌드 시점에 렌더링한다</button>
+</div>
+<div class="qz-explain">사용자의 쿠키나 요청 헤더 같은 동적 함수를 쓰면 라우트가 동적 렌더링이 된다. 그래서 "Next는 SSR"이라는 키워드는 첫 HTML을 서버가 만든다는 큰 특징을 말하는 표현으로 이해한다.</div>
+</div>
+<button class="qz-reset" id="ssrcsr-reset-btn">다시 풀기</button>
+</div>
+<style>
+#ssrcsr-quiz{margin:1.5rem 0;font-family:inherit}
+#ssrcsr-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#ssrcsr-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#ssrcsr-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#ssrcsr-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#ssrcsr-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#ssrcsr-quiz .qz-opt:hover{border-color:#FF2E88}
+#ssrcsr-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#ssrcsr-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#ssrcsr-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#ssrcsr-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#ssrcsr-quiz .qz-q.answered .qz-explain{display:block}
+#ssrcsr-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#ssrcsr-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('ssrcsr-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('ssrcsr-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>
