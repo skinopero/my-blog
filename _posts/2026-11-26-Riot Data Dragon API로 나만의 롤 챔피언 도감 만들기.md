@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Riot Data Dragon API로 나만의 롤 챔피언 도감 만들기"
-date: 2026-11-26 15:00:00 +0900
+date: 2026-11-26 09:00:00 +0900
 categories: [프로젝트]
 tags: [react, api, vite, vercel, league-of-legends, toy-project]
 mermaid: true
