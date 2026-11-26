@@ -1,0 +1,135 @@
+<div id="reactstate-quiz">
+<div class="qz-q" data-idx="1">
+<div class="qz-head"><span class="qz-num">1</span><span class="qz-text">props에 대한 설명으로 맞는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">자식이 자유롭게 수정해서 부모에게 돌려준다</button>
+<button class="qz-opt" data-correct="true">부모가 자식에게 전달하는 읽기 전용 값이고, 속성들이 하나의 객체로 묶여 들어온다</button>
+<button class="qz-opt">값이 바뀌면 자동으로 리렌더링을 일으킨다</button>
+<button class="qz-opt">문자열만 전달할 수 있다</button>
+</div>
+<div class="qz-explain">props는 부모→자식으로 내려오는 읽기 전용 값이다. 숫자·배열·함수는 <code>{}</code>로 전달하고, 자식에서 수정하지 않는다.</div>
+</div>
+<div class="qz-q" data-idx="2">
+<div class="qz-head"><span class="qz-num">2</span><span class="qz-text"><code>&lt;Box&gt;텍스트&lt;/Box&gt;</code>처럼 태그 사이에 쓴 내용을 받으려면?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">props.content</button>
+<button class="qz-opt" data-correct="true"><code>function Box({children})</code>로 받아 출력한다</button>
+<button class="qz-opt">props.text</button>
+<button class="qz-opt">useState로 따로 만든다</button>
+</div>
+<div class="qz-explain">태그 사이의 내용은 <code>props.children</code>으로 전달된다. 구조 분해로 <code>{children}</code>처럼 받으면 편하다.</div>
+</div>
+<div class="qz-q" data-idx="3">
+<div class="qz-head"><span class="qz-num">3</span><span class="qz-text">일반 변수 <code>let count</code>를 버튼으로 바꿨는데 화면이 그대로인 이유는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">콘솔에 값이 안 찍혀서</button>
+<button class="qz-opt">let은 값을 바꿀 수 없어서</button>
+<button class="qz-opt" data-correct="true">값이 바뀌어도 컴포넌트 함수가 다시 실행(리렌더링)되지 않아서</button>
+<button class="qz-opt">버튼에 key가 없어서</button>
+</div>
+<div class="qz-explain">리렌더링은 state의 setter를 호출했을 때 일어난다. 일반 변수는 값만 바뀔 뿐 화면을 다시 그리지 않는다.</div>
+</div>
+<div class="qz-q" data-idx="4">
+<div class="qz-head"><span class="qz-num">4</span><span class="qz-text"><code>count</code>가 0일 때 <code>setCount(count + 1)</code>을 세 번 호출하면 결과는?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">3</button>
+<button class="qz-opt" data-correct="true">1</button>
+<button class="qz-opt">0</button>
+<button class="qz-opt">오류가 난다</button>
+</div>
+<div class="qz-explain">그 렌더링에서 <code>count</code>는 0으로 고정된 스냅샷이라 세 번 모두 <code>0 + 1</code>을 계산한다. state는 핸들러가 끝난 뒤 한 번에 반영된다.</div>
+</div>
+<div class="qz-q" data-idx="5">
+<div class="qz-head"><span class="qz-num">5</span><span class="qz-text">3씩 증가시키려면 어떻게 바꿔야 할까?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">count를 let으로 바꾼다</button>
+<button class="qz-opt">setCount를 네 번 호출한다</button>
+<button class="qz-opt" data-correct="true"><code>setCount(prev =&gt; prev + 1)</code>을 세 번 호출한다</button>
+<button class="qz-opt">useEffect 안에서 호출한다</button>
+</div>
+<div class="qz-explain">함수형 업데이트는 이전 결과를 받아 누적 계산한다. 0→1→2→3으로 이어진다.</div>
+</div>
+<div class="qz-q" data-idx="6">
+<div class="qz-head"><span class="qz-num">6</span><span class="qz-text">이벤트 연결로 맞는 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt"><code>onclick="handle()"</code></button>
+<button class="qz-opt"><code>onClick={handle()}</code></button>
+<button class="qz-opt" data-correct="true"><code>onClick={handle}</code> 또는 <code>onClick={() =&gt; handle()}</code></button>
+<button class="qz-opt">컴포넌트에 <code>onClick</code>만 주면 내부 버튼에 자동 연결된다</button>
+</div>
+<div class="qz-explain">카멜 표기법을 쓰고 문자열이 아닌 함수를 전달한다. <code>handle()</code>은 렌더링 중에 바로 실행된다. 컴포넌트의 <code>onClick</code>은 props일 뿐이라 내부 DOM 요소에 다시 연결해야 한다.</div>
+</div>
+<div class="qz-q" data-idx="7">
+<div class="qz-head"><span class="qz-num">7</span><span class="qz-text"><code>setForm({[e.target.name]: e.target.value})</code>처럼 <code>...form</code> 없이 쓰면 생기는 일은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">아무 문제 없다</button>
+<button class="qz-opt" data-correct="true">객체가 통째로 교체되어 방금 입력하지 않은 다른 필드 값이 사라진다</button>
+<button class="qz-opt">key 경고가 나온다</button>
+<button class="qz-opt">리렌더링이 두 번 일어난다</button>
+</div>
+<div class="qz-explain">state 객체는 자동으로 병합되지 않고 새 객체로 교체된다. 그래서 <code>...form</code>으로 기존 값을 복사한 뒤 바뀐 키만 덮어쓴다.</div>
+</div>
+<div class="qz-q" data-idx="8">
+<div class="qz-head"><span class="qz-num">8</span><span class="qz-text">목록 state에서 항목을 삭제하는 방법으로 알맞은 것은?</span></div>
+<div class="qz-opts">
+<button class="qz-opt">names.splice로 원본을 수정하고 그대로 둔다</button>
+<button class="qz-opt" data-correct="true"><code>setNames(names.filter(n =&gt; n.id !== id))</code>로 새 배열을 전달한다</button>
+<button class="qz-opt">key를 index로 바꾼다</button>
+<button class="qz-opt">names.pop()을 호출한다</button>
+</div>
+<div class="qz-explain">원본 배열을 수정하면 React가 변경을 알아채지 못한다. <code>filter</code>로 새 배열을 만들어 setter에 전달한다. key는 index보다 고유한 id가 좋다.</div>
+</div>
+<button class="qz-reset" id="reactstate-reset-btn">다시 풀기</button>
+</div>
+<style>
+#reactstate-quiz{margin:1.5rem 0;font-family:inherit}
+#reactstate-quiz .qz-q{border:2px solid #2B180A;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;background:#fff}
+#reactstate-quiz .qz-head{display:flex;align-items:center;gap:.6rem;font-weight:800;margin-bottom:.9rem;font-size:1.02rem}
+#reactstate-quiz .qz-num{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid #2B180A;font-size:.85rem;flex:none}
+#reactstate-quiz .qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#reactstate-quiz .qz-opt{text-align:left;padding:.65rem .9rem;border:2px solid #ccc;border-radius:8px;background:#fafafa;cursor:pointer;font-size:.9rem;font-family:inherit;color:#2B180A;transition:transform .1s}
+#reactstate-quiz .qz-opt:hover{border-color:#FF2E88}
+#reactstate-quiz .qz-q.answered .qz-opt{cursor:default;pointer-events:none}
+#reactstate-quiz .qz-opt.qz-correct{background:#dff5e6;border-color:#188A5E;font-weight:800}
+#reactstate-quiz .qz-opt.qz-wrong{background:#fde2e2;border-color:#E0554E}
+#reactstate-quiz .qz-explain{display:none;margin-top:.9rem;padding-top:.8rem;border-top:1px dashed #E2C89F;font-size:.9rem;line-height:1.7;color:#5C4025}
+#reactstate-quiz .qz-q.answered .qz-explain{display:block}
+#reactstate-quiz .qz-reset{display:block;margin:.5rem auto 0;padding:.6rem 1.4rem;border:2px solid #2B180A;border-radius:999px;background:#FFDD7A;font-weight:800;cursor:pointer;font-family:inherit}
+@media (max-width:520px){#reactstate-quiz .qz-opts{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  var quiz = document.getElementById('reactstate-quiz');
+  if (!quiz) return;
+  var questions = quiz.querySelectorAll('.qz-q');
+  questions.forEach(function(q){
+    var opts = q.querySelectorAll('.qz-opt');
+    opts.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        var isCorrect = btn.getAttribute('data-correct') === 'true';
+        if (isCorrect) {
+          btn.classList.add('qz-correct');
+        } else {
+          btn.classList.add('qz-wrong');
+          var correctBtn = q.querySelector('[data-correct="true"]');
+          if (correctBtn) correctBtn.classList.add('qz-correct');
+        }
+      });
+    });
+  });
+  var resetBtn = document.getElementById('reactstate-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      questions.forEach(function(q){
+        q.classList.remove('answered');
+        q.querySelectorAll('.qz-opt').forEach(function(btn){
+          btn.classList.remove('qz-correct', 'qz-wrong');
+        });
+      });
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

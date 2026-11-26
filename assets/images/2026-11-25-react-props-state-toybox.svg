@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#2d3748"/></marker>
+  </defs>
+  <rect x="0" y="0" width="800" height="330" fill="#fbfbfb"/>
+  <text x="400" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">props는 받은 선물, state는 내 일기장</text>
+
+  <!-- parent -->
+  <rect x="30" y="50" width="740" height="230" rx="14" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+  <text x="400" y="74" text-anchor="middle" font-size="12" fill="#5B6884">부모 컴포넌트</text>
+
+  <!-- props -->
+  <rect x="60" y="92" width="320" height="160" rx="12" fill="#2b6cb0" opacity="0.1" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="220" y="118" text-anchor="middle" font-size="15" font-weight="bold" fill="#2b6cb0">props — 부모가 준 선물 상자</text>
+  <text x="220" y="148" text-anchor="middle" font-size="12" fill="#2d3748">&lt;Profile name="이여니" age={25}/&gt;</text>
+  <line x1="220" y1="160" x2="220" y2="184" stroke="#2d3748" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="220" y="206" text-anchor="middle" font-size="12" fill="#2d3748">자식은 열어서 쓰기만 해요</text>
+  <text x="220" y="230" text-anchor="middle" font-size="11" fill="#5B6884">내 마음대로 바꾸면 안 돼요 (읽기 전용)</text>
+
+  <!-- state -->
+  <rect x="420" y="92" width="320" height="160" rx="12" fill="#dd6b20" opacity="0.1" stroke="#dd6b20" stroke-width="2"/>
+  <text x="580" y="118" text-anchor="middle" font-size="15" font-weight="bold" fill="#dd6b20">state — 내 일기장</text>
+  <text x="580" y="148" text-anchor="middle" font-size="12" fill="#2d3748">const [count, setCount] = useState(0)</text>
+  <line x1="580" y1="160" x2="580" y2="184" stroke="#2d3748" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="580" y="206" text-anchor="middle" font-size="12" fill="#2d3748">setter로 고쳐 쓰면 화면을 다시 그려요</text>
+  <text x="580" y="230" text-anchor="middle" font-size="11" fill="#5B6884">내가 바꿀 수 있는 값 (리렌더링)</text>
+
+  <text x="400" y="312" text-anchor="middle" font-size="12" fill="#5B6884">바뀌는 값은 state, 위에서 내려온 값은 props예요.</text>
+</svg>

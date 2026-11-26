@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" font-family="'Segoe UI','Apple SD Gothic Neo',sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#2d3748"/></marker>
+  </defs>
+  <rect x="0" y="0" width="800" height="330" fill="#fbfbfb"/>
+  <text x="400" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d3748">가게 문부터 열고, 재료는 배달 오는 대로</text>
+
+  <!-- 1 -->
+  <rect x="20" y="50" width="240" height="230" rx="14" fill="#2b6cb0" opacity="0.1" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="140" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#2b6cb0">1. 먼저 가게를 열어요</text>
+  <rect x="40" y="94" width="200" height="40" rx="8" fill="#edf2f7" stroke="#cbd5e0"/>
+  <text x="140" y="119" text-anchor="middle" font-size="12" fill="#2d3748">렌더링 (일단 화면부터)</text>
+  <text x="140" y="165" text-anchor="middle" font-size="12" fill="#2d3748">"불러오는 중..." 팻말을</text>
+  <text x="140" y="185" text-anchor="middle" font-size="12" fill="#2d3748">걸어 두어요</text>
+  <text x="140" y="232" text-anchor="middle" font-size="11" fill="#5B6884">재료가 언제 올지 몰라서</text>
+  <text x="140" y="252" text-anchor="middle" font-size="11" fill="#5B6884">기다리지 않고 문부터 열어요</text>
+
+  <!-- 2 -->
+  <rect x="280" y="50" width="240" height="230" rx="14" fill="#dd6b20" opacity="0.1" stroke="#dd6b20" stroke-width="2"/>
+  <text x="400" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#dd6b20">2. 그다음 배달을 시켜요</text>
+  <rect x="300" y="94" width="200" height="40" rx="8" fill="#edf2f7" stroke="#cbd5e0"/>
+  <text x="400" y="119" text-anchor="middle" font-size="12" fill="#2d3748">useEffect (화면이 그려진 뒤)</text>
+  <line x1="400" y1="136" x2="400" y2="160" stroke="#2d3748" stroke-width="2.2" marker-end="url(#a)"/>
+  <rect x="300" y="164" width="200" height="40" rx="8" fill="#edf2f7" stroke="#cbd5e0"/>
+  <text x="400" y="189" text-anchor="middle" font-size="12" fill="#2d3748">fetch로 API 주문</text>
+  <text x="400" y="232" text-anchor="middle" font-size="11" fill="#5B6884">[] 이면 개점할 때 한 번만</text>
+  <text x="400" y="252" text-anchor="middle" font-size="11" fill="#5B6884">[id] 이면 주문이 바뀔 때마다</text>
+
+  <!-- 3 -->
+  <rect x="540" y="50" width="240" height="230" rx="14" fill="#2d3748" opacity="0.08" stroke="#2d3748" stroke-width="2"/>
+  <text x="660" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#2d3748">3. 도착하면 채워 넣어요</text>
+  <rect x="560" y="94" width="200" height="40" rx="8" fill="#edf2f7" stroke="#cbd5e0"/>
+  <text x="660" y="119" text-anchor="middle" font-size="12" fill="#2d3748">setState (재료 도착)</text>
+  <line x1="660" y1="136" x2="660" y2="160" stroke="#2d3748" stroke-width="2.2" marker-end="url(#a)"/>
+  <rect x="560" y="164" width="200" height="40" rx="8" fill="#edf2f7" stroke="#cbd5e0"/>
+  <text x="660" y="189" text-anchor="middle" font-size="12" fill="#2d3748">다시 렌더링 → 목록 표시</text>
+  <text x="660" y="232" text-anchor="middle" font-size="11" fill="#5B6884">늦게 온 옛날 주문은</text>
+  <text x="660" y="252" text-anchor="middle" font-size="11" fill="#5B6884">ignore로 버려요</text>
+
+  <text x="400" y="312" text-anchor="middle" font-size="12" fill="#5B6884">useEffect는 "화면이 그려진 이후에" 할 일을 맡겨 두는 곳이에요.</text>
+</svg>
